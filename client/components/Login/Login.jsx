@@ -8,15 +8,8 @@ function Login() {
         <div>Surfinch</div>
       </header>
       <body>
-        <div>
-          <div>Please Login</div>
-          <div>
-            <div>Log in with Spring Social</div>
-            <div>Log in with Google</div>
-          </div>
-          <div>New User?
-            <a href='#'> Sign up! </a>
-          </div>
+        <div className='login'>
+          <div>Returning user? Please Login</div>
         </div>
       </body>
     </div>
