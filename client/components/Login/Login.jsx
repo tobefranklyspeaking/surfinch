@@ -4,14 +4,16 @@ function Login() {
 
   return (
     <div>
-      <header>
-        <div>Surfinch</div>
-      </header>
-      <body>
-        <div className='login'>
+      <div>
+        <div>Surfinch Top Bar</div>
+      </div>
+      <div className='login'>
+          <div>LAWGIN</div>
           <div>Returning user? Please Login</div>
-        </div>
-      </body>
+      </div>
+      <div>
+      {/* <a title="bird" href="https://toppng.com/free-image/free-bird-cartoon-PNG-free-PNG-Images_88814" target="_blank" /> */}
+      </div>
     </div>
   )
 }
