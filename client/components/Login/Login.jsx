@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Logo from '/public/Logo.png';
+import Logo from '/public/img/Logo.png';
 function Login() {
 
   let img = document.createElement('img');
