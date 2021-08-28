@@ -6,6 +6,6 @@ var connection = mysql.createConnection({
   database: 'surfinch'
 });
 
-connection.connect();
+// connection.connect();
 
 module.exports = connection;
