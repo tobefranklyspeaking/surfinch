@@ -9,15 +9,15 @@ function Login() {
   }
 
   return (
-    <div>
-      <div>
-        <div>Surfinch Top Bar</div>
+    <div className='container-fluid'>
+      <div className='d-flex justify-content-center bg-secondary'>
+        <h1 className='text-white'>Surfinch Top Bar</h1>
       </div>
-      <div className='login'>
+      <div >
           <div>LAWGIN</div>
           <div>Returning user? Please Login</div>
       </div>
-      <div>
+      <div className='d-flex justify-content-center'>
         <img src={Logo} width='20%' height='20%' alt='finch'/>
       </div>
     </div>

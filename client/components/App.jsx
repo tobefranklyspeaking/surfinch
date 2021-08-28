@@ -12,8 +12,8 @@ const App = () => {
       <Router>
         <Switch>
           <Route exact path="/login">
-            <Link to="/home">Home</Link>
             <Login />
+            <Link to="/home">Home</Link>
           </Route>
           <Route>
             <Link to="/login">Login</Link>
