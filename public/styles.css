@@ -8,6 +8,11 @@
 .main-container {
   display: flex;
   flex-direction: row;
+  justify-content: flex-start;
+}
+
+.page-container {
+  flex: 5;
 }
 
 
@@ -16,14 +21,13 @@
   height: 100vh;
   margin-left: 0px;
   padding-left: 0px;
-  display: sticky;
-  flex: 1;
-  position: absolute;
+  position: relative;
 }
 
 /*--HOME PAGE--*/
 .home-container {
   justify-content: space-between;
+  margin-left: 50px;
 }
 
 .mini-home-container {
