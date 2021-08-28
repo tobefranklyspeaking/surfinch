@@ -27,7 +27,10 @@ CREATE TABLE user_birds (
 /* Table for the user info */
 CREATE TABLE user_friends (
   userID INT,
+  userBirdCount INT,
   friends INT,
   FOREIGN KEY (userID)
 );
+
+
 
