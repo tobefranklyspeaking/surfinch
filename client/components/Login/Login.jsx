@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Logo from '/public/img/Logo.png';
-import { googleProvider, facebookProvider, githubProvider } from './auth/authMethods.js';
+import { googleProvider, facebookProvider, githubProvider } from './config/authMethods.js';
+import socialMediaAuth from './config/auth.js';
 
 function Login() {
 
@@ -10,8 +11,9 @@ function Login() {
     width: '25%'
   }
 
-  const handleClick = () => {
-
+  const handleClick = async (provider) => {
+    const res = awaitSocialMediaAuth(provider);
+    console.log(res)
   }
 
   return (
@@ -21,9 +23,9 @@ function Login() {
       </div>
       <div >
           <div>LAWGIN</div>
-          <button onClick={() => handleClick()}>Google</button>
-          <button>Facebook</button>
-          <button>Github</button>
+          <button onClick={() => handleClick(googleProvider)}>Google</button>
+          <button onClick={() => handleClick(facebookProvider)}>Facebook</button>
+          <button onClick={() => handleClick(githubProvider)}>Github</button>
           <div>Returning user? Please Login</div>
       </div>
       <div className='d-flex justify-content-center'>
