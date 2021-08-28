@@ -1,6 +1,4 @@
-import firebase from 'firebase';
-
-const firebaseConfig = {
+export default firebaseConfig = {
   apiKey: "AIzaSyCjK-7RHbe4oqkoijCra5pVJEG_PwrT9I0",
   authDomain: "surfinch.firebaseapp.com",
   projectId: "surfinch",
@@ -9,9 +7,3 @@ const firebaseConfig = {
   appId: "1:253734146206:web:79d79dbd4ce5284fd16b8f",
   measurementId: "G-Z2H980CM0H"
 };
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-export default firebase;
