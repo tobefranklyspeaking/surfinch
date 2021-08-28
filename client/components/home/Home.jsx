@@ -12,7 +12,7 @@ function Home() {
           <div>Home again</div>
       </div>
       <div>
-      <img title='bird' src='https://freepngimg.com/thumb/flying_bird/25966-3-flying-bird.png' target='_blank' />
+      <img title='bird' src='https://freepngimg.com/thumb/flying_bird/25966-3-flying-bird.png' target='_blank' alt='goofyparrot'/>
       </div>
     </div>
   )
