@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Logo from '/public/img/Logo.png';
-import { AuthContext } from "../App.jsx";
+// import { AuthContext } from "../App.jsx";
 
 const Login = () => {
   const [email, setEmail] = useState("");
