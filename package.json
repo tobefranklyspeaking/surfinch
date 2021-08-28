@@ -29,8 +29,12 @@
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.0-beta.6",
     "react-dom": "^17.0.2",
+<<<<<<< HEAD
     "react-router-dom": "^5.2.0",
     "serve-favicon": "^2.5.0"
+=======
+    "react-router-dom": "^5.2.1"
+>>>>>>> eb8c04ddd7d319923e9b9bb099994752512cb8a0
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
