@@ -1,4 +1,7 @@
 import React from 'react';
+
+import Homepage from './Homepage/Homepage.jsx';
+import NavBar from './Shared/NavBar.jsx';
 import { HashRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
 import Login from './login/Login.jsx';
 import Home from './home/Home.jsx'
@@ -8,7 +11,7 @@ import BirdProfile from './Bird-Profile/BirdProfile.jsx'
 
 const App = () => {
   return (
-    <div>
+    <div className="main-container">
       <Router>
         <Switch>
           <Route exact path="/login">
