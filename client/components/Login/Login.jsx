@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
-
+import Logo from '/public/Logo.png';
 function Login() {
+
+  let img = document.createElement('img');
+  img.style = {
+    height: '25%',
+    width: '25%'
+  }
 
   return (
     <div>
@@ -12,7 +18,7 @@ function Login() {
           <div>Returning user? Please Login</div>
       </div>
       <div>
-      {/* <a title="bird" href="https://toppng.com/free-image/free-bird-cartoon-PNG-free-PNG-Images_88814" target="_blank" /> */}
+        <img src={Logo} width='20%' height='20%' alt='finch'/>
       </div>
     </div>
   )
