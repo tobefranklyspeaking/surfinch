@@ -1,40 +1,35 @@
-import React from 'react';
-
-import Homepage from './Homepage/Homepage.jsx';
-import NavBar from './Shared/NavBar.jsx';
+import React, { useState } from 'react';
 import { HashRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
-import Login from './login/Login.jsx';
-import Home from './home/Home.jsx'
-// import User from './??.jsx'
-// import BirdEntry from './??.jsx'
+
+// SHARED COMPONENTS
+import NavBar from './Shared/NavBar.jsx';
+
+//PAGE COMPONENTS
+import Homepage from './Homepage/Homepage.jsx';
+import Login from './Login/Login.jsx';
+import Profile from './Profile/Profile.jsx'
+//import BirdEntry from './??.jsx'
 import BirdProfile from './Bird-Profile/BirdProfile.jsx'
 
 const App = () => {
+  // SET IS LOGGED IN TO TRUE TO ACCESS PAGES OTHER THAN LOGIN/SIGNUP
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  const [currentUser, setCurrentUser] = useState({});
+
+
   return (
     <div className="main-container">
       <Router>
-        <Switch>
-          <Route exact path="/login">
-            <Link to="/home">Home</Link>
-            <Login />
-          </Route>
+        {isLoggedIn && <NavBar />}
+        <div className="page-container">
           <Route>
-            <Link to="/login">Login</Link>
-            <Route exact path="/home">
-              <Home />
-            </Route>
-            <Route path="/user-profile">
-              {/* <User /> */}
-            </Route>
-            <Route path="/bird-entry">
-              {/* <BirdEntry /> */}
-            </Route>
-            <Link to="/BirdProfile">Bird Profile</Link>
-            <Route path="/BirdProfile">
-              <BirdProfile />
-            </Route>
+            <Route exact path="/login" component={Login} />
+            <Route exact path="/home" component={Homepage} />
+            <Route path="/user-profile" component={Profile} />
+            {/*<Route path="/bird-entry" component={BirdEntry} /> */}
+            <Route path="/BirdProfile" component={BirdProfile} />
           </Route>
-        </Switch>
+        </div>
       </Router>
     </div>
   );

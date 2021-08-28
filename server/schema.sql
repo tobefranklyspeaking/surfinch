@@ -10,8 +10,6 @@ CREATE TABLE user_profile (
   PRIMARY KEY (userID)
 );
 
-
-/* Table for the user saved birds */
 CREATE TABLE user_birds (
   userID INT,
   bird TEXT,
@@ -21,15 +19,20 @@ CREATE TABLE user_birds (
   state_sighted TEXT,
   longitude DECIMAL(8, 6),
   latitude DECIMAL(8, 6),
-  FOREIGN KEY (userID)
+  user_profileID INT,
+  CONSTRAINT user_profileID
+  FOREIGN KEY (user_profileID)
+    REFERENCES user_profile(userID)
 );
 
-/* Table for the user info */
 CREATE TABLE user_friends (
   userID INT,
   userBirdCount INT,
   friends INT,
-  FOREIGN KEY (userID)
+  user_profileID INT,
+  CONSTRAINT user_profileID
+  FOREIGN KEY (user_profileID)
+    REFERENCES user_profile(userID)
 );
 
 
