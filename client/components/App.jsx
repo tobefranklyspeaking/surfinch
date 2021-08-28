@@ -4,7 +4,7 @@ import Login from './login/Login.jsx';
 import Home from './home/Home.jsx'
 // import User from './??.jsx'
 // import BirdEntry from './??.jsx'
-// import BirdProfile from './??.jsx'
+import BirdProfile from './Bird-Profile/BirdProfile.jsx'
 
 const App = () => {
   return (
@@ -26,8 +26,9 @@ const App = () => {
             <Route path="/bird-entry">
               {/* <BirdEntry /> */}
             </Route>
-            <Route path="/bird-profile">
-              {/* <BirdProfile /> */}
+            <Link to="/BirdProfile">Bird Profile</Link>
+            <Route path="/BirdProfile">
+              <BirdProfile />
             </Route>
           </Route>
         </Switch>
