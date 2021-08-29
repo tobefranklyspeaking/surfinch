@@ -16,14 +16,14 @@ app.use(express.static('public'));
 //get a particular user's profile info
 app.get('/user/:id', getUserInfo);
 
-app.post('/birdImage', (req, res) => {
+app.post('/createBird', (req, res) => {
   if (req.files) {
     const {birdImage} = req.files;
     birdImage.mv('./uploads/' + birdImage.name)
-    res.send();
-  } else {
-    res.send();
   }
+
+  res.send();
+
 });
 
 app.listen(port, () => {
