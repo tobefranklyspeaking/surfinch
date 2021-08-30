@@ -8,7 +8,7 @@ import NavBar from './Shared/NavBar.jsx';
 import Homepage from './Homepage/Homepage.jsx';
 import Login from './Login/Login.jsx';
 import Profile from './Profile/Profile.jsx'
-import BirdEntry from './birdEntries/createBirdForm.jsx'
+import BirdEntry from './Bird-Entries/BirdEntry.jsx'
 import BirdProfile from './Bird-Profile/BirdProfile.jsx'
 
 const App = () => {
@@ -26,7 +26,7 @@ const App = () => {
             <Route exact path="/login" component={Login} />
             <Route exact path="/home" component={Homepage} />
             <Route path="/user-profile" component={Profile} />
-            <Route path="/birdEntry" component={BirdEntry} />
+            <Route path="/bird-entry" component={BirdEntry} />
             <Route path="/BirdProfile" component={BirdProfile} />
           </Route>
         </div>

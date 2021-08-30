@@ -1,11 +1,14 @@
 const express = require('express');
 const app = express();
 const path = require('path');
-const { getUserInfo } = require('./models/getUserInfo');
+
+// const { getUserInfo } = require('./models/getUserInfo');
 const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
 const { postUserBird } = require('./models/postUserBird');
 const fileUpload = require('express-fileupload');
 
+const { getUserInfo } = require('./models/getUserInfo');
+const { createBird } = require('./models/createBird');
 
 const port = 3333;
 app.use(express.json());
@@ -25,15 +28,7 @@ app.get('/userbirds/:userid', getUsersBirdInfo);
 //post a bird by user
 app.post('/bird', postUserBird);
 
-app.post('/createBird', (req, res) => {
-  if (req.files) {
-    const {birdImage} = req.files;
-    birdImage.mv('./uploads/' + birdImage.name)
-  }
-
-  res.send();
-
-});
+app.post('/createBird', createBird);
 
 
 
