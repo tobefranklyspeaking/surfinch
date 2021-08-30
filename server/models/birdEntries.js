@@ -4,7 +4,7 @@ module.exports = {
   createBird: function(req, res) {
     if (req.files) {
       const {birdImage} = req.files;
-      birdImage.mv('./uploads/' + birdImage.name)
+      birdImage.mv('./public/uploads/' + birdImage.name)
     }
 
     var body = req.body;
@@ -15,6 +15,14 @@ module.exports = {
     db.query(queryString, params, function(err, results, fields) {
       if (err) console.log(err)
       else (res.send())
+    })
+  },
+
+  getEntries: function(req, res) {
+    var queryString = 'SELECT * FROM user_birds';
+    db.query(queryString, function(err, results, fields) {
+      if (err) console.log(err)
+      else (res.send(results));
     })
   }
 }

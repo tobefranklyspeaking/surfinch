@@ -11,14 +11,15 @@ CREATE TABLE user_profile (
 );
 
 CREATE TABLE user_birds (
+  id INT AUTO_INCREMENT PRIMARY KEY,
   userID INT,
   bird TEXT,
   birdpic_url TEXT,
   notes TEXT,
   city_sighted TEXT,
   state_sighted TEXT,
-  longitude DECIMAL(8, 6),
-  latitude DECIMAL(8, 6),
+  longitude TEXT,
+  latitude TEXT,
   user_profileID INT,
   CONSTRAINT user_profileID
   FOREIGN KEY (user_profileID)
