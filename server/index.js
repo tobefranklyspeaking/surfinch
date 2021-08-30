@@ -4,7 +4,6 @@ const path = require('path');
 const { getUserInfo } = require('./models/getUserInfo');
 const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
 const { postUserBird } = require('./models/postUserBird');
-const { getBirdNotes } = require('./models/getBirdNotes');
 const fileUpload = require('express-fileupload');
 
 
@@ -25,9 +24,6 @@ app.get('/userbirds/:userid', getUsersBirdInfo);
 
 //post a bird by user
 app.post('/bird', postUserBird);
-
-//Get user notes for bird profile
-app.get('/birdNotes/:userID', getBirdNotes);
 
 app.post('/createBird', (req, res) => {
   if (req.files) {
