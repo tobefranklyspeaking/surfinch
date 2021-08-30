@@ -30,7 +30,7 @@ CREATE TABLE user_friends (
   userBirdCount INT,
   friends INT,
   user_profileID INT,
-  CONSTRAINT user_profileID
+  CONSTRAINT user_prof_friendsID
   FOREIGN KEY (user_profileID)
     REFERENCES user_profile(userID)
 );
