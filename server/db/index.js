@@ -1,8 +1,8 @@
 var mysql = require('mysql2');
 
 var connection = mysql.createConnection({
-  user: 'student',
-  password: 'password', // or whatever your password is
+  user: 'root',
+  password: '', // or whatever your password is
   database: 'surfinch'
 });
 

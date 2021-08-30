@@ -8,7 +8,7 @@ const { postUserBird } = require('./models/postUserBird');
 const fileUpload = require('express-fileupload');
 
 const { getUserInfo } = require('./models/getUserInfo');
-const { createBird } = require('./models/createBird');
+const { createBird, getEntries } = require('./models/birdEntries');
 
 const port = 3333;
 app.use(express.json());
@@ -29,6 +29,7 @@ app.get('/userbirds/:userid', getUsersBirdInfo);
 app.post('/bird', postUserBird);
 
 app.post('/createBird', createBird);
+app.get('/entries', getEntries);
 
 
 

@@ -1,7 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
+import BirdEntryList from './BirdEntryList.jsx';
+import SearchBar from './SearchBar.jsx';
+
 const CreateBirdForm = () => {
+  const [birdEntries, setBirdEntries] = useState([]);
+
   const [species, setSpecies] = useState('');
   const [fileUpload, setFileUpload] = useState();
 
@@ -10,45 +15,44 @@ const CreateBirdForm = () => {
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
 
-  var key = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
+  var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
       var lat = position.coords.latitude.toString();
       var lon = position.coords.longitude.toString();
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${key}&lat=${lat}&lon=${lon}&format=json`)
+      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
         .then(results => {
           setStreet(results.data.address.house_number + " " + results.data.address.road);
           setCity(results.data.address.city);
           setSt(results.data.address.state);
         })
         .catch(error => { console.log(error); });
+
+        axios.get('/entries')
+        .then(results => {setBirdEntries(results.data)})
     });
   }, []);
-
-  var handleInputChange = (event, key) => {
-    key(event.target.value);
-  }
 
   var handleSubmit = (event) => {
     event.preventDefault();
     var form = document.getElementById('create-entry')
     var formData = new FormData(form);
-
-    axios.get(`https://us1.locationiq.com/v1/search.php?key=${key}&city=${city}&state=${st}&format=json`)
+    axios.get(`https://us1.locationiq.com/v1/search.php?key=${auth}&city=${city}&state=${st}&format=json`)
       .then(results => {
         var lat = results.data[0].lat;
         var lon = results.data[0].lon;
+        console.log(lat, lon)
         formData.append('latitude', lat);
         formData.append('longitude', lon);
-        formData.append('birdpic_url', `/uploads/${fileUpload.name}`);
         if (fileUpload) {
           formData.append(
             "birdImage",
             fileUpload,
             fileUpload.name
           );
+          formData.append('birdpic_url', `/uploads/${fileUpload.name}`);
         }
       })
       .then(() => {
@@ -57,6 +61,10 @@ const CreateBirdForm = () => {
           .catch(error => { if (error) console.log(error); });
 
       })
+      .then(() => {
+        axios.get('/entries')
+          .then(results => { setBirdEntries(results.data)})
+      })
       .catch(error => { if (error) console.log(error); });
   }
 
@@ -64,8 +72,13 @@ const CreateBirdForm = () => {
     setFileUpload(event.target.files[0]);
   }
 
+  var handleInputChange = (event, key) => {
+    key(event.target.value);
+  }
+
   return (
     <div>
+      <SearchBar />
       <form id="create-entry" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="control-label" htmlFor="">Species</label>
@@ -97,6 +110,8 @@ const CreateBirdForm = () => {
           <input type="submit" />
         </div>
       </form >
+
+      <BirdEntryList birdEntries={birdEntries} />
     </div>
 
   )
