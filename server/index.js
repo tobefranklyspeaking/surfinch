@@ -24,14 +24,14 @@ app.get('/userbirds/:userid', getUsersBirdInfo);
 //post a bird by user
 app.post('/bird', postUserBird);
 
-app.post('/birdImage', (req, res) => {
+app.post('/createBird', (req, res) => {
   if (req.files) {
     const {birdImage} = req.files;
     birdImage.mv('./uploads/' + birdImage.name)
-    res.send();
-  } else {
-    res.send();
   }
+
+  res.send();
+
 });
 
 app.listen(port, () => {
