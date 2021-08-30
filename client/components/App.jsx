@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import firebaseConfig from '/client/components/Login/firebase.config.js';
 
 // SHARED COMPONENTS
 import NavBar from './Shared/NavBar.jsx';
@@ -10,6 +11,12 @@ import Login from './Login/Login.jsx';
 import Profile from './Profile/Profile.jsx'
 // import BirdEntry from './birdEntries/CreateBirdForm.jsx'
 import BirdProfile from './Bird-Profile/BirdProfile.jsx'
+
+firebase.initilizeApp(firebaseConfig);
+
+export const AuthContext = React.createContext(null);
+
+console.log(firebase)
 
 const App = () => {
   // SET IS LOGGED IN TO TRUE TO ACCESS PAGES OTHER THAN LOGIN/SIGNUP
