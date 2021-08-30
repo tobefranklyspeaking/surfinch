@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { HashRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
-import * as firebase from 'firebase';
+// import * as firebase from 'firebase';
 import firebaseConfig from '/client/components/Login/firebase.config.js';
 
 // SHARED COMPONENTS
