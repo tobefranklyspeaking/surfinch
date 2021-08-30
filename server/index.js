@@ -2,6 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const { getUserInfo } = require('./models/getUserInfo');
+const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
+const { postUserBird } = require('./models/postUserBird');
 const { getBirdNotes } = require('./models/getBirdNotes');
 const fileUpload = require('express-fileupload');
 
@@ -16,7 +18,13 @@ app.use(fileUpload({
 app.use(express.static('public'));
 
 //get a particular user's profile info
-app.get('/user/:id', getUserInfo);
+app.get('/user/:userid', getUserInfo);
+
+//get users saved birds info
+app.get('/userbirds/:userid', getUsersBirdInfo);
+
+//post a bird by user
+app.post('/bird', postUserBird);
 
 //Get user notes for bird profile
 app.get('/birdNotes/:userID', getBirdNotes);
