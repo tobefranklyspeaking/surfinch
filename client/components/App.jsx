@@ -8,7 +8,7 @@ import NavBar from './Shared/NavBar.jsx';
 import Homepage from './Homepage/Homepage.jsx';
 import Login from './Login/Login.jsx';
 import Profile from './Profile/Profile.jsx'
-//import BirdEntry from './??.jsx'
+// import BirdEntry from './birdEntries/CreateBirdForm.jsx'
 import BirdProfile from './Bird-Profile/BirdProfile.jsx'
 
 const App = () => {
@@ -23,11 +23,21 @@ const App = () => {
         {isLoggedIn && <NavBar />}
         <div className="page-container">
           <Route>
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/home" component={Homepage} />
-            <Route path="/user-profile" component={Profile} />
-            {/*<Route path="/bird-entry" component={BirdEntry} /> */}
-            <Route path="/BirdProfile" component={BirdProfile} />
+            <Route exact path="/login">
+              <Login />
+            </Route>
+            <Route exact path="/home">
+              <Homepage />
+            </Route>
+            <Route path="/user-profile">
+              <Profile />
+            </Route>
+            {/* <Route path="/bird-entry">
+              <BirdEntry />
+            </Route> */}
+            <Route path="/BirdProfile">
+              <BirdProfile />
+            </Route>
           </Route>
         </div>
       </Router>

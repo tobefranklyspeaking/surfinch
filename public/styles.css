@@ -1,5 +1,8 @@
 /* Start of css */
 
+* {
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
 #root {
   height: 100vh;
   width: 100vw;

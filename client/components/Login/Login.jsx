@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import Logo from '/public/img/Logo.png';
+import Join from './Join.jsx';
 // import { AuthContext } from "../App.jsx";
 
 const Login = () => {
