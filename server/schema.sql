@@ -6,12 +6,13 @@ USE surfinch;
 CREATE TABLE user_profile (
   userID INT NOT NULL AUTO_INCREMENT,
   username TEXT,
-  profile_pic_url TEXT,
+  avatar_pic TEXT,
+  avatar_background TEXT,
   PRIMARY KEY (userID)
 );
 
 CREATE TABLE user_birds (
-  id INT AUTO_INCREMENT PRIMARY KEY,
+  id INT NOT NULL AUTO_INCREMENT,
   userID INT,
   bird TEXT,
   birdpic_url TEXT,
@@ -27,6 +28,7 @@ CREATE TABLE user_birds (
 );
 
 CREATE TABLE user_friends (
+  id INT NOT NULL AUTO_INCREMENT,
   userID INT,
   userBirdCount INT,
   friends INT,
