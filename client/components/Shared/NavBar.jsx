@@ -1,46 +1,41 @@
 import React, { useState, useEffect } from 'react';
 import { Switch, Link } from "react-router-dom";
+import { IconContext } from "react-icons";
+import { CgProfile } from 'react-icons/cg';
+import { GiBirdHouse, GiKiwiBird } from 'react-icons/gi';
+import { FaKiwiBird } from 'react-icons/fa';
+import { AiOutlineLogout } from 'react-icons/ai';
 
 const NavBar = (props) => {
   return (
+    <IconContext.Provider value={{ color: "white"}}>
     <div className="nav-container d-flex">
-      <div className="d-flex flex-column flex-shrink-0 bg-dark" style={{width: "4.5rem"}}>
+      <div className="d-flex flex-column flex-shrink-0" style={{width: "4.5rem"}}>
         <a href="#" className="d-block p-3 link-dark text-decoration-none">LOGO</a>
         <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
           <li className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/home">Home</Link>
-            {/* <a href="#" className="nav-link active py-3 border-bottom bg-dark"> */}
-              <svg className="bi" width="24" height="24" role="img" aria-label="Home">
-              </svg>
+                <Link to="/home"><GiBirdHouse size="40"/></Link>
             </Switch>
           </li>
-          <li>
+          <li  className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="user-profile">Profile</Link>
-              <svg className="bi" width="24" height="24" role="img" aria-label="Home">
-              </svg>
+              <Link to="user-profile"><CgProfile size="30"/></Link>
             </Switch>
           </li>
-          <li>
+          <li className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/bird-entry">New Bird Profile </Link>
-              <svg className="bi" width="24" height="24" role="img" aria-label="Home">
-              </svg>
+              <Link to="/bird-entry"><GiKiwiBird size="30"/></Link>
             </Switch>
           </li>
-          <li>
+          <li className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/BirdProfile">Bird Profile </Link>
-              <svg className="bi" width="24" height="24" role="img" aria-label="Home">
-              </svg>
+              <Link to="/BirdProfile"><FaKiwiBird size="30"/></Link>
             </Switch>
           </li>
-          <li>
+          <li className="nav-item logout">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/login">Log Out </Link>
-              <svg className="bi" width="24" height="24" role="img" aria-label="Home">
-              </svg>
+              <Link to="/login"><AiOutlineLogout size="30"/></Link>
             </Switch>
           </li>
         </ul>
@@ -49,6 +44,7 @@ const NavBar = (props) => {
         </div>
       </div>
     </div>
+    </IconContext.Provider>
   )
 }
 
