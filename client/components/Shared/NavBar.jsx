@@ -24,7 +24,7 @@ const NavBar = (props) => {
           </li>
           <li>
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/bird-entry">New Bird Profile </Link>
+              <Link to="/birdEntry">New Bird Entry</Link>
               <svg className="bi" width="24" height="24" role="img" aria-label="Home">
               </svg>
             </Switch>

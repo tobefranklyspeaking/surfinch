@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Kauri-2021/Surfinch#readme",
   "dependencies": {
+    "axios": "^0.21.1",
     "bootstrap": "^5.1.0",
     "express": "^4.17.1",
     "express-fileupload": "^1.2.1",

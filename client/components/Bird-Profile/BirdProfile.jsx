@@ -1,7 +1,33 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { API_TOKEN } from '/config.js';
 
 
 const BirdProfile = () => {
+  const [bird, setBird] = useState([]);
+  const [notes, setNotes] = useState([]);
+
+  //get bird info
+  useEffect(() => {
+    axios.get('')
+  })
+
+
+  //get user notes
+  useEffect(() => {
+    axios.get('/birdNotes')
+    .then((result) => {
+      console.log(result);
+      // setNotes(result)
+    })
+    .catch(error => {
+      consol.log('There was an error retrieving notes from DB', error)
+    })
+  })
+
+
+
+
   return (
     <div>
       <div>This is a birddddddd</div>
