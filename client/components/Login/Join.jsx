@@ -1,17 +1,17 @@
 import React, { useState, useContext } from "react";
-import { AuthContext } from "./index";
+// import { AuthContext } from "./index";
 
 const Join = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setErrors] = useState("");
 
-  const Auth = useContext(AuthContext);
-  const handleForm = e => {
-    e.preventDefault();
-    console.log(Auth);
-    Auth.setLoggedIn(true);
-  };
+  // const Auth = useContext(AuthContext);
+  // const handleForm = e => {
+  //   e.preventDefault();
+  //   console.log(Auth);
+  //   Auth.setLoggedIn(true);
+  // };
 
   return (
     <div>

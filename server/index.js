@@ -6,7 +6,7 @@ const fileUpload = require('express-fileupload');
 
 const port = 3333;
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({
   createParentPath: true
 }));
@@ -14,7 +14,7 @@ app.use(fileUpload({
 app.use(express.static('public'));
 
 //get a particular user's profile info
-app.get('/user/:id', getUserInfo);
+// app.get('/user/:id', getUserInfo);
 
 app.post('/birdImage', (req, res) => {
   if (req.files) {

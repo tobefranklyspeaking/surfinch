@@ -7,12 +7,12 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const [error, setErrors] = useState("");
 
-  const Auth = useContext(AuthContext);
-  const handleForm = e => {
-    e.preventDefault();
-    console.log(Auth);
-    Auth.setLoggedIn(true);
-  };
+  // const Auth = useContext(AuthContext);
+  // const handleForm = e => {
+  //   e.preventDefault();
+  //   console.log(Auth);
+  //   Auth.setLoggedIn(true);
+  // };
 
   let img = document.createElement('img');
   img.style = {
