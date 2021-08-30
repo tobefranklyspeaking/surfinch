@@ -11,6 +11,7 @@ CREATE TABLE user_profile (
 );
 
 CREATE TABLE user_birds (
+  id INT NOT NULL AUTO_INCREMENT,
   userID INT,
   bird TEXT,
   birdpic_url TEXT,
@@ -26,6 +27,7 @@ CREATE TABLE user_birds (
 );
 
 CREATE TABLE user_friends (
+  id INT NOT NULL AUTO_INCREMENT,
   userID INT,
   userBirdCount INT,
   friends INT,
