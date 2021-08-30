@@ -10,7 +10,7 @@ import NavBar from './Shared/NavBar.jsx';
 import Homepage from './Homepage/Homepage.jsx';
 import Login from './Login/Login.jsx';
 import Profile from './Profile/Profile.jsx'
-// import BirdEntry from './birdEntries/CreateBirdForm.jsx'
+import BirdEntry from './Bird-Entries/BirdEntry.jsx'
 import BirdProfile from './Bird-Profile/BirdProfile.jsx'
 
 firebase.initilizeApp(firebaseConfig);
@@ -42,9 +42,9 @@ const App = () => {
             <Route path="/user-profile">
               <Profile />
             </Route>
-            {/* <Route path="/bird-entry">
+            <Route path="/bird-entry">
               <BirdEntry />
-            </Route> */}
+            </Route>
             <Route path="/BirdProfile">
               <BirdProfile />
             </Route>

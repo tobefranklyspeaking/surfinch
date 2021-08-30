@@ -22,7 +22,6 @@ const CreateBirdForm = () => {
           setStreet(results.data.address.house_number + " " + results.data.address.road);
           setCity(results.data.address.city);
           setSt(results.data.address.state);
-          setZip(results.data.address.postcode);
         })
         .catch(error => { console.log(error); });
     });

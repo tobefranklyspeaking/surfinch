@@ -6,6 +6,12 @@
 //   database: 'surfinch'
 // });
 
+<<<<<<< HEAD
 // // connection.connect();
+=======
+connection.connect(function() {
+  console.log('Connected to db');
+});
+>>>>>>> 2e29bb235ebebf612bc0cd1d016c25eb4a3bc09a
 
 // module.exports = connection;
