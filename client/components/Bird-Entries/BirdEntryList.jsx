@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-const BirdEntryList = () => {
+import EntryItem from './EntryItem.jsx';
+
+const BirdEntryList = ({birdEntries}) => {
+
   return (
     <div>
-
+      { birdEntries &&
+        birdEntries.map(function(item, index) {
+          return <EntryItem key={index} photo={item.birdpic_url} notes={item.notes} city={item.city_sighted} state={item.state_sighted} name={item.bird} />
+        })
+      }
     </div>
   )
 }

@@ -5,8 +5,15 @@ const path = require('path');
 // const { getUserInfo } = require('./models/getUserInfo');
 const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
 const { postUserBird } = require('./models/postUserBird');
+<<<<<<< HEAD
 const { createBird } = require('./models/createBird');
 const fileUpload = require('express-fileupload');
+=======
+const fileUpload = require('express-fileupload');
+
+const { getUserInfo } = require('./models/getUserInfo');
+const { createBird, getEntries } = require('./models/birdEntries');
+>>>>>>> c75452a4827b87416a67e0b5bea3351e0e1eb55a
 
 const port = 3333;
 app.use(express.json());
@@ -27,6 +34,7 @@ app.get('/userbirds/:userid', getUsersBirdInfo);
 app.post('/bird', postUserBird);
 
 app.post('/createBird', createBird);
+app.get('/entries', getEntries);
 
 app.listen(port, () => {
   console.log(`Server listening at localhost:${port}!`);
