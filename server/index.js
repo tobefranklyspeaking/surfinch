@@ -12,14 +12,14 @@ const { createBird, getEntries } = require('./models/birdEntries');
 
 const port = 3333;
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({
   createParentPath: true
 }));
 
 app.use(express.static('public'));
 
-//get a particular user's profile info
+// get a particular user's profile info
 app.get('/user/:userid', getUserInfo);
 
 //get users saved birds info
