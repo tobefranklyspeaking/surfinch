@@ -76,14 +76,16 @@ const BirdProfile = () => {
       <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' class=".img-fluid" alt="Responsive image"></img>
       </div>
       <div className='birdBio'>
-      <h1>Canada Goose</h1>
-      <h3>Branta canadensis</h3>
-      <h5>General Information:</h5>
-        {taxonomy ? <p>{taxonomy}</p> : null}
+      <h1 className='birdTitle'>Canada Goose</h1>
+      <h3 className='scientific'><em>Branta canadensis</em> </h3>
+      <small>| General Information |</small>
+      <div className='paragraphBird'>
+      {taxonomy ? <p>{taxonomy}...click here for more</p> : null}
+      </div>
       </div>
       <div className='birdNotes'>
-        <h5>Notes:</h5>
-        <p>I like this bird alot, its really cool! </p>
+        <h4 className='notesTitle'>Notes:</h4>
+        <p className='notesText'>I like this bird alot, its really cool! </p>
         </div>
         <div className='heatMap'>
           HEAT MAP its getting hot in here!
