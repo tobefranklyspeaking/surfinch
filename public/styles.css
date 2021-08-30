@@ -3,16 +3,25 @@
 #root {
   height: 100vh;
   width: 100vw;
+  /* font-family: 'Almarai', sans-serif; */
+  font-family: 'Spartan', sans-serif;
+  /* position: absolute; */
 }
 
 .main-container {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
+  height: 100vh;
+  /* position: relative; */
 }
 
 .page-container {
-  flex: 5;
+  flex: 4;
+  margin-left: 4.5rem;
+  /* background: #7e927b; */
+  background: linear-gradient(360deg, rgba(233,218,196,1) 5%, rgba(250,235,212,1) 59%, rgba(255,253,250,1) 100%);
+  /* background:  rgb(248, 244, 244); */
 }
 
 
@@ -21,42 +30,83 @@
   height: 100vh;
   margin-left: 0px;
   padding-left: 0px;
-  position: relative;
+  position: fixed;
+  background: #200305;
+  /* background: #263D23; */
+}
+
+.nav-item {
+  margin-bottom: 30px;
 }
 
 /*--HOME PAGE--*/
 .home-container {
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 50px;
   margin-left: 50px;
+  margin-top: 40px;
 }
 
 .mini-home-container {
-  background: white;
-  flex: 2;
-  margin: 40px;
+  /* background: blue; */
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 30px;
   height: 80vh;
   padding-top: 40px;
 }
 
 .mini-profile-container {
-  background: black;
-  margin: 30px;
-  flex: 2;
+  text-align: center;
+  /* background:  rgba(94, 104, 38, .7); */
+  background:  rgba(94, 104, 38, .7);
+/* background: radial-gradient(circle, rgba(127,140,52,1) 0%, rgba(126,139,53,1) 46%, rgba(82,89,32,1) 100%); */
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 400px;
 }
 
+.mini-profile-container:hover {
+  background: rgb(113, 124, 47);
+}
+
 .mini-info-container {
-  background: black;
+  background:  rgba(94, 104, 38, .7);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* margin: 30px; */
+  height: 300px;
+  display: grid;
+  grid-template-columns: repeat(4, 2fr);
+  grid-column-gap: 60px;
+}
+
+.toptitle {
+  margin-top: 40px;
+  justify-self: center;
+  grid-column: 2/4;
+}
+
+.topbirdersicon {
+  background: #f5e7d2;
+  border-radius: 50%;
+  height: 100px;
+  width: 100px;
+  justify-self: center;
+  align-self: center;
+  grid-row: 2;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.usericon {
   margin: 30px;
-  flex: 1;
 }
 
 .mini-map-container {
-  background: black;
-  flex: 1;
-  margin: 70px;
-  height: 600px;
+  background:  rgba(94, 104, 38, .7);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  height: 700px;
   padding-top: 40px;
+  margin: 40px;
 }
 
 /*--Bird Profile--*/
