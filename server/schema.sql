@@ -6,7 +6,8 @@ USE surfinch;
 CREATE TABLE user_profile (
   userID INT NOT NULL AUTO_INCREMENT,
   username TEXT,
-  profile_pic_url TEXT,
+  avatar_pic TEXT,
+  avatar_background TEXT,
   PRIMARY KEY (userID)
 );
 
@@ -18,8 +19,8 @@ CREATE TABLE user_birds (
   notes TEXT,
   city_sighted TEXT,
   state_sighted TEXT,
-  longitude DECIMAL(8, 6),
-  latitude DECIMAL(8, 6),
+  longitude TEXT,
+  latitude TEXT,
   user_profileID INT,
   CONSTRAINT user_profileID
   FOREIGN KEY (user_profileID)

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-const { getUserInfo } = require('./models/getUserInfo');
+// const { getUserInfo } = require('./models/getUserInfo');
 const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
 const { postUserBird } = require('./models/postUserBird');
 const fileUpload = require('express-fileupload');
