@@ -10,7 +10,7 @@ const NavBar = (props) => {
   return (
     <IconContext.Provider value={{ color: "white"}}>
     <div className="nav-container d-flex">
-      <div className="d-flex flex-column flex-shrink-0" style={{width: "4.5rem"}}>
+      <div className="d-flex flex-column flex-shrink-0 " style={{width: "4.5rem"}}>
         <a href="#" className="d-block p-3 link-dark text-decoration-none"></a>
         <ul className="nav nav-pills nav-flush flex-column mb-auto text-center">
           <li>
@@ -28,7 +28,7 @@ const NavBar = (props) => {
           </li>
           <li className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/bird-entry"><img className="logo" src="https://i.imgur.com/kyyVw4m.png" height="70px" width="70px"/></Link>
+              <Link to="/bird-entry"><img className="logo" src="https://i.imgur.com/L5c19zl.png" height="70px" width="70px"/></Link>
             </Switch>
           </li>
           <li className="nav-item">

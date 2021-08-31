@@ -10,7 +10,7 @@ exports.compileCoordinates = (data) => {
     coordinates.push(loc);
   })
 
-  console.log(coordinates);
+  // console.log(coordinates);
   return coordinates;
 
   //return compiled array of objects
