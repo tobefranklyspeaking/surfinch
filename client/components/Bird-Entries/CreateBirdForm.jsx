@@ -6,6 +6,8 @@ import SearchBar from './SearchBar.jsx';
 
 const CreateBirdForm = () => {
   const [birdEntries, setBirdEntries] = useState([]);
+  const [searchBar, setSearchBar] = useState('');
+  const [filteredSet, setFilteredSet] = useState([]);
 
   const [species, setSpecies] = useState('');
   const [fileUpload, setFileUpload] = useState();
@@ -19,6 +21,7 @@ const CreateBirdForm = () => {
 
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
+
       var lat = position.coords.latitude.toString();
       var lon = position.coords.longitude.toString();
 
@@ -31,9 +34,20 @@ const CreateBirdForm = () => {
         .catch(error => { console.log(error); });
 
         axios.get('/entries')
-        .then(results => {setBirdEntries(results.data)})
+        .then(results => {setBirdEntries(results.data); setFilteredSet(results.data)})
     });
   }, []);
+
+  var handleSearchBarChange = (event) => {
+    var value = event.target.value;
+    // setSearchBar(event.target.value);
+    var pattern = new RegExp(`\^${value}`, 'i');
+
+    var filteredResults = birdEntries.filter(function(value) {
+      return pattern.test(value.bird)
+    })
+    setFilteredSet(filteredResults);
+  }
 
   var handleSubmit = (event) => {
     event.preventDefault();
@@ -78,7 +92,8 @@ const CreateBirdForm = () => {
 
   return (
     <div>
-      <SearchBar />
+      <SearchBar handleSearchBarChange={handleSearchBarChange}/>
+
       <form id="create-entry" onSubmit={handleSubmit}>
         <div className="form-group">
           <label className="control-label" htmlFor="">Species</label>
@@ -111,7 +126,7 @@ const CreateBirdForm = () => {
         </div>
       </form >
 
-      <BirdEntryList birdEntries={birdEntries} />
+      <BirdEntryList birdEntries={filteredSet} />
     </div>
 
   )

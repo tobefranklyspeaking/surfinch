@@ -1,10 +1,10 @@
 import React from 'react';
 
-const SearchBar = () => {
+const SearchBar = ({handleSearchBarChange}) => {
   return (
     <div>
       <label htmlFor="">Search</label>
-      <input type="text" />
+      <input type="text" onChange={handleSearchBarChange} />
       <input type="submit" />
     </div>
   )
