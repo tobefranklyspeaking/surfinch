@@ -13,7 +13,7 @@ const DisplayMap = (props) => {
   const currentFriendData = props.props.friendData;
   const currentHeatMap = props.props.heatmapLayer;
 
-  console.log('maps', props);
+  // console.log('maps', props);
 
   return (
     <GoogleMap

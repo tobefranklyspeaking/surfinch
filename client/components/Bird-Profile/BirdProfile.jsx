@@ -22,14 +22,14 @@ const BirdProfile = () => {
         'X-eBirdApiToken': API_TOKEN
       }
     })
-    .then((result) => {
-      var result2 = compileCoordinates(result.data);
-      setLocation(result2);
-      setBird(result.data);
-    })
-    .catch(error => {
-      console.log('There was an error retrieving data from API, ', error);
-    })
+      .then((result) => {
+        var result2 = compileCoordinates(result.data);
+        setLocation(result2);
+        setBird(result.data);
+      })
+      .catch(error => {
+        console.log('There was an error retrieving data from API, ', error);
+      })
   }, [])
 
   //get bird info
@@ -37,19 +37,19 @@ const BirdProfile = () => {
     var url = "https://en.wikipedia.org/w/api.php";
 
     var params = {
-        action: "query",
-        list: "search",
-        srsearch: "Branta canadensis",
-        format: "json"
+      action: "query",
+      list: "search",
+      srsearch: "Branta canadensis",
+      format: "json"
     };
 
     url = url + "?origin=*";
-    Object.keys(params).forEach(function(key){url += "&" + key + "=" + params[key];});
+    Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
 
-  axios.get(url)
+    axios.get(url)
       .then((result) => {
         var data = result.data.query.search[0].snippet
-        var text = data.replace( /(<([^>]+)>)/ig, '')
+        var text = data.replace(/(<([^>]+)>)/ig, '')
         setTax(text);
       })
       .catch((error) => {
@@ -73,45 +73,42 @@ const BirdProfile = () => {
 
   ///animations
   const props = useSpring({
-      from: { opacity: 0, marginRight: 150 },
-      to: { opacity: 1, marginRight: 40 },
-      config: { duration: 800 },
-      reset: true,
-      // delay: 1500,
+    from: { opacity: 0, marginRight: 150 },
+    to: { opacity: 1, marginRight: 40 },
+    config: { duration: 800 },
+    reset: true,
+    // delay: 1500,
   })
 
   const handleClick = (event) => {
     event.preventDefault();
-
     setShow(!show);
   }
 
+  //bio (bird background)
+  //notes
+  //mapp
 
 
   return (
     <div className='birdProfileContainer'>
-          <div style={props} className='birdBio'>
-          <h1 className='birdTitle'>Canada Goose</h1>
-          <h3 className='scientific'><em>Branta canadensis</em> </h3>
-          <small>| General Information |</small>
-          <div className='paragraphBird'>
+      <div style={props} className='birdBio'>
+        <h1 className='birdTitle'>Canada Goose</h1>
+        <h3 className='scientific'><em>Branta canadensis</em> </h3>
+        <small>| General Information |</small>
+        <div className='paragraphBird'>
           {taxonomy ? <p>{taxonomy}...click here for more</p> : null}
-          </div>
-          </div>
-          <div className='heatMap'>
-          <Map heatMap={location}/>
-          {/* {location ? <Map props={location} /> : <div><h4>Cannot Load Heat Map...</h4></div> } */}
         </div>
-      <div className='birdNotes'>
-      <h4 className='notesTitle'> My Notes</h4>
-        { show ?
-        <div>
-        <p className='notesText'>I like this bird alot, its really cool! </p>
-        <button className='upButton' onClick={event => handleClick(event)}><FaChevronUp size="20px"/></button>
-        </div> : <button className='downButton' onClick={event => handleClick(event)}> <FaChevronDown size="20px"/>  </button> }
+      </div>
+      <div className="secondRowBP">
+        <div className="buttonSquad">
+          <button className='downButton' onClick={event => handleClick(event)}><FaChevronDown size="25px" /></button>
+          <button className="downButton">Heat Map</button>
+          <button className="downButton">Photos</button>
         </div>
         <div className='birdProfilePic'>
-      <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="Responsive image"></img>
+          <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="Responsive image"></img>
+        </div>
       </div>
     </div>
   );
