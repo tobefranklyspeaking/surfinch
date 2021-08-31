@@ -3,6 +3,7 @@ import axios from 'axios';
 import { compileCoordinates } from './coordinates.js';
 import { taxonomySplit } from './taxonomyOrder.js';
 import { API_TOKEN } from '/config.js';
+import Map from '.././Shared/Map.jsx';
 
 
 const BirdProfile = () => {
@@ -12,21 +13,21 @@ const BirdProfile = () => {
   const [taxonomy, setTax] = useState('');
 
   // //get recent observation of bird
-  // useEffect(() => {
-  //   axios.get('https://api.ebird.org/v2/data/obs/US-RI/recent/cangoo', {
-  //     headers: {
-  //       'X-eBirdApiToken': API_TOKEN
-  //     }
-  //   })
-  //   .then((result) => {
-  //     var result2 = compileCoordinates(result.data);
-  //     setLocation(result2);
-  //     setBird(result.data);
-  //   })
-  //   .catch(error => {
-  //     console.log('There was an error retrieving data from API, ', error);
-  //   })
-  // }, [])
+  useEffect(() => {
+    axios.get('https://api.ebird.org/v2/data/obs/US-RI/recent/cangoo', {
+      headers: {
+        'X-eBirdApiToken': API_TOKEN
+      }
+    })
+    .then((result) => {
+      var result2 = compileCoordinates(result.data);
+      setLocation(result2);
+      setBird(result.data);
+    })
+    .catch(error => {
+      console.log('There was an error retrieving data from API, ', error);
+    })
+  }, [])
 
   //get bird info
   useEffect(() => {
@@ -88,7 +89,7 @@ const BirdProfile = () => {
         <p className='notesText'>I like this bird alot, its really cool! </p>
         </div>
         <div className='heatMap'>
-          HEAT MAP its getting hot in here!
+          {/* {location ? <Map heatmapLayer={location} /> : <div><h4>Cannot Load Heat Map...</h4></div> } */}
         </div>
     </div>
   );

@@ -35,7 +35,7 @@
   margin-left: 0px;
   padding-left: 0px;
   position: fixed;
-  background: #200305;
+  background: #b8a4a4;
   /* background: #263D23; */
 }
 
@@ -113,6 +113,37 @@
   margin: 40px;
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*--Bird Profile--*/
 
 .birdProfileContainer {
@@ -154,7 +185,7 @@ h3.scientific {
   padding: 10px;
   color: black;
   font-size: 18px;
-  background:  rgba(94, 104, 38, .7);
+  background:  #EAECEE ;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 30%;
 }
@@ -165,7 +196,7 @@ h3.scientific {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  background:  rgba(94, 104, 38, .7);
+  background:  #EAECEE ;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: auto;
 }
@@ -182,6 +213,14 @@ p.notesText {
 h4.notesTitles {
   color: #E9DAC4;
   font-weight: bold;
+}
+
+.heatMap {
+  margin: 30px;
+  background:  #EAECEE ;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  max-height: 100%;
+  max-width: 100%;
 }
 /*
 .mini-profile-container:hover {
