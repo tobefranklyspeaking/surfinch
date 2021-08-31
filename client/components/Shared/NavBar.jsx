@@ -5,6 +5,7 @@ import { CgProfile } from 'react-icons/cg';
 import { GiBirdHouse, GiKiwiBird } from 'react-icons/gi';
 import { FaKiwiBird } from 'react-icons/fa';
 import { AiOutlineLogout } from 'react-icons/ai';
+import addFinch from '../../../public/img/converted-addFinch-01 copy.svg';
 
 const NavBar = (props) => {
   return (
@@ -28,7 +29,7 @@ const NavBar = (props) => {
           </li>
           <li className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/bird-entry"><img className="logo" src="https://i.imgur.com/L5c19zl.png" height="70px" width="70px"/></Link>
+              <Link to="/bird-entry"><img className="logo" src={addFinch} fill="white" height="30px" width="30px" color="white"/></Link>
             </Switch>
           </li>
           <li className="nav-item">

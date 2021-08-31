@@ -38,10 +38,12 @@ html, body {
 
 /*--NAV BAR--*/
 .logo {
-  margin: 0px;
+  margin-left: 20px;
   padding: 0px;
   float: left;
+  fill: white;
 }
+
 
 .nav-container {
   height: 100vh;
