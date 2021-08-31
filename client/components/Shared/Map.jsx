@@ -13,13 +13,13 @@ const DisplayMap = (props) => {
   const currentFriendData = props.props.friendData;
   const currentHeatMap = props.props.heatmapLayer;
 
-  //console.log(currentUserData);
+  console.log(currentUserData);
 
   return (
     <GoogleMap
       defaultZoom={props.props.zoom}
       defaultCenter={currentCenter}>
-        {
+        { currentUserData &&
         currentUserData.map((bird, index) => (
         <Marker
         key={index}
