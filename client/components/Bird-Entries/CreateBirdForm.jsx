@@ -33,9 +33,9 @@ const CreateBirdForm = () => {
         })
         .catch(error => { console.log(error); });
 
-        axios.get('/entries')
-        .then(results => {setBirdEntries(results.data); setFilteredSet(results.data)})
     });
+    axios.get('/entries')
+      .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
   }, []);
 
   var handleSearchBarChange = (event) => {
@@ -43,7 +43,7 @@ const CreateBirdForm = () => {
     // setSearchBar(event.target.value);
     var pattern = new RegExp(`\^${value}`, 'i');
 
-    var filteredResults = birdEntries.filter(function(value) {
+    var filteredResults = birdEntries.filter(function (value) {
       return pattern.test(value.bird)
     })
     setFilteredSet(filteredResults);
@@ -77,7 +77,7 @@ const CreateBirdForm = () => {
       })
       .then(() => {
         axios.get('/entries')
-          .then(results => { setBirdEntries(results.data)})
+          .then(results => { setBirdEntries(results.data) })
       })
       .catch(error => { if (error) console.log(error); });
   }
@@ -92,7 +92,7 @@ const CreateBirdForm = () => {
 
   return (
     <div>
-      <SearchBar handleSearchBarChange={handleSearchBarChange}/>
+      <SearchBar handleSearchBarChange={handleSearchBarChange} />
 
       <form id="create-entry" onSubmit={handleSubmit}>
         <div className="form-group">
