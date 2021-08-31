@@ -15,6 +15,7 @@ CREATE TABLE user_birds (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   userID INT,
   bird TEXT,
+  date date,
   birdpic_url TEXT,
   notes TEXT,
   city_sighted TEXT,
