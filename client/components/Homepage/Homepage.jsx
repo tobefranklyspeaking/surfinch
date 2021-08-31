@@ -30,13 +30,3 @@ const Homepage = (props) => {
 }
 
 export default Homepage;
-
-/*
-    <div className="home-container d-flex">
-      <div className="mini-home-container d-flex flex-column">
-        <div className="mini-profile-container"></div>
-        <div className="mini-info-container"></div>
-      </div>
-      <div className="mini-map-container"></div>
-    </div>
-*/
