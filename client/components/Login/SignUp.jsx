@@ -6,17 +6,14 @@ require('firebase/auth');
 
 
 const SignUp = (props) => {
+  const Auth = useContext(AuthContext);
+  const history = useHistory();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [error, setErrors] = useState('');
 
-  const Auth = useContext(AuthContext);
-  const history = useHistory();
-
-  const redirect = () => {
-    history.push('/login');
-  }
 
   const handleForm = (e, provider) => {
     e.preventDefault();
@@ -26,7 +23,7 @@ const SignUp = (props) => {
         .signInWithPopup(provider)
         .then(res => {
           console.log(res.user);
-          redirect();
+          history.push('/login');
           return res.user;
         })
         .catch(err => console.log('error'));
@@ -40,7 +37,7 @@ const SignUp = (props) => {
             console.log(user);
             Auth.setLoggedIn(true);
             props.setCurrentUser(user);
-            redirect();
+            history.push('/login');
             return res.user;
           }
         })

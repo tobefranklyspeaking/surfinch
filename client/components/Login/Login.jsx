@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import Logo from '/public/img/Logo.png';
 import SignUp from './SignUp.jsx';
 import { AuthContext } from '../App.jsx';
-import { Link, Switch } from 'react-router-dom';
+import { Link, Switch, useHistory } from 'react-router-dom';
 let firebase = require('firebase/app');
 
 const Login = (props) => {
@@ -10,13 +10,16 @@ const Login = (props) => {
   const [password, setPassword] = useState('');
   const [error, setErrors] = useState('');
 
+  let history = useHistory();
+
   const Auth = useContext(AuthContext);
+
 
   const handleForm = e => {
     e.preventDefault();
     console.log(Auth);
     Auth.setLoggedIn(true);
-    //props.setCurrentUser()
+    history.push('/home')
   };
 
   let img = document.createElement('img');
