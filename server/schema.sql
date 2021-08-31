@@ -8,6 +8,8 @@ CREATE TABLE user_profile (
   username TEXT,
   avatar_pic TEXT,
   avatar_background TEXT,
+  entries INT DEFAULT 0,
+  logins INT DEFAULT 1,
   PRIMARY KEY (userID)
 );
 
