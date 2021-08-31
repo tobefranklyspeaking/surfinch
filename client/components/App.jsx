@@ -52,8 +52,8 @@ const App = () => {
         </div>
       </Router>
     </div>
-    // </AuthContext.Provider>
   );
 }
 
 export default App;
+{/* </AuthContext.Provider> */}

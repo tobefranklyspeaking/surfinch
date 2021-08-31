@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import Logo from '/public/img/Logo.png';
 import Join from './Join.jsx';
+
 // import { AuthContext } from "../App.jsx";
 
 const Login = () => {
@@ -46,7 +47,7 @@ const Login = () => {
           <hr />
           <button className="googleBtn" type="button">
             <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+              src={"https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"}
               alt="logo"
             />
             Login With Google
