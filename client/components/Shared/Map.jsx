@@ -19,7 +19,7 @@ const DisplayMap = (props) => {
     <GoogleMap
       defaultZoom={props.props.zoom}
       defaultCenter={currentCenter}>
-        {
+        { currentUserData &&
         currentUserData.map((bird, index) => (
         <Marker
         key={index}
