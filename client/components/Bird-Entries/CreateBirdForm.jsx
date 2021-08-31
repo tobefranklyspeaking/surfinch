@@ -91,13 +91,19 @@ const CreateBirdForm = () => {
   }
 
   return (
-    <div>
+    <div className="container">
       <SearchBar handleSearchBarChange={handleSearchBarChange} />
 
       <form id="create-entry" onSubmit={handleSubmit}>
-        <div className="form-group">
-          <label className="control-label" htmlFor="">Species</label>
-          <input className="form-control" type="text" name="bird" onChange={() => { handleInputChange(event, setSpecies) }} />
+        <div className="form-group row align-items-end">
+          <div className="col-6">
+            <label className="control-label" htmlFor="">Species</label>
+            <input className="form-control" type="text" name="bird" onChange={() => { handleInputChange(event, setSpecies) }} />
+          </div>
+
+          <div className="col-6 mb-1">
+            <input className="form-control" type="file" name="birdPhoto" id="fileUpload" accept="image/*" onChange={() => { handleFileUpload(event) }} />
+          </div>
         </div>
 
         <div className="form-group">
@@ -105,11 +111,17 @@ const CreateBirdForm = () => {
           <input className="form-control" type="text" onChange={() => { handleInputChange(event, setStreet) }} value={street} />
         </div>
 
-        <div className="form-group">
-          <label className="control-label" htmlFor="">City</label>
-          <input className="form-control" type="text" name="city_sighted" onChange={() => { handleInputChange(event, setCity) }} value={city} />
-          <label className="control-label" htmlFor="">State</label>
-          <input className="form-control" type="text" name="state_sighted" onChange={() => { handleInputChange(event, setSt) }} value={st} />
+        <div className="form-group row">
+          <div className="col-6">
+            <label className="control-label" htmlFor="">City</label>
+            <input className="form-control" type="text" name="city_sighted" onChange={() => { handleInputChange(event, setCity) }} value={city} />
+
+          </div>
+          <div className="col-6">
+            <label className="control-label" htmlFor="">State</label>
+            <input className="form-control" type="text" name="state_sighted" onChange={() => { handleInputChange(event, setSt) }} value={st} />
+
+          </div>
         </div>
 
         <div className="form-group">
@@ -117,12 +129,9 @@ const CreateBirdForm = () => {
           <textarea className="form-control" name="notes" onChange={() => { handleInputChange(event, setNotes) }}></textarea>
         </div>
 
-        <div className="form-group">
-          <input type="file" name="birdPhoto" id="fileUpload" accept="image/*" onChange={() => { handleFileUpload(event) }} />
-        </div>
-        <div>
 
-          <input type="submit" />
+        <div>
+          <input className="form-control" type="submit" />
         </div>
       </form >
 
