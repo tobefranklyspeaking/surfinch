@@ -1,20 +1,23 @@
 import React, { useState, useContext } from 'react';
 import Logo from '/public/img/Logo.png';
-import Join from './Join.jsx';
+import SignUp from './SignUp.jsx';
+import { AuthContext } from '../App.jsx';
+import { Link, Switch } from 'react-router-dom';
+let firebase = require('firebase/app');
 
-// import { AuthContext } from "../App.jsx";
+const Login = (props) => {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setErrors] = useState('');
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setErrors] = useState("");
+  const Auth = useContext(AuthContext);
 
-  // const Auth = useContext(AuthContext);
-  // const handleForm = e => {
-  //   e.preventDefault();
-  //   console.log(Auth);
-  //   Auth.setLoggedIn(true);
-  // };
+  const handleForm = e => {
+    e.preventDefault();
+    console.log(Auth);
+    Auth.setLoggedIn(true);
+    //props.setCurrentUser()
+  };
 
   let img = document.createElement('img');
   img.style = {
@@ -22,10 +25,11 @@ const Login = () => {
     width: '25%'
   }
 
+
   return (
     <div className='container-fluid'>
       <div className='d-flex justify-content-center bg-secondary'>
-        <h1 className='text-white'>Surfinch Top Bar</h1>
+        <h1 className='text-white'>Surfinch</h1>
       </div>
       <div >
         <h1>Login</h1>
@@ -45,20 +49,20 @@ const Login = () => {
             placeholder="password"
           />
           <hr />
-          <button className="googleBtn" type="button">
-            <img
-              src={"https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"}
-              alt="logo"
-            />
-            Login With Google
-          </button>
           <button type="submit">Login</button>
+          <Switch>
+            <Link to="/SignUp">
+              <button type="button">
+                New User?
+              </button>
+            </Link>
+          </Switch>
           <span>{error}</span>
         </form>
       </div>
-      <div className='d-flex justify-content-center'>
-        <img src={Logo} width='20%' height='20%' alt='finch' />
-      </div>
+      {/* <div className='d-flex justify-content-center'> */}
+      {/* <img src={Logo} width='20%' height='20%' alt='finch' /> */}
+      {/* </div> */}
     </div>
   )
 }
