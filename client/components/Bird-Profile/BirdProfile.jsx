@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 
 const BirdProfile = () => {
+
   return (
     <div>
       <div>This is a birddddddd</div>
