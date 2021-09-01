@@ -423,7 +423,7 @@ h1.text-white {
 
 .alert {
   position: relative;
-  width: 500px;
+  width: auto;
   height: 45px;
   background: #F5B7B1;
   color: #E74C3C;
