@@ -1,5 +1,5 @@
 import React, { useState, createContext, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useHistory, Redirect } from "react-router-dom";
+import { HashRouter as Router, Switch, Route, Link, useHistory, Redirect } from "react-router-dom";
 let firebase = require('firebase/app');
 import { firebaseConfig } from '/client/components/Login/firebase.config.js';
 
@@ -25,7 +25,7 @@ const App = () => {
   const history = useHistory();
 
   useEffect(() => {
-    console.log('hi');
+    console.log('state update rerender');
   }, [isLoggedIn])
 
   const redirect = () => {
@@ -33,7 +33,7 @@ const App = () => {
   }
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
       Is logged in? {JSON.stringify(isLoggedIn)}
       <div className="main-container">
         <Router>

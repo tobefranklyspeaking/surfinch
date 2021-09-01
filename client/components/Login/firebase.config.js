@@ -1,4 +1,3 @@
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 module.exports = {
   firebaseConfig: {
     apiKey: "AIzaSyCjK-7RHbe4oqkoijCra5pVJEG_PwrT9I0",

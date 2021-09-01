@@ -9,35 +9,29 @@ require('firebase/auth');
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [error, setErrors] = useState('');
-
+  const [name, setName] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false)
+  const Auth = useContext(AuthContext);
   let history = useHistory();
 
-  const Auth = useContext(AuthContext);
-
-  firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-      console.log(user)
-    } else {
-      console.log(user)
-    }
-  });
+  // firebase.auth().onAuthStateChanged();
 
   const handleForm = e => {
-    console.log(e.target);
     e.preventDefault();
     firebase
       .auth().signInWithEmailAndPassword(email, password)
       .then((userCredential) => {
-        var user = userCredential.user;
+        setError("");
+        setLoading(true);
         Auth.setLoggedIn(true);
         history.push('/home');
       })
-      .catch((error) => {
-        alert('Incorrect Email and Password Combo')
-        var errorCode = error.code;
-        var errorMessage = error.message;
+      .catch((err) => {
+        setError(err.message)
       });
+
+    setLoading(false);
   };
 
   let img = document.createElement('img');
@@ -55,30 +49,31 @@ const Login = () => {
         </div>
         <div >
           <h1>Login</h1>
+          {error && <div className="alert alert-danger" role="alert">
+            Failed to login: {error}
+          </div>}
           <form onSubmit={e => handleForm(e)}>
             <input
+              type="text"
               value={email}
-              onChange={e => setEmail(e.target.value)}
-              name="email"
-              type="email"
-              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
             />
             <input
-              onChange={e => setPassword(e.target.value)}
-              name="password"
-              value={password}
               type="password"
-              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
             />
             <hr />
-            <button type="submit">Login</button>
-            <Switch>
+            <button disabled={loading} type="submit">Login</button>
+            <div>
               <Link to="/SignUp">
                 <button type="button">
                   New User?
                 </button>
               </Link>
-            </Switch>
+            </div>
             <span>{error}</span>
           </form>
         </div>

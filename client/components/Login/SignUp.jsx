@@ -11,23 +11,30 @@ const SignUp = (props) => {
 
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [passConfirm, setPassConfirm] = useState('');
   const [name, setName] = useState('');
-  const [error, setErrors] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false)
 
 
   const handleForm = (e, provider) => {
     e.preventDefault();
+    setError('');
+    setLoading(true);
+
     if (provider) {
       firebase
         .auth()
         .signInWithPopup(provider)
         .currentUser(name)
         .then(res => {
-          console.log(res.user);
+          // console.log(res.user);
           history.push('/login');
           return res.user;
         })
-        .catch(err => console.log('error'));
+        .catch(err => {
+          setError(err.message)
+        });
     } else {
       firebase
         .auth()
@@ -35,21 +42,27 @@ const SignUp = (props) => {
         .then(res => {
           if (res.user) {
             let user = { 'email': email, 'name': name };
-            console.log(user);
-            Auth.setLoggedIn(true);
-            props.setCurrentUser(user);
+            console.log(res.user);
+            Auth.setCurrentUser(user.name);
             history.push('/login');
             return res.user;
           }
         })
+        .catch(err => {
+          setError(err.message)
+        });
     }
-    Auth.setLoggedIn(true);
+
+    setLoading(false)
   };
 
 
   return (
     <>
       <div className="register">
+        {error && <div className="alert alert-danger" role="alert">
+          Failed to create account: {error}
+        </div>}
         <div className="register__container">
           <input
             type="text"
@@ -72,7 +85,14 @@ const SignUp = (props) => {
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Password"
           />
-          <button className="register__btn" onClick={handleForm}>
+          <input
+            type="password"
+            className="register__textBox"
+            value={password}
+            onChange={(e) => setPassConfirm(e.target.value)}
+            placeholder="Verify Password"
+          />
+          <button disabled={loading} className="w-25" type="submit" onClick={handleForm}>
             Register
           </button>
           <div>
