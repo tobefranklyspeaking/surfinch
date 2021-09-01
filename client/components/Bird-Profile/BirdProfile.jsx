@@ -114,9 +114,9 @@ const BirdProfile = () => {
           {!show ?
             <button className='downButton' onClick={event => handleClick(event)}>Notes <FaAngleRight size="25px" /></button> : <button className='downButton' onClick={event => handleClick(event)}>Notes <FaAngleLeft size="25px" /></button>}
           {!map ?
-          <button className="downButton" onClick={event => handleMap(event)}>Heat Map <FaAngleRight size="25px" /></button> : <button className="downButton" onClick={event => handleMap(event)}>Heat Map <FaAngleLeft size="25px" /></button>}
+            <button className="downButton" onClick={event => handleMap(event)}>Heat Map <FaAngleRight size="25px" /></button> : <button className="downButton" onClick={event => handleMap(event)}>Heat Map <FaAngleLeft size="25px" /></button>}
           {!button ?
-           <button className="downButton" onClick={event => handlePhoto(event)}>Photo <FaAngleRight size="25px" /></button> : <button className="downButton" onClick={event => handlePhoto(event)}>Photo <FaAngleLeft size="25px" /></button>}
+            <button className="downButton" onClick={event => handlePhoto(event)}>Photo <FaAngleRight size="25px" /></button> : <button className="downButton" onClick={event => handlePhoto(event)}>Photo <FaAngleLeft size="25px" /></button>}
         </div>
         <div className="viewer">
           {photo ? <div className='birdProfilePic'>
