@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Logo from '/public/img/Logo.png';
 import SignUp from './SignUp.jsx';
 import { AuthContext } from '../App.jsx';
@@ -6,7 +6,7 @@ import { Link, Switch, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 require('firebase/auth');
 
-const Login = () => {
+const Login = (props) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -15,7 +15,13 @@ const Login = () => {
   const Auth = useContext(AuthContext);
   let history = useHistory();
 
-  // firebase.auth().onAuthStateChanged();
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      props.setCurrentUser(user);
+    })
+    return unsubscribe;
+  }, [])
+
 
   const handleForm = e => {
     e.preventDefault();
