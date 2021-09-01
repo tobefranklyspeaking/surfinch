@@ -36,6 +36,7 @@ const App = () => {
   }
 
 
+
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
       <div className="boolean">
