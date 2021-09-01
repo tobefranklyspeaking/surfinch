@@ -41,8 +41,9 @@ const App = () => {
       <div className="main-container">
         <Router>
           {isLoggedIn && <NavBar />}
-          <div className="page-container">
-            <Route>
+          <div className="big-page-container">
+            {!isLoggedIn ?
+              <div className="unidentified-container">
               <Route exact path="/">
                 <Redirect to="/login" />
               </Route>
@@ -52,6 +53,9 @@ const App = () => {
               <Route exact path="/signup">
                 <SignUp setCurrentUser={setCurrentUser} />
               </Route>
+              </div> :
+              <Route>
+              <div className="page-container">
               <Route exact path="/home">
                 <Homepage currentUser={currentUser} />
               </Route>
@@ -64,7 +68,9 @@ const App = () => {
               <Route path="/BirdProfile">
                 <BirdProfile currentUser={currentUser} />
               </Route>
+              </div>
             </Route>
+            }
           </div>
         </Router>
       </div>
