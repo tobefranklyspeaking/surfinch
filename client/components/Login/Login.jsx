@@ -46,17 +46,16 @@ const Login = () => {
     width: '25%'
   }
 
-
   return (
     <div className='loginContainer'>
       <div className="headerLogin">
-        <h1 className='text-white'>Surfinch</h1>
-          <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' />
+        <h2 className='text-white'>Surfinch</h2>
+        {/* <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' /> */}
       </div>
       <div className='secondaryContainerLogin'>
-      {error && <div className="alert" role="alert">
-              Failed to login: {error}
-            </div>}
+        {error && <div className="alert" role="alert">
+          Failed to login: {error}
+        </div>}
         <div className="loginBox">
           <div className="loginTitle">
             <h3 className="loginText">Login</h3>
@@ -76,14 +75,16 @@ const Login = () => {
                 placeholder="Password"
               />
               <hr />
-              <button className="googleBtn" type="button">
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                  alt="logo"
-                />
-                <div className="withGoogle">Login With Google</div>
-              </button>
-              <button className="loginSubmit" disabled={loading} type="submit">Login</button>
+              <div className="buttonContainer">
+                <button className="googleBtn" type="button">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    alt="logo"
+                  />
+                  <div className="withGoogle">Login With Google</div>
+                </button>
+                <button className="loginSubmit" disabled={loading} type="submit">Login</button>
+              </div>
             </form>
           </div>
           <div>
