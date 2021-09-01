@@ -47,57 +47,60 @@ const Login = () => {
     width: '25%'
   }
 
+
   return (
     <div className='loginContainer'>
       <div className="headerLogin">
-        <h2 className='text-white'>Surfinch</h2>
-        {/* <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' /> */}
+        {/* <h2 className='text-white'>Surfinch</h2> */}
       </div>
       <div className='secondaryContainerLogin'>
         {error && <div className="alert" role="alert">
           Failed to login: {error}
         </div>}
-        <div className="loginBox">
-          <div className="loginTitle">
-            <h3 className="loginText">Login</h3>
+        <div className="centerLogo">
+          <div className="logoLogin">
+          <h2 className='text-white'>SURFINCH</h2>
+            <img src="https://i.imgur.com/6pDMm0T.png" width='20%' height='20%' alt='finch' />
           </div>
-          <div className="loginFormContainer">
-            <form className='loginForm' onSubmit={e => handleForm(e)}>
-              <small className="smallText">Your Email</small>
-              <input className="emailInput"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="E-mail Address"
-              />
-              <small className="smallText">Your Password</small>
-              <input className="passwordInput"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                type='password'
-                placeholder="Password"
-              />
-              <hr />
-              <div className="buttonContainer">
-                {/* <button className="googleBtn" type="button">
+          <div className="loginBox">
+            <div className="loginTitle">
+              <h3 className="loginText">Login</h3>
+            </div>
+            <div className="loginFormContainer">
+              <form className='loginForm' onSubmit={e => handleForm(e)}>
+                <small className="smallText">Your Email</small>
+                <input className="emailInput"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="E-mail Address"
+                />
+                <small className="smallText">Your Password</small>
+                <input className="passwordInput"
+                  onChange={(e) => setPassword(e.target.value)}
+                  value={password}
+                  placeholder="Password"
+                />
+                <hr />
+                <button className="googleBtn" type="button">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                     alt="logo"
                   />
                   <div className="withGoogle">Login With Google</div>
-                </button> */}
+                </button>
                 <button className="loginSubmit" disabled={loading} type="submit">Login</button>
-              </div>
-            </form>
-          </div>
-          <div>
-            <Link to="/SignUp">
-              <button className="signUp" type="button">
-                New User?
-              </button>
-            </Link>
+              </form>
+            </div>
+            <div>
+              <Link to="/SignUp">
+                <button className="signUp" type="button">
+                  New User?
+                </button>
+              </Link>
+            </div>
           </div>
         </div>
-
+        <small className="poweredBY">Powered by: Team Kauri </small>
       </div>
     </div>
   )
