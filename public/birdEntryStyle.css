@@ -6,3 +6,7 @@
 #bird-entry-container .form-control {
   font-size: 12px;
 }
+
+.bird-list {
+  overflow-x: scroll;
+}
