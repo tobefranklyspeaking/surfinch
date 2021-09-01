@@ -4,13 +4,13 @@ import { AuthContext } from './App.jsx';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
   const Auth = useContext(AuthContext);
-  const { currentUser } = Auth;
+  const { isLoggedIn } = Auth;
 
   return (
     <Route
       {...rest}
       render={props => {
-        return currentUser ? <Component {...props} /> : <Redirect to="/login" />
+        return isLoggedIn ? <Component {...props} /> : <Redirect to="/login" />
       }}
     ></Route>
   )

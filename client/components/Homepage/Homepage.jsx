@@ -11,10 +11,9 @@ var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
 const Homepage = (props) => {
   const Auth = useContext(AuthContext);
-  const [birdEntries, setBirdEntries] = useState();
+  const [birdEntries, setBirdEntries] = useState([]);
 
   var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
-  const [birdEntries, setBirdEntries] = useState([]);
 
   console.log('uuuussaaahhhh', Auth.currentUser);
 

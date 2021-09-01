@@ -4,7 +4,7 @@ import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
 import  API_KEY from '../../../config.js';
 import { API_TOKEN  } from '../../../config2.js';
-// import { useSpring, animated } from 'react-spring';
+import { useSpring, animated } from 'react-spring';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
 

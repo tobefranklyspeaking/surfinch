@@ -7,7 +7,7 @@ import { firebaseConfig } from '/client/components/Login/firebase.config.js';
 import NavBar from './Shared/NavBar.jsx';
 
 // PRIVATE ROUTES
-// import PrivateRoute from "./PrivateRoute.jsx"
+import PrivateRoute from "./PrivateRoute.jsx"
 
 // PAGE COMPONENTS
 import Homepage from './Homepage/Homepage.jsx';
@@ -31,40 +31,38 @@ const App = () => {
     console.log('state update rerender');
   }, [isLoggedIn])
 
-  const redirect = () => {
-    history.push('/home')
-  }
-
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
-      <div className="boolean">
-        {JSON.stringify(isLoggedIn)}
-      </div>
-      <div className="main-container">
-        <Router>
-          {isLoggedIn && <NavBar />}
-          <div className="big-page-container">
-              <div className="unidentified-container">
-              <Route exact path="/">
-                <Redirect to="/login" />
-              </Route>
-              <Route exact path="/login" component={Login} />
-              <Route exact path="/signup" component={SignUp} />
-              </div>
-              <Route>
-              <div className="page-container">
-              <Route exact path="/home" component={Homepage} />
-              <Route path="/user-profile" component={Profile} />
-              <Route path="/bird-entry" component={BirdEntry} />
-              <Route path="/BirdProfile" component={BirdProfile} />
-              </div>
-            </Route>
-          </div>
-        </Router>
-      </div>
-    </AuthContext.Provider>
+    <div className="main-container">
+      <Router>
+        <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
+          <Switch>
+            <div className="big-page-container">
+              {!isLoggedIn ?
+                <div className="unidentified-container">
+                  <Route exact path="/">
+                    <Redirect to="/login" />
+                  </Route>
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/signup" component={SignUp} />
+                </div>
+                :
+                <div className="page-container">
+                  <NavBar />
+                  <Route>
+                    <PrivateRoute exact path="/home" component={Homepage} />
+                    <PrivateRoute path="/user-profile" component={Profile} />
+                    <PrivateRoute path="/bird-entry" component={BirdEntry} />
+                    <PrivateRoute path="/BirdProfile" component={BirdProfile} />
+                  </Route>
+                </div>
+              }
+            </div>
+          </Switch>
+        </AuthContext.Provider>
+      </Router>
+    </div>
   );
 }
 
