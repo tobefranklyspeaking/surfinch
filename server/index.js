@@ -29,7 +29,7 @@ app.get('/userbirds/:userid', getUsersBirdInfo);
 app.post('/bird', postUserBird);
 
 app.post('/createBird', createBird);
-app.get('/entries', getEntries);
+app.get('/entries/:userid', getEntries);
 
 app.listen(port, () => {
   console.log(`Server listening at localhost:${port}!`);

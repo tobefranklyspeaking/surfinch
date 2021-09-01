@@ -43,7 +43,7 @@ const App = () => {
               <Profile />
             </Route>
             <Route path="/bird-entry">
-              <BirdEntry />
+              <BirdEntry currentUser={currentUser} />
             </Route>
             <Route path="/BirdProfile">
               <BirdProfile />

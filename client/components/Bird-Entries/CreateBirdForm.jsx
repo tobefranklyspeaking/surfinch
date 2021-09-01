@@ -4,7 +4,7 @@ import axios from 'axios';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
 
-const CreateBirdForm = () => {
+const CreateBirdForm = ({}) => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
@@ -16,10 +16,11 @@ const CreateBirdForm = () => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-
+  const [currentUser, setCurrentUser] = useState({userID: 1})
   var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
   useEffect(() => {
+    console.log(currentUser)
     navigator.geolocation.getCurrentPosition((position) => {
 
       var lat = position.coords.latitude.toString();
@@ -34,7 +35,7 @@ const CreateBirdForm = () => {
         .catch(error => { console.log(error); });
 
     });
-    axios.get('/entries')
+    axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
   }, []);
 
@@ -60,6 +61,7 @@ const CreateBirdForm = () => {
         console.log(lat, lon)
         formData.append('latitude', lat);
         formData.append('longitude', lon);
+        formData.append('userID', currentUser.userID);
         if (fileUpload) {
           formData.append(
             "birdImage",
@@ -75,9 +77,9 @@ const CreateBirdForm = () => {
           .catch(error => { if (error) console.log(error); });
       })
       .then(() => {
-        axios.get('/entries')
+        axios.get(`/entries/${currentUser.userID}`)
           .then(results => { setBirdEntries(results.data) })
-          .then(results => { setFilteredSet(results.data) })
+          // .then(results => { setFilteredSet(results.data) })
       })
       .catch(error => { if (error) console.log(error); });
   }
