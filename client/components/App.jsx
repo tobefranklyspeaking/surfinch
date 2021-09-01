@@ -34,35 +34,47 @@ const App = () => {
 
 
   return (
-    <div className="main-container">
-      <Router>
-        <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
-          <Switch>
-            <div className="big-page-container">
-              {!isLoggedIn ?
-                <div className="unidentified-container">
-                  <Route exact path="/">
-                    <Redirect to="/login" />
-                  </Route>
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/signup" component={SignUp} />
-                </div>
-                :
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
+      <div className="boolean">
+        {JSON.stringify(isLoggedIn)}
+      </div>
+      <div className="main-container">
+        <Router>
+          {isLoggedIn && <NavBar />}
+          <div className="big-page-container">
+            {!isLoggedIn ?
+              <div className="unidentified-container">
+                <Route exact path="/">
+                  <Redirect to="/login" />
+                </Route>
+                <Route exact path="/login">
+                  <Login setCurrentUser={setCurrentUser} />
+                </Route>
+                <Route exact path="/signup">
+                  <SignUp setCurrentUser={setCurrentUser} />
+                </Route>
+              </div> :
+              <Route>
                 <div className="page-container">
-                  <NavBar />
-                  <Route>
-                    <PrivateRoute exact path="/home" component={Homepage} />
-                    <PrivateRoute path="/user-profile" component={Profile} />
-                    <PrivateRoute path="/bird-entry" component={BirdEntry} />
-                    <PrivateRoute path="/BirdProfile" component={BirdProfile} />
+                  <Route exact path="/home">
+                    <Homepage currentUser={currentUser} />
+                  </Route>
+                  <Route path="/user-profile">
+                    <Profile currentUser={currentUser} />
+                  </Route>
+                  <Route path="/bird-entry">
+                    <BirdEntry currentUser={currentUser} />
+                  </Route>
+                  <Route path="/BirdProfile">
+                    <BirdProfile currentUser={currentUser} />
                   </Route>
                 </div>
-              }
-            </div>
-          </Switch>
-        </AuthContext.Provider>
-      </Router>
-    </div>
+              </Route>
+            }
+          </div>
+        </Router>
+      </div>
+    </AuthContext.Provider>
   );
 }
 

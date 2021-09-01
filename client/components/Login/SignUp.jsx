@@ -64,50 +64,110 @@ const SignUp = (props) => {
 
 
   return (
-    <>
-      <div className="register">
-        {error && <div className="alert alert-danger" role="alert">
-          Failed to create account: {error}
+    <div className='loginContainer'>
+      <div className="headerLogin">
+        <h2 className='text-white'>Surfinch</h2>
+        {/* <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' /> */}
+      </div>
+      <div className='secondaryContainerLogin'>
+        {error && <div className="alert" role="alert">
+          Failed to sign up: {error}
         </div>}
-        <div className="register__container">
-          <input
-            type="text"
-            className="register__textBox"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full Name"
-          />
-          <input
-            type="text"
-            className="register__textBox"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail Address"
-          />
-          <input
-            type="password"
-            className="register__textBox"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <input
-            type="password"
-            className="register__textBox"
-            value={passConfirm}
-            onChange={(e) => setPassConfirm(e.target.value)}
-            placeholder="Verify Password"
-          />
-          <button disabled={loading} className="w-25" type="submit" onClick={handleForm}>
-            Register
-          </button>
+        <div className="loginBox">
+          <div className="loginTitle">
+            <h3 className="loginText">Create Account</h3>
+          </div>
+          <div className="loginFormContainer">
+            <form className='loginForm' onSubmit={e => handleForm(e)}>
+              <small className="smallText">Full Name</small>
+              <input className="emailInput"
+                value={email}
+                onChange={(e) => setName(e.target.value)}
+                placeholder="E-mail Address"
+              />
+              <small className="smallText">Your Email</small>
+              <input className="passwordInput"
+                onChange={(e) => setEmail(e.target.value)}
+                value={password}
+                placeholder="E-mail Address"
+              />
+              <small className="smallText">Your Password</small>
+              <input className="passwordInput"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                type='password'
+                placeholder="Password"
+              />
+              <small className="smallText">Confirm Password</small>
+              <input className="passwordInput"
+                onChange={(e) => setPassConfirm(e.target.value)}
+                value={password}
+                type='password'
+                placeholder="Password Confirmation"
+              />
+              <hr />
+              <div className="buttonContainer">
+                <button className="loginSubmit" disabled={loading} type="submit">Submit</button>
+              </div>
+            </form>
+          </div>
           <div>
-            Already have an account? <Link to="/login">Login</Link> now.
+            <Link to="/Login">
+              <button className="signUp" type="button">
+                Back to Login?
+              </button>
+            </Link>
           </div>
         </div>
+
       </div>
-    </>
+    </div>
+
   );
 };
 
 export default SignUp;
+
+{/* <>
+<div className="register">
+  {error && <div className="alert alert-danger" role="alert">
+    Failed to create account: {error}
+  </div>}
+  <div className="register__container">
+    <input
+      type="text"
+      className="register__textBox"
+      value={name}
+      onChange={(e) => setName(e.target.value)}
+      placeholder="Full Name"
+    />
+    <input
+      type="text"
+      className="register__textBox"
+      value={email}
+      onChange={(e) => setEmail(e.target.value)}
+      placeholder="E-mail Address"
+    />
+    <input
+      type="password"
+      className="register__textBox"
+      value={password}
+      onChange={(e) => setPassword(e.target.value)}
+      placeholder="Password"
+    />
+    <input
+      type="password"
+      className="register__textBox"
+      value={passConfirm}
+      onChange={(e) => setPassConfirm(e.target.value)}
+      placeholder="Verify Password"
+    />
+    <button disabled={loading} className="w-25" type="submit" onClick={handleForm}>
+      Register
+    </button>
+    <div>
+      Already have an account? <Link to="/login">Login</Link> now.
+    </div>
+  </div>
+</div>
+</> */}
