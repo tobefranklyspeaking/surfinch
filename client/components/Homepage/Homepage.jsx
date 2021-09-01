@@ -1,35 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
+import { AuthContext } from '../App.jsx';
+require('firebase/auth');
 
 import Avatar from '../Shared/Avatar.jsx';
 import NavBar from '../Shared/NavBar.jsx';
 import Map from '../Shared/Map.jsx';
 
 const Homepage = (props) => {
+  const Auth = useContext(AuthContext);
+  const [birdEntries, setBirdEntries] = useState();
+
   var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
 
-  console.log('uuuussaaahhhh', props.currentUser);
+  console.log('uuuussaaahhhh', Auth.currentUser);
 
-  useEffect(() => {
-    //console.log(currentUser)
-    navigator.geolocation.getCurrentPosition((position) => {
+  // useEffect(() => {
+  //   //console.log(currentUser)
+  //   navigator.geolocation.getCurrentPosition((position) => {
 
-      var lat = position.coords.latitude.toString();
-      var lon = position.coords.longitude.toString();
+  //     var lat = position.coords.latitude.toString();
+  //     var lon = position.coords.longitude.toString();
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
-        .then(results => {
-          console.log('location results', results)
-          // setStreet(results.data.address.house_number + " " + results.data.address.road);
-          // setCity(results.data.address.city);
-          // setSt(results.data.address.state);
-        })
-        .catch(error => { console.log(error); });
+  //     axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
+  //       .then(results => {
+  //         console.log('location results', results)
+  //         // setStreet(results.data.address.house_number + " " + results.data.address.road);
+  //         // setCity(results.data.address.city);
+  //         // setSt(results.data.address.state);
+  //       })
+  //       .catch(error => { console.log(error); });
 
-    });
-    axios.get(`/entries/${props.currentUser.userID}`)
-      .then(results => { setBirdEntries(results.data)})
-  }, []);
+  //   });
+  //   axios.get(`/entries/${Auth.currentUser.userID}`)
+  //     .then(results => { setBirdEntries(results.data)})
+  // }, []);
 
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
@@ -46,7 +51,7 @@ const Homepage = (props) => {
         <div className="usericon topbirdersicon">
         <Avatar className="usericon topbirdersicon" size={75} color='#c8994d' />
         </div>
-          <h2>Welcome, {props.currentUser.displayName}! Thanks for flyin in today!</h2>
+          <h2>Welcome, {Auth.currentUser.displayName}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">

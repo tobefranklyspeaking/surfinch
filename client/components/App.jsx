@@ -45,19 +45,21 @@ const App = () => {
         <Router>
           {isLoggedIn && <NavBar />}
           <div className="big-page-container">
-            {!isLoggedIn ?
               <div className="unidentified-container">
               <Route exact path="/">
                 <Redirect to="/login" />
               </Route>
               <Route exact path="/login" component={Login} />
               <Route exact path="/signup" component={SignUp} />
+              </div>
+              <Route>
+              <div className="page-container">
               <Route exact path="/home" component={Homepage} />
               <Route path="/user-profile" component={Profile} />
               <Route path="/bird-entry" component={BirdEntry} />
               <Route path="/BirdProfile" component={BirdProfile} />
+              </div>
             </Route>
-            }
           </div>
         </Router>
       </div>
