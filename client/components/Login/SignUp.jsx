@@ -83,30 +83,33 @@ const SignUp = (props) => {
               <input className="emailInput"
                 value={email}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="E-mail Address"
               />
               <small className="smallText">Your Email</small>
               <input className="passwordInput"
                 onChange={(e) => setEmail(e.target.value)}
                 value={password}
-                placeholder="E-mail Address"
               />
               <small className="smallText">Your Password</small>
               <input className="passwordInput"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
                 type='password'
-                placeholder="Password"
               />
               <small className="smallText">Confirm Password</small>
               <input className="passwordInput"
                 onChange={(e) => setPassConfirm(e.target.value)}
                 value={password}
                 type='password'
-                placeholder="Password Confirmation"
               />
               <hr />
               <div className="buttonContainer">
+                {/* <button className="googleBtn" type="button">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                    alt="logo"
+                  />
+                  <div className="withGoogle">Sign Up With Google</div>
+                </button> */}
                 <button className="loginSubmit" disabled={loading} type="submit">Submit</button>
               </div>
             </form>

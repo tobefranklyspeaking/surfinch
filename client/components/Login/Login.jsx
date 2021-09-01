@@ -78,13 +78,13 @@ const Login = () => {
               />
               <hr />
               <div className="buttonContainer">
-                <button className="googleBtn" type="button">
+                {/* <button className="googleBtn" type="button">
                   <img
                     src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                     alt="logo"
                   />
                   <div className="withGoogle">Login With Google</div>
-                </button>
+                </button> */}
                 <button className="loginSubmit" disabled={loading} type="submit">Login</button>
               </div>
             </form>
