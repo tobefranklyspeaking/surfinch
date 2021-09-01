@@ -41,5 +41,20 @@ CREATE TABLE user_friends (
     REFERENCES user_profile(userID)
 );
 
-
+CREATE TABLE bird_data (
+  id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+  common_name TEXT NOT NULL,
+  species_code TEXT NOT NULL,
+  category TEXT NOT NULL,
+  taxon_order INT NOT NULL,
+  com_name_codes TEXT,
+  sci_name_codes TEXT,
+  banding_codes TEXT,
+  species_order TEXT,
+  family_com_name TEXT,
+  family_sci_name TEXT,
+  report_as TEXT,
+  extinct TEXT,
+  extinct_year TEXT
+);
 
