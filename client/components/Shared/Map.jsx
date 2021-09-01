@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
-import { API_KEY } from "../../../config.js";
+import API_KEY from "../../../config.js";
 
 
 const DisplayMap = (props) => {
