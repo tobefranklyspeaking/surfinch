@@ -44,8 +44,9 @@ const App = () => {
       <div className="main-container">
         <Router>
           {isLoggedIn && <NavBar />}
-          <div className="page-container">
-            <Route>
+          <div className="big-page-container">
+            {!isLoggedIn ?
+              <div className="unidentified-container">
               <Route exact path="/">
                 <Redirect to="/login" />
               </Route>
@@ -56,6 +57,7 @@ const App = () => {
               <Route path="/bird-entry" component={BirdEntry} />
               <Route path="/BirdProfile" component={BirdProfile} />
             </Route>
+            }
           </div>
         </Router>
       </div>
