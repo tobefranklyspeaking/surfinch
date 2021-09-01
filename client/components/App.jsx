@@ -32,6 +32,7 @@ const App = () => {
     history.push('/home')
   }
 
+
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
       <div className="boolean">
