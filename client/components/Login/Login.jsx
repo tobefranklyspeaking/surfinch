@@ -51,6 +51,7 @@ const Login = () => {
     <div className='loginContainer'>
       <div className="headerLogin">
         <h1 className='text-white'>Surfinch</h1>
+          <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' />
       </div>
       <div className='secondaryContainerLogin'>
       {error && <div className="alert" role="alert">
@@ -93,9 +94,7 @@ const Login = () => {
             </Link>
           </div>
         </div>
-        {/* <div className='d-flex justify-content-center'>
-          <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' />
-        </div> */}
+
       </div>
     </div>
   )

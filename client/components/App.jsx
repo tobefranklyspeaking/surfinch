@@ -34,7 +34,9 @@ const App = () => {
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
-     {JSON.stringify(isLoggedIn)}
+      <div className="boolean">
+      {JSON.stringify(isLoggedIn)}
+      </div>
       <div className="main-container">
         <Router>
           {isLoggedIn && <NavBar />}
