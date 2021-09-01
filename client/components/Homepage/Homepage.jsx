@@ -5,7 +5,7 @@ import NavBar from '../Shared/NavBar.jsx';
 const Homepage = (props) => {
 
   //PROPS.CURRENTUSER WILL HAVE LOTS OF INFO 4 U
-  console.log(props);
+  console.log(props.currentUser);
 
   return (
     <div className="home-container">
