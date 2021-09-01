@@ -7,9 +7,22 @@
 #root {
   height: 100vh;
   width: 100vw;
-  /* font-family: 'Almarai', sans-serif; */
-  font-family: 'Spartan', sans-serif;
+  font-family: 'Almarai', sans-serif;
+  /* font-family: 'Spartan', sans-serif; */
   /* position: absolute; */
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100vw;
+  min-height: 100vh;
+}
+
+.boolean {
+  background: transparent;
+  color: transparent;
+  position: absolute;
 }
 
 .main-container {
@@ -38,10 +51,12 @@
 
 /*--NAV BAR--*/
 .logo {
-  margin: 0px;
+  margin-left: 20px;
   padding: 0px;
   float: left;
+  fill: white;
 }
+
 
 .nav-container {
   height: 100vh;
@@ -204,3 +219,324 @@
 }
 
 /* END OF PROFILE SECTION */
+
+
+/*--BIRD PROFILE CSS! Don't touch or else ;)  --*/
+
+.birdProfileContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.birdProfilePic {
+  margin: 10px 40px 10px 100px;
+  padding: 7px;
+}
+
+.birdProfilePic > img {
+  border-radius: 10px;
+}
+
+.birdBio {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px;
+
+}
+
+h1.birdTitle {
+  font-weight: bold;
+}
+
+h3.scientific {
+  color: #808B96;
+}
+
+.paragraphBird {
+  padding: 10px;
+  color: black;
+  font-size: 18px;
+  background: transparent;
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  height: auto;
+  width: 90%;
+  border: 1px solid #b89a73;
+}
+
+.secondRowBP {
+  margin-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+
+.birdNotes {
+  overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  height: 300px;
+  margin: 20px 50px 40px 40px;
+  padding: 5px;
+  /* background:  #e0dcd1; */
+  background: rgb(233,225,206);
+  background: linear-gradient(360deg, rgba(233,225,206,1) 0%, rgba(226,220,206,1) 29%, rgba(168,172,162,1) 100%);
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+}
+
+hr.dash {
+  border: 2px solid #ABB2B9;
+}
+
+
+p.notesText {
+  margin-top: 7px;
+  padding: 7px;
+}
+
+h4.notesTitle {
+  color: #E9DAC4 ;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-left: 5%;
+  -webkit-text-stroke-width: 1.5px;
+  -webkit-text-stroke-color: #566573 ;
+}
+
+.heatMap {
+  display: flex;
+  justify-content: center;
+  margin: 20px 40px 40px 80px;
+  background:  #e0dcd1;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  height: auto;
+  width: 70%;
+  overflow: "hidden";
+}
+
+
+.viewer {
+  width: 100%;
+  height: 100%;
+}
+
+.buttonSquad {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin-left: 6%;
+}
+
+
+button.downButton {
+  border: none;
+  background: transparent;
+  width: 400px;
+  height: 60px;
+  margin-top: 30px;
+  background: #82857f;
+}
+
+
+button.downButton:hover {
+  border: none;
+  background: transparent;
+  color: #E9DAC4;
+  width: 400px;
+  height: 60px;
+  margin-top: 30px;
+  /* background: #9c8484; */
+  background: rgb(179,153,153);
+  background: radial-gradient(circle, rgba(119,119,87,1) 10%, rgba(122,122,93,1) 42%, rgba(129,129,98,1) 68%, rgba(124,128,103,1) 93%, rgba(113,116,109,1) 100%);
+}
+
+.birdNotes::-webkit-scrollbar {
+  width: 3px;
+}
+
+.birdNotes::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+
+.birdNotes::-webkit-scrollbar-thumb {
+  background-color: darkgrey;
+  outline: none;
+}
+
+
+/**END BIRD PROFILE SECTION  */
+
+
+/**LOGIN CSS SECTION  */
+.headerLogin {
+  width: 100%;
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #979e90;
+}
+
+.headerLogin > img {
+  height: 60px;
+  width: 70px;
+}
+
+.loginContainer {
+  width: 100vw;
+  height: 100%;
+  background: white;
+}
+
+h1.text-white {
+  margin-top: 20px;
+  font-family: 'Almarai', sans-serif;
+}
+
+.secondaryContainerLogin {
+  display: flex;
+  margin-top: 5%;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.loginBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 500px;
+  height: 400px;
+  background: #E5E7E9 ;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+
+}
+
+.alert {
+  position: relative;
+  width: 500px;
+  height: 45px;
+  background: #F5B7B1;
+  color: #E74C3C;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+h3.loginText {
+  color: #82857f;
+  font-weight: bold;
+}
+
+form.loginForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+small.smallText {
+  height: 6px;
+  color: #808B96;
+  margin-left: 10px;
+  margin-bottom: 5px;
+}
+
+input.emailInput {
+  margin: 10px;
+  width: 350px;
+  height: 40px;
+  padding: 5px;
+}
+
+input.passwordInput {
+  margin: 10px;
+  width: 350px;
+  height: 40px;
+  padding: 5px;
+}
+
+
+button.googleBtn {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 230px;
+  height: 40px;
+  background: #b8a4a4;
+  border: none;
+  margin-left: 70px;
+  margin-bottom: 15px;
+}
+
+button.googleBtn:hover {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 230px;
+  height: 40px;
+  background: #a18989;
+  border: none;
+  margin-left: 70px;
+  margin-bottom: 15px;
+  color: #E9DAC4;
+}
+
+button.loginSubmit {
+  width: 230px;
+  height: 40px;
+  background: #b8a4a4;
+  border: none;
+  margin-left: 70px;
+  margin-bottom: 15px;
+}
+
+button.loginSubmit:hover {
+  width: 230px;
+  height: 40px;
+  background: #a18989;
+  border: none;
+  margin-left: 70px;
+  margin-bottom: 15px;
+  color: #E9DAC4;
+}
+
+button.signUp {
+  width: 100px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  margin-left: 15px;
+  margin-bottom: 15px;
+
+}
+
+button.signUp:hover {
+  width: 110px;
+  height: 30px;
+  background: #a18989;
+  border: none;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  color: #E9DAC4;
+}
+
+
+.withGoogle {
+  width: 200px;
+  font-size: 15px;
+  margin-left: 3px;
+}
+
+
+/**LOGIN CSS SECTION END */

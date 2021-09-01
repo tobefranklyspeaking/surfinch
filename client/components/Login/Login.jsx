@@ -1,19 +1,44 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Logo from '/public/img/Logo.png';
-import Join from './Join.jsx';
-// import { AuthContext } from "../App.jsx";
+import SignUp from './SignUp.jsx';
+import { AuthContext } from '../App.jsx';
+import { Link, Switch, useHistory } from 'react-router-dom';
+import firebase from 'firebase';
+require('firebase/auth');
 
 const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [error, setErrors] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [name, setName] = useState('');
+  const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false)
+  const Auth = useContext(AuthContext);
+  let history = useHistory();
 
-  // const Auth = useContext(AuthContext);
-  // const handleForm = e => {
-  //   e.preventDefault();
-  //   console.log(Auth);
-  //   Auth.setLoggedIn(true);
-  // };
+  useEffect(() => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+      Auth.setCurrentUser(user);
+    })
+    return unsubscribe;
+  }, [])
+
+
+  const handleForm = e => {
+    e.preventDefault();
+    firebase
+      .auth().signInWithEmailAndPassword(email, password)
+      .then((userCredential) => {
+        setError("");
+        setLoading(true);
+        Auth.setLoggedIn(true);
+        history.push('/home');
+      })
+      .catch((err) => {
+        setError(err.message)
+      });
+
+    setLoading(false);
+  };
 
   let img = document.createElement('img');
   img.style = {
@@ -21,42 +46,55 @@ const Login = () => {
     width: '25%'
   }
 
+
   return (
-    <div className='container-fluid'>
-      <div className='d-flex justify-content-center bg-secondary'>
-        <h1 className='text-white'>Surfinch Top Bar</h1>
+    <div className='loginContainer'>
+      <div className="headerLogin">
+        <h1 className='text-white'>Surfinch</h1>
+          <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' />
       </div>
-      <div >
-        <h1>Login</h1>
-        <form onSubmit={e => handleForm(e)}>
-          <input
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            name="email"
-            type="email"
-            placeholder="email"
-          />
-          <input
-            onChange={e => setPassword(e.target.value)}
-            name="password"
-            value={password}
-            type="password"
-            placeholder="password"
-          />
-          <hr />
-          <button className="googleBtn" type="button">
-            <img
-              src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-              alt="logo"
-            />
-            Login With Google
-          </button>
-          <button type="submit">Login</button>
-          <span>{error}</span>
-        </form>
-      </div>
-      <div className='d-flex justify-content-center'>
-        <img src={Logo} width='20%' height='20%' alt='finch' />
+      <div className='secondaryContainerLogin'>
+      {error && <div className="alert" role="alert">
+              Failed to login: {error}
+            </div>}
+        <div className="loginBox">
+          <div className="loginTitle">
+            <h3 className="loginText">Login</h3>
+          </div>
+          <div className="loginFormContainer">
+            <form className='loginForm' onSubmit={e => handleForm(e)}>
+              <small className="smallText">Your Email</small>
+              <input className="emailInput"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                placeholder="E-mail Address"
+              />
+              <small className="smallText">Your Password</small>
+              <input className="passwordInput"
+                onChange={(e) => setPassword(e.target.value)}
+                value={password}
+                placeholder="Password"
+              />
+              <hr />
+              <button className="googleBtn" type="button">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                  alt="logo"
+                />
+                <div className="withGoogle">Login With Google</div>
+              </button>
+              <button className="loginSubmit" disabled={loading} type="submit">Login</button>
+            </form>
+          </div>
+          <div>
+            <Link to="/SignUp">
+              <button className="signUp" type="button">
+                New User?
+              </button>
+            </Link>
+          </div>
+        </div>
+
       </div>
     </div>
   )
