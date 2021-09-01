@@ -91,7 +91,7 @@ const CreateBirdForm = () => {
   }
 
   return (
-    <div className="container">
+    <div className="container" id="bird-entry-container">
       <SearchBar handleSearchBarChange={handleSearchBarChange} />
 
       <form id="create-entry" onSubmit={handleSubmit}>
@@ -101,7 +101,7 @@ const CreateBirdForm = () => {
             <input className="form-control" type="text" name="bird" onChange={() => { handleInputChange(event, setSpecies) }} />
           </div>
 
-          <div className="col-6 mb-1">
+          <div className="col-6">
             <input className="form-control" type="file" name="birdPhoto" id="fileUpload" accept="image/*" onChange={() => { handleFileUpload(event) }} />
           </div>
         </div>
