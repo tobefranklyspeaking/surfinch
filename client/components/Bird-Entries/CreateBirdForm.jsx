@@ -73,11 +73,11 @@ const CreateBirdForm = () => {
         axios.post('/createBird', formData)
           .then(results => { console.log(formData) })
           .catch(error => { if (error) console.log(error); });
-
       })
       .then(() => {
         axios.get('/entries')
           .then(results => { setBirdEntries(results.data) })
+          .then(results => { setFilteredSet(results.data) })
       })
       .catch(error => { if (error) console.log(error); });
   }
