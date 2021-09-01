@@ -6,6 +6,7 @@ import { Link, Switch, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 require('firebase/auth');
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -73,6 +74,7 @@ const Login = () => {
               <input className="passwordInput"
                 onChange={(e) => setPassword(e.target.value)}
                 value={password}
+                type='password'
                 placeholder="Password"
               />
               <hr />

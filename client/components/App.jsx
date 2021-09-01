@@ -6,7 +6,10 @@ import { firebaseConfig } from '/client/components/Login/firebase.config.js';
 // SHARED COMPONENTS
 import NavBar from './Shared/NavBar.jsx';
 
-//PAGE COMPONENTS
+// PRIVATE ROUTES
+// import PrivateRoute from "./PrivateRoute.jsx"
+
+// PAGE COMPONENTS
 import Homepage from './Homepage/Homepage.jsx';
 import Login from './Login/Login.jsx';
 import SignUp from './Login/SignUp.jsx';
@@ -36,7 +39,7 @@ const App = () => {
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
       <div className="boolean">
-      {JSON.stringify(isLoggedIn)}
+        {JSON.stringify(isLoggedIn)}
       </div>
       <div className="main-container">
         <Router>
@@ -46,24 +49,12 @@ const App = () => {
               <Route exact path="/">
                 <Redirect to="/login" />
               </Route>
-              <Route exact path="/login">
-                <Login setCurrentUser={setCurrentUser} />
-              </Route>
-              <Route exact path="/signup">
-                <SignUp setCurrentUser={setCurrentUser} />
-              </Route>
-              <Route exact path="/home">
-                <Homepage currentUser={currentUser} />
-              </Route>
-              <Route path="/user-profile">
-                <Profile currentUser={currentUser} />
-              </Route>
-              <Route path="/bird-entry">
-                <BirdEntry currentUser={currentUser} />
-              </Route>
-              <Route path="/BirdProfile">
-                <BirdProfile currentUser={currentUser} />
-              </Route>
+              <Route exact path="/login" component={Login} />
+              <Route exact path="/signup" component={SignUp} />
+              <Route exact path="/home" component={Homepage} />
+              <Route path="/user-profile" component={Profile} />
+              <Route path="/bird-entry" component={BirdEntry} />
+              <Route path="/BirdProfile" component={BirdProfile} />
             </Route>
           </div>
         </Router>
