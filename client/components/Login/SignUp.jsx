@@ -21,16 +21,19 @@ const SignUp = (props) => {
     e.preventDefault();
     setError('');
     setLoading(true);
-
+    console.log(name);
     if (provider) {
       firebase
         .auth()
         .signInWithPopup(provider)
         .currentUser(name)
         .then(res => {
-          // console.log(res.user);
           history.push('/login');
-          return res.user;
+          console.log('inside create', name)
+
+          return res.user.updateProfile({
+            displayName: name
+          })
         })
         .catch(err => {
           setError(err.message)
@@ -45,7 +48,10 @@ const SignUp = (props) => {
             console.log(res.user);
             Auth.setCurrentUser(user.name);
             history.push('/login');
-            return res.user;
+            console.log('inside create', name)
+            return res.user.updateProfile({
+              displayName: name
+            })
           }
         })
         .catch(err => {
@@ -88,7 +94,7 @@ const SignUp = (props) => {
           <input
             type="password"
             className="register__textBox"
-            value={password}
+            value={passConfirm}
             onChange={(e) => setPassConfirm(e.target.value)}
             placeholder="Verify Password"
           />

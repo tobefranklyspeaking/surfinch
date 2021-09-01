@@ -6,7 +6,7 @@ import { Link, Switch, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 require('firebase/auth');
 
-const Login = (props) => {
+const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
@@ -17,7 +17,7 @@ const Login = (props) => {
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      props.setCurrentUser(user);
+      Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])
