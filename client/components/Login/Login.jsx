@@ -46,7 +46,6 @@ const Login = () => {
     width: '25%'
   }
 
-
   return (
     <div className='loginContainer'>
       <div className="headerLogin">
