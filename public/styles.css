@@ -344,7 +344,7 @@ button.downButton:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  background: #82857f;
+  background: #979e90;
 }
 
 .loginContainer {
@@ -360,7 +360,7 @@ h1.text-white {
 
 .secondaryContainerLogin {
   display: flex;
-  margin-top: 8%;
+  margin-top: 5%;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
@@ -378,6 +378,17 @@ h1.text-white {
   background: #E5E7E9 ;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
+}
+
+.alert {
+  position: relative;
+  width: 500px;
+  height: 45px;
+  background: #F5B7B1;
+  color: #E74C3C;
+  font-weight: bold;
+  font-size: 15px;
+  margin-bottom: 20px;
 }
 
 h3.loginText {
@@ -458,6 +469,27 @@ button.loginSubmit:hover {
   margin-bottom: 15px;
   color: #E9DAC4;
 }
+
+button.signUp {
+  width: 100px;
+  height: 30px;
+  background: transparent;
+  border: none;
+  margin-left: 15px;
+  margin-bottom: 15px;
+
+}
+
+button.signUp:hover {
+  width: 110px;
+  height: 30px;
+  background: #a18989;
+  border: none;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  color: #E9DAC4;
+}
+
 
 .withGoogle {
   width: 200px;
