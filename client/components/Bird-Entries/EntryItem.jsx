@@ -2,20 +2,26 @@ import React from 'react';
 
 const EntryItem = ({ photo, notes, city, state, name }) => {
   return (
-    <div className="d-flex col-6 border-secondary card">
-      <div>
-        <img height='100' width='100' src={photo} className="card-image-top" />
+    <div className=" card p-0 mb-2" style={{ width: '100%' }}>
+      <div className="card-header text-center">
+        {name}
       </div>
-      <div>
-        <p>{name}</p>
-        <p>
-          {
-            city &&
-            <span>{city}, </span>
-          }
-          {state}
-        </p>
-        <p>{notes}</p>
+
+      <div className="d-flex flex-row">
+        <div className="" style={{ width: "100px", height: "100px", margin: '', overflow: 'hidden', backgroundImage: `url(${photo})`, backgroundSize: 'cover', backgroundPosition: 'center center' }}>
+          {/* <img src={photo} className="card-img-top" /> */}
+        </div>
+        <div className="text-right">
+          {/* <p>{name}</p> */}
+          <p>
+            {
+              city &&
+              <span>{city}, </span>
+            }
+            {state}
+          </p>
+          <p>{notes}</p>
+        </div>
       </div>
     </div>
   )

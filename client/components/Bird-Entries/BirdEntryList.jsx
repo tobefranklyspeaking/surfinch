@@ -5,7 +5,7 @@ import EntryItem from './EntryItem.jsx';
 const BirdEntryList = ({birdEntries}) => {
 
   return (
-    <div className="row">
+    <div className="">
       { birdEntries &&
         birdEntries.map(function(item, index) {
           return <EntryItem key={index} photo={item.birdpic_url} notes={item.notes} city={item.city_sighted} state={item.state_sighted} name={item.bird} />
