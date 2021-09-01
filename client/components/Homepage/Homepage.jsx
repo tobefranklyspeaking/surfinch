@@ -5,6 +5,9 @@ import NavBar from '../Shared/NavBar.jsx';
 const Homepage = (props) => {
 
   //PROPS.CURRENTUSER WILL HAVE LOTS OF INFO 4 U
+
+  console.log(props.currentUser);
+
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
   //   from: { opacity: 0, marginTop: 150 },
