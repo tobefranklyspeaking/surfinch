@@ -5,8 +5,11 @@ import Avatar from '../Shared/Avatar.jsx';
 import NavBar from '../Shared/NavBar.jsx';
 import Map from '../Shared/Map.jsx';
 
+var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
+
 const Homepage = (props) => {
   var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
+  const [birdEntries, setBirdEntries] = useState([]);
 
   console.log('uuuussaaahhhh', props.currentUser);
 
@@ -19,16 +22,16 @@ const Homepage = (props) => {
 
       axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
         .then(results => {
-          console.log('location results', results)
+          console.log('location results', results.data)
           // setStreet(results.data.address.house_number + " " + results.data.address.road);
           // setCity(results.data.address.city);
           // setSt(results.data.address.state);
         })
-        .catch(error => { console.log(error); });
+        .catch(error => { console.log('errr', error); });
 
     });
     axios.get(`/entries/${props.currentUser.userID}`)
-      .then(results => { setBirdEntries(results.data)})
+      .then(results => { setBirdEntries(results.data); console.log('user bird stuff?', results.data)})
   }, []);
 
   // const propz = useSpring({
