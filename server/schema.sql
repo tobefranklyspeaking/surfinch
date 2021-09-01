@@ -8,6 +8,8 @@ CREATE TABLE user_profile (
   username TEXT,
   avatar_pic TEXT,
   avatar_background TEXT,
+  entries INT DEFAULT 0,
+  logins INT DEFAULT 1,
   PRIMARY KEY (userID)
 );
 
@@ -15,6 +17,7 @@ CREATE TABLE user_birds (
   id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
   userID INT,
   bird TEXT,
+  date date,
   birdpic_url TEXT,
   notes TEXT,
   city_sighted TEXT,
