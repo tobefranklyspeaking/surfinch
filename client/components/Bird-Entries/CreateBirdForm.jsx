@@ -4,7 +4,7 @@ import axios from 'axios';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
 
-const CreateBirdForm = ({}) => {
+const CreateBirdForm = ({ }) => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
@@ -16,7 +16,7 @@ const CreateBirdForm = ({}) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  const [currentUser, setCurrentUser] = useState({userID: 1})
+  const [currentUser, setCurrentUser] = useState({ userID: 1 })
   var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
   useEffect(() => {
@@ -79,7 +79,7 @@ const CreateBirdForm = ({}) => {
       .then(() => {
         axios.get(`/entries/${currentUser.userID}`)
           .then(results => { setBirdEntries(results.data) })
-          // .then(results => { setFilteredSet(results.data) })
+        // .then(results => { setFilteredSet(results.data) })
       })
       .catch(error => { if (error) console.log(error); });
   }
@@ -92,26 +92,38 @@ const CreateBirdForm = ({}) => {
     key(event.target.value);
   }
 
+  var handleCardClick = (event) => {
+    var value = event.target.getAttribute('data-birdname');
+    setSpecies(value);
+  }
+
   return (
     <div className="container" id="bird-entry-container">
       <SearchBar handleSearchBarChange={handleSearchBarChange} />
+      <BirdEntryList birdEntries={filteredSet} handleCardClick={handleCardClick} />
 
       <form id="create-entry" onSubmit={handleSubmit}>
         <div className="form-group row align-items-end">
-          <div className="col-6">
+          <div className="form-group col-6">
             <label className="control-label" htmlFor="">Species</label>
-            <input className="form-control" type="text" name="bird" onChange={() => { handleInputChange(event, setSpecies) }} />
+            <input className="form-control" type="text" name="bird" value={species} onChange={() => { handleInputChange(event, setSpecies) }} />
           </div>
 
-          <div className="col-6">
+          <div className="form-group col-6">
+            <label className="control-label" htmlFor="">Date</label>
+            <input type="date" name="date" className="form-control" onChange={() => { handleInputChange(event, setDate) }} />
+          </div>
+        </div>
+        <div className="form-group row align-items-end">
+          <div className="form-group col-6">
             <input className="form-control" type="file" name="birdPhoto" id="fileUpload" accept="image/*" onChange={() => { handleFileUpload(event) }} />
           </div>
+          <div className="form-group col-6">
+            <label className="control-label" htmlFor="">Street</label>
+            <input className="form-control" type="text" onChange={() => { handleInputChange(event, setStreet) }} value={street} />
+          </div>
         </div>
 
-        <div className="form-group">
-          <label className="control-label" htmlFor="">Street</label>
-          <input className="form-control" type="text" onChange={() => { handleInputChange(event, setStreet) }} value={street} />
-        </div>
 
         <div className="form-group row">
           <div className="col-6">
@@ -137,8 +149,7 @@ const CreateBirdForm = ({}) => {
         </div>
       </form >
 
-      <BirdEntryList birdEntries={filteredSet} />
-    </div>
+    </div >
 
   )
 };
