@@ -32,9 +32,12 @@ const App = () => {
     history.push('/home')
   }
 
+
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
-      Is logged in? {JSON.stringify(isLoggedIn)}
+      <div className="boolean">
+      {JSON.stringify(isLoggedIn)}
+      </div>
       <div className="main-container">
         <Router>
           {isLoggedIn && <NavBar />}
