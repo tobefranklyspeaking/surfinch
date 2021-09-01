@@ -9,8 +9,8 @@ module.exports = {
 
     var body = req.body;
 
-    var queryString = 'INSERT INTO user_birds (bird, city_sighted, state_sighted, notes, latitude, longitude, birdpic_url) VALUES (?, ?, ?, ?, ?, ?, ?)';
-    var params = [body.bird, body.city_sighted, body.state_sighted, body.notes, body.latitude, body.longitude, body.birdpic_url];
+    var queryString = 'INSERT INTO user_birds (bird, city_sighted, state_sighted, notes, latitude, longitude, birdpic_url, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+    var params = [body.bird, body.city_sighted, body.state_sighted, body.notes, body.latitude, body.longitude, body.birdpic_url, req.body.userID];
 
     db.query(queryString, params, function(err, results, fields) {
       if (err) console.log(err)
@@ -19,8 +19,10 @@ module.exports = {
   },
 
   getEntries: function(req, res) {
-    var queryString = 'SELECT * FROM user_birds';
-    db.query(queryString, function(err, results, fields) {
+    var userID = req.params.userid;
+    var queryString = `SELECT * FROM user_birds WHERE userID = (?)`;
+    var params = [userID]
+    db.query(queryString, userID, function(err, results, fields) {
       if (err) console.log(err)
       else (res.send(results));
     })
