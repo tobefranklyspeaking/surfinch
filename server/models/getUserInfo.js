@@ -1,8 +1,8 @@
-// var db = require('../db');
+var db = require('../db');
 
 exports.getUserInfo = (req, res) => {
-  let sql = `SELECT user_profile.username, user_profile.profile_pic_url
-               FROM user_profile`;
+  let sql = `SELECT * FROM user_profile p
+               WHERE p.email = '${req.params.email}'`;
   db.query(sql, (err, result) => {
     if (err) console.log(err);
     res.send(result);

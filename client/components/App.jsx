@@ -36,10 +36,7 @@ const App = () => {
   //if we call it at the initialization of app.jsx it will save
   //other components time to make the necessary api call (or renders).
   useEffect(() => {
-    console.log(currentUser)
     navigator.geolocation.getCurrentPosition((position) => {
-
-      // CONVERT LAT N LNGTO STRING FOR SHANNA IN BIRDENTRY
 
       var lat = position.coords.latitude.toString();
       var lng = position.coords.longitude.toString();
@@ -52,7 +49,6 @@ const App = () => {
           'lat': lat,
           'lng': lng
           })
-
         })
         .catch(error => { console.log(error); });
     });
