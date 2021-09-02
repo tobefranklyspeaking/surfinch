@@ -37,6 +37,7 @@ html, body {
 .big-page-container {
   flex: 5;
   background: linear-gradient(360deg, rgba(233,218,196,1) 5%, rgba(250,235,212,1) 59%, rgba(255,253,250,1) 100%);
+  background-attachment: local;
 }
 
 .unidentified-container {
@@ -58,12 +59,9 @@ html, body {
   margin-top: 0px;
   height: 100%;
   width: 100vw;
-  background: linear-gradient(360deg, rgba(233,218,196,1) 5%, rgba(250,235,212,1) 59%, rgba(255,253,250,1) 100%);
-  /* background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover; */
-  /* background-position: center center; */
-  /* background:  rgb(248, 244, 244); */
+  background: #fcfaf7;
+  /* background: #fffbf5; */
+  /* background: linear-gradient(360deg, rgba(233,218,196,1) 5%, rgba(250,235,212,1) 59%, rgba(255,253,250,1) 100%); */
 }
 
 
@@ -81,14 +79,49 @@ html, body {
   margin-left: 0px;
   padding-left: 0px;
   position: fixed;
-  background: rgb(184,164,164);
-  background: linear-gradient(90deg, rgba(184,164,164,1) 0%, rgba(184,164,164,  1) 29%, rgba(158,142,142,1) 100%);
+  /* background: rgb(184,164,164);
+  background: linear-gradient(90deg, rgba(184,164,164,1) 0%, rgba(184,164,164,  1) 29%, rgba(158,142,142,1) 100%); */
   /* background: #263D23; */
+  background: linear-gradient(180deg, rgba(109,113,103,1) 6%, rgba(174,190,154,1) 37%, rgba(182,193,170,1) 50%, rgba(140,148,130,1) 64%, rgba(106,110,101,1) 88%);
+  background-size: 200% 200%;
+  animation: colorful 15s ease-in-out infinite;
 }
 
-.nav-item {
+@keyframes colorful {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+li.nav-item {
   margin-bottom: 30px;
 }
+
+/* span.homeNav {
+  background: gray;
+  transform: translateX(40px);
+  width: 50px;
+  height: 20px;
+  margin-left: 60px;
+}
+
+span.homeNav:hover {
+  background: #CCD1D1 ;
+  transform: translateX(40px);
+  width: 50px;
+  height: 20px;
+  margin-left: 60px;
+} */
+
+
+
+
 
 /*--HOME PAGE--*/
 .home-container {
@@ -126,7 +159,7 @@ html, body {
   background: #e9e1ce;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 700px;
-  width: 450px;
+  width: 400px;
   /* padding-top: 40px; */
   margin: 40px;
   display: grid;
@@ -179,11 +212,31 @@ html, body {
 }
 
 .mini-map-container {
-  background:  #91948d;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  height: 300px;
+  /* background:  #91948d;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  height: 390px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
+
+.birds-nearby-container {
+  background: #e9e1ce;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  height: 390px;
+  width: 250px;
+  justify-self: center;
+  overflow: scroll;
+}
+
+.local-bird {
+  background: #ccc5b6;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+/* .birds-nearby-container:hover {
+  background:rgba(0, 0, 0, 0.1);
+} */
 
 /* PROFILE SECTION */
 .profile-parent {
@@ -521,8 +574,10 @@ h2.text-white {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  padding: 1vh;
   width: 500px;
-  height: 400px;
+  height: auto;
+  min-height: 400px;
   background: #E5E7E9 ;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 
@@ -620,7 +675,7 @@ button.loginSubmit:hover {
 
 button.signUp {
   width: 100px;
-  height: 30px;
+  height: auto;
   background: transparent;
   border: none;
   margin-left: 15px;
@@ -630,7 +685,7 @@ button.signUp {
 
 button.signUp:hover {
   width: 110px;
-  height: 30px;
+  height: auto;
   background: #b8a4a4;
   border: none;
   margin-left: 15px;

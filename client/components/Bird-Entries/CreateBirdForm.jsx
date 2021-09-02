@@ -1,43 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { LOC_TOKEN } from '/config.js';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
 
-const CreateBirdForm = ({ }) => {
+const CreateBirdForm = ({ currentUser, location }) => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
 
   const [species, setSpecies] = useState('');
+  const [date, setDate] = useState();
   const [fileUpload, setFileUpload] = useState();
 
   const [notes, setNotes] = useState('');
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  const [currentUser, setCurrentUser] = useState({ userID: 1 })
-  var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
+  // const [currentUser, setCurrentUser] = useState({ userID: 1 })
 
   useEffect(() => {
+    console.log(location)
     console.log(currentUser)
-    navigator.geolocation.getCurrentPosition((position) => {
+    if (location) {
+      console.log(location)
+      // setStreet(location.street);
+      // setCity(location.city);
+      // setSt(location.state);
+    }
 
-      var lat = position.coords.latitude.toString();
-      var lon = position.coords.longitude.toString();
+  }, [currentUser, location]);
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
-        .then(results => {
-          console.log('fsdfk', results.data)
-          setStreet(results.data.address.house_number + " " + results.data.address.road);
-          setCity(results.data.address.city);
-          setSt(results.data.address.state);
-        })
-        .catch(error => { console.log(error); });
-
-    });
+  useEffect(() => {
     axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
+
   }, []);
 
   var handleSearchBarChange = (event) => {
@@ -55,7 +52,7 @@ const CreateBirdForm = ({ }) => {
     event.preventDefault();
     var form = document.getElementById('create-entry')
     var formData = new FormData(form);
-    axios.get(`https://us1.locationiq.com/v1/search.php?key=${auth}&city=${city}&state=${st}&format=json`)
+    axios.get(`https://us1.locationiq.com/v1/search.php?key=${LOC_TOKEN}&city=${city}&state=${st}&format=json`)
       .then(results => {
         var lat = results.data[0].lat;
         var lon = results.data[0].lon;
@@ -74,15 +71,14 @@ const CreateBirdForm = ({ }) => {
       })
       .then(() => {
         axios.post('/createBird', formData)
-          .then(results => { console.log(formData) })
-          .catch(error => { if (error) console.log(error); });
-      })
-      .then(() => {
-        axios.get(`/entries/${currentUser.userID}`)
-          .then(results => { setBirdEntries(results.data) })
-        // .then(results => { setFilteredSet(results.data) })
+          .then(results => {
+            console.log(formData);
+            axios.get(`/entries/${currentUser.userID}`)
+              .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
+          })
       })
       .catch(error => { if (error) console.log(error); });
+
   }
 
   var handleFileUpload = (event) => {
@@ -112,7 +108,7 @@ const CreateBirdForm = ({ }) => {
 
           <div className="form-group col-6">
             <label className="control-label" htmlFor="">Date</label>
-            <input type="date" name="date" className="form-control" onChange={() => { handleInputChange(event, setDate) }} />
+            <input type="date" name="date" className="form-control" required onChange={() => { handleInputChange(event, setDate) }} />
           </div>
         </div>
         <div className="form-group row align-items-end">
@@ -146,7 +142,7 @@ const CreateBirdForm = ({ }) => {
 
 
         <div>
-          <input className="form-control" type="submit" />
+          <input className="btn form-control" type="submit" />
         </div>
       </form >
 

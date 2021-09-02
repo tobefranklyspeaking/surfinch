@@ -7,14 +7,60 @@ import firebase from 'firebase';
 require('firebase/auth');
 import axios from 'axios';
 
+
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false)
+
   const Auth = useContext(AuthContext);
   let history = useHistory();
+
+  // /********************************************* */
+
+  const googleSignInPopup = provider => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    // [START auth_google_signin_popup]
+    firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        // /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log('login from google', result);
+        setError("");
+        setLoading(true);
+        Auth.setLoggedIn(true);
+        Auth.setCurrentUser(user);
+        history.push('/home');
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        setError(errorMessage);
+        // ...
+      });
+    // [END auth_google_signin_popup]
+  }
+
+
+
+
+
+
+
+
+  /**************************************** */
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
@@ -35,7 +81,7 @@ const Login = () => {
         Auth.setLoggedIn(true);
         axios.get(`/user/${email}`)
           .then((res) => {
-            //console.log('response data', res.data);
+            console.log('response data', res);
             Auth.setCurrentUser(res.data[0])
           })
           .catch((err) => console.log('login err', err))
@@ -65,7 +111,7 @@ const Login = () => {
         </div>}
         <div className="centerLogo">
           <div className="logoLogin">
-          <h2 className='text-white'>SURFINCH</h2>
+            <h2 className='text-white'>SURFINCH</h2>
             <img src="https://i.imgur.com/6pDMm0T.png" width='20%' height='20%' alt='finch' />
           </div>
           <div className="loginBox">
@@ -84,6 +130,7 @@ const Login = () => {
                 <input className="passwordInput"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  type='password'
                   placeholder="Password"
                 />
                 <hr />
@@ -92,7 +139,7 @@ const Login = () => {
                     src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                     alt="logo"
                   />
-                  <div className="withGoogle">Login With Google</div>
+                  <div className="withGoogle" onClick={googleSignInPopup}>Login With Google</div>
                 </button>
                 <button className="loginSubmit" disabled={loading} type="submit">Login</button>
               </form>
