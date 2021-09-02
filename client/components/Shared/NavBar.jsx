@@ -17,10 +17,11 @@ const NavBar = (props) => {
           <li>
 
           </li>
-          <li className="nav-item">
+          <li className="nav-home">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
                 <Link to="/home"><GiBirdHouse size="40"/></Link>
             </Switch>
+            {/* <span className="homeNav">HOME</span> */}
           </li>
           <li  className="nav-item">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
