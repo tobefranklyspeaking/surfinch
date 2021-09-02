@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
-import  API_KEY from '../../../config.js';
-import { API_TOKEN  } from '../../../config2.js';
-// import { useSpring, animated } from 'react-spring';
+import { GOOGLE_TOKEN } from '../../../config.js';
+import { EBIRD_TOKEN  } from '../../../config.js';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -23,7 +22,7 @@ const BirdProfile = () => {
   useEffect(() => {
     axios.get('https://api.ebird.org/v2/data/obs/US-RI/recent/cangoo', {
       headers: {
-        'X-eBirdApiToken': API_TOKEN
+        'X-eBirdApiToken': EBIRD_TOKEN
       }
     })
       .then((result) => {
@@ -65,7 +64,7 @@ const BirdProfile = () => {
 
   //get user notes
   // useEffect(() => {
-  //   axios.get('/userbirds/:userid')
+  //   axios.get('/userbirds/${currentUser.userID}')
   //   .then((result) => {
   //     console.log(result);
   //     // setNotes(result)
@@ -128,7 +127,7 @@ const BirdProfile = () => {
           {show ? <div className="birdNotes">
             <h4 className='notesTitle'> My Notes</h4>
             <hr className="dash"></hr>
-            <p className='notesText'>To be fair, you have to have a very high IQ to understand Rick and Morty. The humor is extremely subtle, and without a solid grasp of theoretical physics most of the jokes will go over a typical viewer's head. There's also Rick's nihilistic outlook, which is deftly woven into his characterisation - his personal philosophy draws heavily from Narodnaya Volya literature, for instance. The fans understand this stuff; they have the intellectual capacity to truly appreciate the depths of these jokes, to realize that they're not just funny- they say something deep about LIFE. As a consequence people who dislike Rick and Morty truly ARE idiots- of course they wouldn't appreciate, for instance, the humour in Rick's existencial catchphrase "Wubba Lubba Dub Dub," which itself is a cryptic reference to Turgenev's Russian epic Fathers and Sons I'm smirking right now just imagining one of those addlepated simpletons scratching their heads in confusion as Dan Harmon's genius unfolds itself on their television screens. What fools... how I pity them. And yes by the way, I DO have a Rick and Morty tattoo. And no, you cannot see it. It's for the ladies' eyes only- And even they have to demonstrate that they're within 5 IQ points of my own (preferably lower) beforehand.</p>
+            <p className='notesText'>To be fair, you have to have a very high IQ to understand Rick and Morty. The humor is extremely subtle, and without a solid grasp of theoretical physics most of the jokes will go over a typical viewer's head. There's also Rick's nihilistic outlook, which is deftly woven into his characterisation - his personal philosophy draws heavily from Narodnaya Volya literature, for instance. The fans understand this stuff; they have the Dan Harmon's genius unfolds itself on their television screens. What fools... how I pity them. And yes by the way, I DO have a Rick and Morty tattoo. And no, you cannot see it. It's for the ladies' eyes only- And even they have to demonstrate that they're within 5 IQ points of my own (preferably lower) beforehand.</p>
           </div> : null}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
-import API_KEY from "../../../config.js";
+import { GOOGLE_TOKEN } from "../../../config.js";
 
 
 const DisplayMap = (props) => {
@@ -86,7 +86,7 @@ const Map = (props) => {
 
   return (
     <div style={{ width: `${styleWidth}vw`, height: `${styleHeight}vh` }}>
-      <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,visualization,drawing,places&key=${API_KEY}`}
+      <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,visualization,drawing,places&key=${GOOGLE_TOKEN}`}
         loadingElement={<div style={{ height: "100%" }} />}
         containerElement={<div style={{ height: "100%" }} />}
         mapElement={<div style={{ height: "100%" }} />}

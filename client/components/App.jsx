@@ -3,6 +3,7 @@ import { HashRouter as Router, Switch, Route, Link, useHistory, Redirect } from 
 let firebase = require('firebase/app');
 import { firebaseConfig } from '/client/components/Login/firebase.config.js';
 import axios from 'axios';
+import { LOC_TOKEN } from '/config';
 
 // SHARED COMPONENTS
 import NavBar from './Shared/NavBar.jsx';
@@ -17,7 +18,7 @@ import BirdProfile from './Bird-Profile/BirdProfile.jsx';
 import regions from './Shared/RegionCode.js';
 
 firebase.default.initializeApp(firebaseConfig);
-var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
+// var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
 export const AuthContext = React.createContext(null);
 
@@ -41,7 +42,7 @@ const App = () => {
       var lat = position.coords.latitude.toString();
       var lng = position.coords.longitude.toString();
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lng}&format=json`)
+      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lng}&format=json`)
         .then(results => {
           setLocation({'street': results.data.address.house_number + " " + results.data.address.road,
           'city': results.data.address.city,
