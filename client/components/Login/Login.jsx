@@ -22,7 +22,7 @@ const Login = () => {
 
   const googleSignInPopup = provider => {
     var provider = new firebase.auth.GoogleAuthProvider();
-    // [START auth_google_signin_popup]
+    // [START auth_google_signin_redirect]
     firebase.auth()
       .signInWithRedirect(provider)
       .then((result) => {
@@ -34,7 +34,7 @@ const Login = () => {
         // The signed-in user info.
         var user = result.user;
         console.log('login from google', result);
-        setError("");
+        setError('');
         setLoading(true);
         Auth.setLoggedIn(true);
         Auth.setCurrentUser(user);
@@ -50,7 +50,7 @@ const Login = () => {
         setError(errorMessage);
         // ...
       });
-    // [END auth_google_signin_popup]
+    // [END auth_google_signin_redirect]
   }
 
 

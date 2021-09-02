@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import { LOC_TOKEN } from '/config.js';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
+import { AuthContext } from '../App.jsx';
+import firebase from 'firebase';
+require('firebase/auth');
 
-const CreateBirdForm = ({ }) => {
+const CreateBirdForm = () => {
+  const Auth = useContext(AuthContext);
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
@@ -17,10 +21,11 @@ const CreateBirdForm = ({ }) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  const [currentUser, setCurrentUser] = useState({ userID: 1 })
+
+  console.log(Auth, Auth.currentUser);
+  let currentUser = Auth.currentUser;
 
   useEffect(() => {
-    console.log(currentUser)
     navigator.geolocation.getCurrentPosition((position) => {
 
       var lat = position.coords.latitude.toString();

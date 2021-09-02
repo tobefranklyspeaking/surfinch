@@ -20,7 +20,7 @@ Additionally, in this app, you are able to research essential bird data. Trackin
 
 ## Creating Surfinch App from Source Code
 
-- [ ] Obtain the code for this app: See next step or
+- [ ] Obtain the code for this app using the above link or following step:
 	- [ ] Start by cloning:
 ```
 git clone https://github.com/tobefranklyspeaking/ohhhdecisions.git
