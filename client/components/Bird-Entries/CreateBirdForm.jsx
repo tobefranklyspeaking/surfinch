@@ -1,14 +1,10 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { LOC_TOKEN } from '/config.js';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
-import { AuthContext } from '../App.jsx';
-import firebase from 'firebase';
-require('firebase/auth');
 
-const CreateBirdForm = ({ location }) => {
-  const Auth = useContext(AuthContext);
+const CreateBirdForm = ({ }) => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
@@ -21,25 +17,27 @@ const CreateBirdForm = ({ location }) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  // const [currentUser, setCurrentUser] = useState({ userID: 1 })
-
-  console.log(Auth, Auth.currentUser);
-  let currentUser = Auth.currentUser;
+  const [currentUser, setCurrentUser] = useState({ userID: 1 })
 
   useEffect(() => {
-    if (location) {
-      console.log(location)
-      // setStreet(location.street);
-      // setCity(location.city);
-      // setSt(location.state);
-    }
+    console.log(currentUser)
+    navigator.geolocation.getCurrentPosition((position) => {
 
-  }, [currentUser, location]);
+      var lat = position.coords.latitude.toString();
+      var lon = position.coords.longitude.toString();
 
-  useEffect(() => {
+      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
+        .then(results => {
+          console.log('fsdfk', results.data)
+          setStreet(results.data.address.house_number + " " + results.data.address.road);
+          setCity(results.data.address.city);
+          setSt(results.data.address.state);
+        })
+        .catch(error => { console.log(error); });
+
+    });
     axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
-
   }, []);
 
   var handleSearchBarChange = (event) => {

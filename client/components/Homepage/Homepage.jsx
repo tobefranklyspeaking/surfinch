@@ -11,7 +11,7 @@ const Homepage = ({currentUser, location}) => {
   //var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
   const [top10Birds, setTop10Birds] = useState([]);
   const [top10Loc, setTop10Loc] = useState([]);
-  console.log(currentUser)
+
   const sampleLocbirddata = [
     {
         speciesCode: "rthhum",

@@ -52,7 +52,8 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
+    const unsubscribe =
+    firebase.auth().onAuthStateChanged(user => {
       console.log('whats this?', user);
       Auth.setCurrentUser(user);
     })
