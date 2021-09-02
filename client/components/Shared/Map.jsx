@@ -14,6 +14,7 @@ const DisplayMap = (props) => {
   const currentHeatMap = props.props.heatmapLayer;
 
   console.log(currentUserData);
+  console.log('in the thing', currentCenter);
 
   return (
     <GoogleMap
@@ -74,6 +75,7 @@ const DisplayMap = (props) => {
 const WrappedMap = withScriptjs(withGoogleMap(props => (<DisplayMap props={props}/>)));
 
 const Map = (props) => {
+  console.log('hii', props)
 
 
   const defaultZoom = props.defaultZoom || 5;
@@ -83,6 +85,8 @@ const Map = (props) => {
   const heatMap = props.heatMap || null;
   const styleWidth = props.styleWidth || 100;
   const styleHeight = props.styleHeight || 100;
+
+  console.log('here i am', defaultCenter);
 
 
   return (
