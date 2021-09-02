@@ -103,6 +103,16 @@ li.nav-item {
   margin-bottom: 30px;
 }
 
+/* li.nav-home {
+  margin-bottom: 30px;
+}
+
+li.nav-home:hover {
+  margin-bottom: 30px;
+  background: green;
+} */
+
+
 /* span.homeNav {
   background: gray;
   transform: translateX(40px);
