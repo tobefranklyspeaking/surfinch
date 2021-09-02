@@ -9,6 +9,7 @@ CREATE TABLE user_profile (
   userID INT NOT NULL AUTO_INCREMENT,
   username TEXT,
   email TEXT,
+  profile_pic_url TEXT,
   avatar_pic TEXT,
   avatar_background TEXT,
   entries INT DEFAULT 0,
@@ -62,9 +63,9 @@ CREATE TABLE bird_data (
   extinct_year TEXT
 );
 
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Admin', 'email@admin.com', 'goose', '#c8994d', 5, 29);
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('AJP', 'AJP@admin.com', 'eagle', '#c8994d', 17, 14);
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shay', 'Shay@admin.com', 'hummingbird', '#c8994d', 2, 3);
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Smitty', 'Smitty@admin.com', 'tropical', '#c8994d', 0, 7);
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Regionald', 'Regionald@admin.com', 'crane', '#c8994d', 8, 2);
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shanna', 'shanna@admin.com', 'crane', '#c8994d', 8, 2);
+INSERT INTO user_profile (username, email, profile_pic_url, avatar_pic, avatar_background, entries, logins) VALUES ('Admin', 'email@admin.com', 'https://picsum.photos/200/300', 'goose', '#c8994d', 5, 29);
+INSERT INTO user_profile (username, email, profile_pic_url, avatar_pic, avatar_background, entries, logins) VALUES ('AJP', 'AJP@admin.com', 'https://picsum.photos/200/300', 'eagle', '#c8994d', 17, 14);
+INSERT INTO user_profile (username, email, profile_pic_url, avatar_pic, avatar_background, entries, logins) VALUES ('Shay', 'Shay@admin.com', 'https://picsum.photos/200/300', 'hummingbird', '#c8994d', 2, 3);
+INSERT INTO user_profile (username, email, profile_pic_url, avatar_pic, avatar_background, entries, logins) VALUES ('Smitty', 'Smitty@admin.com', 'https://picsum.photos/200/300', 'tropical', '#c8994d', 0, 7);
+INSERT INTO user_profile (username, email, profile_pic_url, avatar_pic, avatar_background, entries, logins) VALUES ('Regionald', 'Regionald@admin.com', 'https://picsum.photos/200/300', 'crane', '#c8994d', 8, 2);
+INSERT INTO user_profile (username, email, profile_pic_url, avatar_pic, avatar_background, entries, logins) VALUES ('Shanna', 'shanna@admin.com', 'https://picsum.photos/200/300', 'crane', '#c8994d', 8, 2);
