@@ -3,6 +3,7 @@ import { AuthContext } from "../App.jsx";
 import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 require('firebase/auth');
+import axios from 'axios';
 
 
 const SignUp = (props) => {
@@ -14,7 +15,7 @@ const SignUp = (props) => {
   const [passConfirm, setPassConfirm] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
 
   const handleForm = (e, provider) => {
@@ -44,10 +45,14 @@ const SignUp = (props) => {
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
           if (res.user) {
-            let user = { 'email': email, 'name': name };
+            let user = { 'email': email, 'name': name, pic: '' };
             console.log(res.user);
-            Auth.setCurrentUser(user.name);
-            //in here we need to post the new user to the database
+            axios.post('/newUser', user)
+              .then((result) => {
+                console.log('woohoo!', result.data);
+                Auth.setCurrentUser(user.name);
+              })
+              .catch((err) => console.log('signup err', err))
             history.push('/login');
             console.log('inside create', name)
             return res.user.updateProfile({

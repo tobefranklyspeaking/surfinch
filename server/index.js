@@ -4,7 +4,7 @@ const path = require('path');
 
 // const { getUserInfo } = require('./models/getUserInfo');
 const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
-
+const { postNewUser } = require('./models/postNewUser')
 const { postUserBird } = require('./models/postUserBird');
 const fileUpload = require('express-fileupload');
 const { updateBird } = require('./models/updateBird.js')
@@ -21,7 +21,7 @@ app.use(fileUpload({
 app.use(express.static('public'));
 
 // insert a new user into the table
-app.post('/newUser', )
+app.post('/newUser', postNewUser);
 
 // get a particular user's profile info
 app.get('/user/:userid', getUserInfo);
