@@ -839,3 +839,29 @@ h4.signUpText {
   color: #566573;
 }
 /**SIGN UP SECTION END */
+
+
+
+/**UPDATE FORM */
+.updateFormContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateTwo {
+  margin-top: 80px;
+}
+
+h3.updateTitle {
+  margin-top: 30px;
+  font-family: 'Almarai', sans-serif;
+  font-weight: bold;
+  color: #566573;
+}
+
+
+/**UPDATE FORM END*/
