@@ -47,6 +47,7 @@ const SignUp = (props) => {
             let user = { 'email': email, 'name': name };
             console.log(res.user);
             Auth.setCurrentUser(user.name);
+            //in here we need to post the new user to the database
             history.push('/login');
             console.log('inside create', name)
             return res.user.updateProfile({
