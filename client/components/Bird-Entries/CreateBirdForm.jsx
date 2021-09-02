@@ -4,7 +4,7 @@ import { LOC_TOKEN } from '/config.js';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
 
-const CreateBirdForm = ({ }) => {
+const CreateBirdForm = ({ currentUser, location }) => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
@@ -17,27 +17,24 @@ const CreateBirdForm = ({ }) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  const [currentUser, setCurrentUser] = useState({ userID: 1 })
+  // const [currentUser, setCurrentUser] = useState({ userID: 1 })
 
   useEffect(() => {
+    console.log(location)
     console.log(currentUser)
-    navigator.geolocation.getCurrentPosition((position) => {
+    if (location) {
+      console.log(location)
+      // setStreet(location.street);
+      // setCity(location.city);
+      // setSt(location.state);
+    }
 
-      var lat = position.coords.latitude.toString();
-      var lon = position.coords.longitude.toString();
+  }, [currentUser, location]);
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
-        .then(results => {
-          console.log('fsdfk', results.data)
-          setStreet(results.data.address.house_number + " " + results.data.address.road);
-          setCity(results.data.address.city);
-          setSt(results.data.address.state);
-        })
-        .catch(error => { console.log(error); });
-
-    });
+  useEffect(() => {
     axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
+
   }, []);
 
   var handleSearchBarChange = (event) => {
