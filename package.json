@@ -32,7 +32,8 @@
     "react-firebase-hooks": "^3.0.4",
     "react-google-maps": "^9.4.5",
     "react-icons": "^4.2.0",
-    "react-router-dom": "^5.2.1"
+    "react-router-dom": "^5.2.1",
+    "react-spring": "^9.2.4"
   },
   "devDependencies": {
     "@babel/core": "^7.15.0",
