@@ -18,20 +18,21 @@ const BirdProfile = (props) => {
   const [map, setMap] = useState(false);
   const [button, setButton] = useState(false);
 
-  const regionCode = props.region || "US-RI";
+  const regionCode = props.region || "RI";
   const speciesCode = props.species || "cangoo";
   const birdName = props.birdName || "Branta canadensis";
   const user = props.userID || 1;
 
   // //get recent observation of bird
   useEffect(() => {
-    axios.get(`https://api.ebird.org/v2/data/obs/${regionCode}/recent/${speciesCode}`, {
+    axios.get(`https://api.ebird.org/v2/data/obs/US-${regionCode}/recent/${speciesCode}`, {
       headers: {
         'X-eBirdApiToken': EBIRD_TOKEN
       }
     })
       .then((result) => {
         var result2 = compileCoordinates(result.data);
+        // console.log('lats and longs', result2)
         setLocation(result2);
         setBird(result.data);
       })
