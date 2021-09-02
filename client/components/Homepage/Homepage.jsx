@@ -16,6 +16,7 @@ const Homepage = ({currentUser, location}) => {
   //   reset: true,
   //   // delay: 1500,
   // })
+  console.log('here', currentUser);
 
   return (
     <div className="home-container">
@@ -28,7 +29,8 @@ const Homepage = ({currentUser, location}) => {
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
-          <Map styleWidth={60} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={6}/>
+          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={6}/>
+          <div className="birds-nearby-container"></div>
         </div>
         </div>
         <div className="mini-info-container">

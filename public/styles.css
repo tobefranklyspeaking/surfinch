@@ -179,10 +179,25 @@ html, body {
 }
 
 .mini-map-container {
-  background:  #91948d;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  height: 300px;
+  /* background:  #91948d;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+  height: 390px;
   text-align: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.birds-nearby-container {
+  background: #e9e1ce;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  height: 390px;
+  width: 200px;
+  justify-self: center;
+}
+
+.birds-nearby-container:hover {
+  background:rgba(0, 0, 0, 0.1);
 }
 
 /* PROFILE SECTION */
