@@ -18,7 +18,6 @@ import BirdProfile from './Bird-Profile/BirdProfile.jsx';
 import regions from './Shared/RegionCode.js';
 
 firebase.default.initializeApp(firebaseConfig);
-// var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
 export const AuthContext = React.createContext(null);
 

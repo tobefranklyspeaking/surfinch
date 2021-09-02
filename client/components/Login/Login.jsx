@@ -35,7 +35,7 @@ const Login = () => {
         Auth.setLoggedIn(true);
         axios.get(`/user/${email}`)
           .then((res) => {
-            //console.log('response data', res.data);
+            console.log('response data', res.data);
             Auth.setCurrentUser(res.data[0])
           })
           .catch((err) => console.log('login err', err))

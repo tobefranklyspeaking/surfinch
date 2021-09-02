@@ -7,7 +7,7 @@ import Map from '../Shared/Map.jsx';
 
 
 const Homepage = ({currentUser, location}) => {
-  var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
+  //var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
 
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
