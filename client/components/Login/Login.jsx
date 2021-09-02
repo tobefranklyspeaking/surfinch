@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Logo from '/public/img/Logo.png';
 import SignUp from './SignUp.jsx';
-import { AuthContext } from '../App.jsx';
 import { Link, Switch, useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../App.jsx';
 import firebase from 'firebase';
 require('firebase/auth');
+
 import axios from 'axios';
 
 
@@ -16,6 +18,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
 
   const Auth = useContext(AuthContext);
+
   let history = useHistory();
 
   // /********************************************* */
@@ -54,8 +57,8 @@ const Login = () => {
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      console.log('whats this inside login?', user);
-      Auth.setCurrentUser(user);
+      // console.log('whats this inside login?', user);
+      // Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])

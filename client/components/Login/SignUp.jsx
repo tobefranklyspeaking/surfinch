@@ -44,10 +44,13 @@ const SignUp = (props) => {
         .then(res => {
           if (res.user) {
             // WE NEED TO ADD THE AVATAR FUNCTIONALITY HERE
-            let user = { 'email': email, 'name': name, pic: '' };
-            axios.post('/newUser')
+            let user = { 'email': email, 'name': name, pic: 'eagle', color: '#c8994d'  };
+            axios.post('/newUser', user)
               .then((result) => {
                 user.userId = result.data.insertId;
+                console.log(result.data)
+              })
+              .then(() => {
                 Auth.setCurrentUser(user);
               })
               .catch((err) => console.log('signup err', err))

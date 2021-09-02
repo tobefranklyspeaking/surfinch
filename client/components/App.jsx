@@ -77,7 +77,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>

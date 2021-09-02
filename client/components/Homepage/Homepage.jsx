@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 
 import Avatar from '../Shared/Avatar.jsx';
@@ -7,10 +7,18 @@ import Map from '../Shared/Map.jsx';
 import LocalBirds from './LocalBirds.jsx';
 import { EBIRD_TOKEN } from '/config';
 
+import { AuthContext } from '../App.jsx';
+import firebase from 'firebase';
+require('firebase/auth');
+
 const Homepage = ({ currentUser, location }) => {
   //var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
   const [top10Birds, setTop10Birds] = useState([]);
   const [top10Loc, setTop10Loc] = useState([]);
+
+  const Auth = useContext(AuthContext);
+
+  console.log(Auth);
 
   const sampleLocbirddata = [
     {
@@ -102,14 +110,14 @@ const Homepage = ({ currentUser, location }) => {
 
 
 
-  console.log('here', currentUser);
+  console.log('i need some avatars!', currentUser);
 
   return (
     <div className="home-container">
       <div className="mini-home-container">
         <div className="mini-profile-container">
           <div className="usericon topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#C8994D'}
+            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
               avatar_pic={currentUser.avatar_pic || 'crane'} />
           </div>
           <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
