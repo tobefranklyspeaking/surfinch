@@ -15,7 +15,7 @@ const DisplayMap = (props) => {
   const currentHeatMap = props.props.heatmapLayer;
 
 
-  console.log(currentUserData);
+  console.log(currentLocalBirdsData);
 
   return (
     <GoogleMap
@@ -32,6 +32,10 @@ const DisplayMap = (props) => {
         onClick={() => {
           setSelectedBird(bird);
         }}
+        icon={{
+          url: 'assets/pin.svg',
+          scaledSize: new window.google.maps.Size(25, 25)
+        }}
         />
         ))}
         {currentFriendData &&
@@ -45,6 +49,10 @@ const DisplayMap = (props) => {
         onClick={() => {
           setSelectedBird(bird);
         }}
+        icon={{
+          url: 'assets/group.svg',
+          scaledSize: new window.google.maps.Size(25, 25)
+        }}
         />
         ))}
         {currentLocalBirdsData &&
@@ -57,6 +65,16 @@ const DisplayMap = (props) => {
         }}
         onClick={() => {
           setSelectedBird(bird);
+        }}
+        icon={{
+          url: 'assets/localBirdRed.svg',
+          scaledSize: new window.google.maps.Size(25, 25)
+          // path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW,
+          //       scale: 5,
+          //       strokeWeight: 2,
+          //       fillColor: '#009933',
+          //       fillOpacity: 1,
+          //       rotation: 0
         }}
         />
         ))}
@@ -72,7 +90,7 @@ const DisplayMap = (props) => {
           <div>bird details
             {selectedBird.bird_name && <h2>{selectedBird["bird_name"]}</h2>}
            {selectedBird.bird_notes &&  <p>{selectedBird["bird_notes"]}</p>}
-           {selectedBird.bird_pics &&  <img src={selectedBird["bird_pics"]} alt="Smiley face" />}
+           {selectedBird.bird_pics &&  <img src={selectedBird["bird_pics"]} alt="bird pic" />}
            {selectedBird.comName &&  <h2>{selectedBird["comName"]}</h2>}
            {selectedBird.sciName &&  <p>Scientific Name: {selectedBird["sciName"]}</p>}
            {selectedBird.locName &&  <p>Location: {selectedBird["locName"]}</p>}
