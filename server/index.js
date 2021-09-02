@@ -10,6 +10,7 @@ const { updateBird } = require('./models/updateBird.js')
 const { getUserInfo } = require('./models/getUserInfo');
 const { createBird, getEntries } = require('./models/birdEntries');
 const { getStats } = require('./models/getStats.js');
+const { incrementCount } = require('./models/incrementCount');
 
 const port = 3333;
 app.use(express.json());
@@ -27,13 +28,16 @@ app.post('/newUser', postNewUser);
 app.get('/user/:email', getUserInfo);
 
 // get stats from the site
-app.get('/stats', getStats);
+app.get('/stats/:username', getStats);
 
 //get users saved birds info
 app.get('/userbirds/:userid', getUsersBirdInfo);
 
 //post a bird by user
 app.post('/bird', postUserBird);
+
+// increment the login and count for a user
+app.put('/incrementCount', incrementCount);
 
 app.put('./updateBird', updateBird);
 
