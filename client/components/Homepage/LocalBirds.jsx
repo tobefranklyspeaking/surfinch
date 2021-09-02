@@ -1,4 +1,5 @@
 import React from 'react';
+import { Switch, Link } from 'react-router-dom';
 
 const LocalBirds = ({top10Birds}) => {
   return (
@@ -6,8 +7,12 @@ const LocalBirds = ({top10Birds}) => {
       {top10Birds.map((bird) => {
         return (
           <div className="local-bird">
-            <p className="toobig">{bird.comName}</p>
-            <p><i>({bird.sciName})</i></p>
+             <a onClick={() => {}}>
+               <Switch><Link to="/birdProfile">
+                 <p className="toobig">{bird.comName}</p>
+                 <p className="smol"><i>({bird.sciName})</i></p>
+               </Link></Switch>
+              </a>
           </div>
         )
       })}

@@ -14,6 +14,16 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #fcfaf7;
+}
+
+a:hover {
+  color: #E5E7E9;
+
+}
+
 html, body {
   width: 100vw;
   min-height: 100vh;
@@ -82,7 +92,8 @@ html, body {
   /* background: rgb(184,164,164);
   background: linear-gradient(90deg, rgba(184,164,164,1) 0%, rgba(184,164,164,  1) 29%, rgba(158,142,142,1) 100%); */
   /* background: #263D23; */
-  background: linear-gradient(180deg, rgba(109,113,103,1) 6%, rgba(174,190,154,1) 37%, rgba(182,193,170,1) 50%, rgba(140,148,130,1) 64%, rgba(106,110,101,1) 88%);
+  background: linear-gradient(180deg, rgba(109,113,103,1) 6%, rgba(174,190,154,1) 37%,
+  rgba(182,193,170,1) 50%, rgba(140,148,130,1) 64%, rgba(106,110,101,1) 88%);
   background-size: 200% 200%;
   animation: colorful 15s ease-in-out infinite;
 }
@@ -120,9 +131,6 @@ span.homeNav:hover {
 } */
 
 
-
-
-
 /*--HOME PAGE--*/
 .home-container {
   display: grid;
@@ -143,20 +151,25 @@ span.homeNav:hover {
 
 .mini-profile-container {
   text-align: center;
+  padding: 30px;
   /* background:  rgba(94, 104, 38, .7); */
+  /* background: #E5E7E9;
   background: rgb(233,225,206);
-  background: linear-gradient(360deg, rgba(233,225,206,1) 0%, rgba(226,220,206,1) 29%, rgba(168,172,162,1) 100%);
+  background: linear-gradient(360deg, rgba(233,225,206,1) 20%, rgba(226,220,206,1) 49%, rgb(165, 170, 159) 100%); */
+  background: rgb(229,231,233);
+background: linear-gradient(347deg, rgba(229,231,233,1) 0%, rgba(226,220,206,1) 58%, rgba(168,172,162,1) 97%);
   height: 400px;
 }
 
 .mini-profile-container:hover {
-  background:rgba(0, 0, 0, 0.1);
+  /* background:rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(180deg, rgba(229,231,233,.8) 0%, rgba(226,220,206,.8) 58%, rgba(168,172,162,.8) 97%);
 }
 
 .mini-info-container {
   /* background: rgb(166,172,159);
   background: linear-gradient(360deg, rgba(166,172,159,1) 0%, rgba(175,179,171,  1) 29%, rgba(168,172,162,1) 100%); */
-  background: #e9e1ce;
+  background: #E5E7E9;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 700px;
   width: 400px;
@@ -189,9 +202,9 @@ span.homeNav:hover {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.usericon {
+/* .usericon {
   margin: 30px;
-}
+} */
 
 .descriptiontag1 {
   grid-column: 2/3;
@@ -231,9 +244,9 @@ span.homeNav:hover {
 }
 
 .local-bird {
-  background: #e9ab27;
+  background: #c8994d;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
   font-size: 12;
 }
 /* .birds-nearby-container:hover {
@@ -242,6 +255,10 @@ span.homeNav:hover {
 p.toobig {
   font-size: 13;
   font-weight: bold;
+}
+
+p.smol {
+  margin-bottom: 10px;
 }
 
 /* PROFILE SECTION */
@@ -272,7 +289,7 @@ p.toobig {
 }
 
 .avatar-img {
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
 }
 
 .profile-avatar {
