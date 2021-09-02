@@ -31,7 +31,6 @@ html, body {
   /* justify-content: flex-start; */
   height: 100vh;
   width: 100vw;
-  /* position: relative; */
 }
 
 .big-page-container {
@@ -58,7 +57,7 @@ html, body {
   margin-left: 4.5rem;
   margin-top: 0px;
   height: 100%;
-  width: 100vw;
+  /* width: 100vw; */
   background: #fcfaf7;
   /* background: #fffbf5; */
   /* background: linear-gradient(360deg, rgba(233,218,196,1) 5%, rgba(250,235,212,1) 59%, rgba(255,253,250,1) 100%); */
@@ -103,35 +102,55 @@ li.nav-item {
   margin-bottom: 30px;
 }
 
-/* li.nav-home {
+li.nav-home {
   margin-bottom: 30px;
 }
 
 li.nav-home:hover {
   margin-bottom: 30px;
-  background: green;
-} */
-
-
-/* span.homeNav {
-  background: gray;
-  transform: translateX(40px);
-  width: 50px;
-  height: 20px;
-  margin-left: 60px;
+  height: auto;
+  background: #898f83;
 }
 
-span.homeNav:hover {
-  background: #CCD1D1 ;
-  transform: translateX(40px);
-  width: 50px;
-  height: 20px;
-  margin-left: 60px;
-} */
+li.nav-profile {
+  margin-bottom: 30px;
+}
 
+li.nav-profile:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
 
+li.nav-entry {
+  margin-bottom: 30px;
+}
 
+li.nav-entry:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
 
+li.nav-bprofile {
+  margin-bottom: 30px;
+}
+
+li.nav-bprofile:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
+
+li.nav-logout {
+  margin-bottom: 30px;
+}
+
+li.nav-logout:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
 
 /*--HOME PAGE--*/
 .home-container {
