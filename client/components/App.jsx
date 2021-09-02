@@ -30,6 +30,7 @@ const App = () => {
   const history = useHistory();
 
   console.log('location object', location)
+  console.log(currentUser)
 
   //This useEffect is for location purposes for all maps + bird entry
   //form address. Because this api is time/performance intensive,
@@ -43,11 +44,12 @@ const App = () => {
 
       axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lng}&format=json`)
         .then(results => {
-          setLocation({'street': results.data.address.house_number + " " + results.data.address.road,
-          'city': results.data.address.city,
-          'state': regions[results.data.address.state],
-          'lat': lat,
-          'lng': lng
+          setLocation({
+            'street': results.data.address.house_number + " " + results.data.address.road,
+            'city': results.data.address.city,
+            'state': regions[results.data.address.state],
+            'lat': lat,
+            'lng': lng
           })
         })
         .catch(error => { console.log(error); });
@@ -71,7 +73,7 @@ const App = () => {
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
       <div className="boolean">
-      {JSON.stringify(isLoggedIn)}
+        {JSON.stringify(isLoggedIn)}
       </div>
       <div className="main-container">
         <Router>
@@ -79,32 +81,32 @@ const App = () => {
           <div className="big-page-container">
             {!isLoggedIn ?
               <div className="unidentified-container">
-              <Route exact path="/">
-                <Redirect to="/login" />
-              </Route>
-              <Route exact path="/login">
-                <Login setCurrentUser={setCurrentUser} />
-              </Route>
-              <Route exact path="/signup">
-                <SignUp setCurrentUser={setCurrentUser} />
-              </Route>
+                <Route exact path="/">
+                  <Redirect to="/login" />
+                </Route>
+                <Route exact path="/login">
+                  <Login setCurrentUser={setCurrentUser} />
+                </Route>
+                <Route exact path="/signup">
+                  <SignUp setCurrentUser={setCurrentUser} />
+                </Route>
               </div> :
               <Route>
-              <div className="page-container">
-              <Route exact path="/home">
-                <Homepage currentUser={currentUser} location={location}/>
+                <div className="page-container">
+                  <Route exact path="/home">
+                    <Homepage currentUser={currentUser} location={location} />
+                  </Route>
+                  <Route path="/user-profile">
+                    <Profile currentUser={currentUser} location={location} />
+                  </Route>
+                  <Route path="/bird-entry">
+                    <BirdEntry currentUser={currentUser} location={location} />
+                  </Route>
+                  <Route path="/BirdProfile">
+                    <BirdProfile currentUser={currentUser} />
+                  </Route>
+                </div>
               </Route>
-              <Route path="/user-profile">
-                <Profile currentUser={currentUser} location={location}/>
-              </Route>
-              <Route path="/bird-entry">
-                <BirdEntry currentUser={currentUser} location={location} />
-              </Route>
-              <Route path="/BirdProfile">
-                <BirdProfile currentUser={currentUser} />
-              </Route>
-              </div>
-            </Route>
             }
           </div>
         </Router>
