@@ -5,7 +5,7 @@ const LocalBirds = ({top10Birds}) => {
     <>
       {top10Birds.map((bird) => {
         return (
-          <div className="local-bird">
+          <div key={bird.speciesCode} className="local-bird">
             <h4>{bird.comName}</h4>
             <p><i>({bird.sciName})</i></p>
           </div>
