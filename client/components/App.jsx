@@ -4,6 +4,7 @@ let firebase = require('firebase/app');
 import { firebaseConfig } from '/client/components/Login/firebase.config.js';
 import axios from 'axios';
 import { LOC_TOKEN } from '/config';
+import { EBIRD_TOKEN } from '/config.js';
 
 // SHARED COMPONENTS
 import NavBar from './Shared/NavBar.jsx';
@@ -23,20 +24,17 @@ export const AuthContext = React.createContext(null);
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({username: 'Guest'});
-  // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
+  const [currentUser, setCurrentUser] = useState({ username: 'Guest' });
   const [birdEntries, setBirdEntries] = useState([]);
   const [location, setLocation] = useState({});
-
+  const [allBirds, setAllBirds] = useState([]);
   const history = useHistory();
+  // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
 
   console.log('location object', location)
   console.log(currentUser)
 
-  //This useEffect is for location purposes for all maps + bird entry
-  //form address. Because this api is time/performance intensive,
-  //if we call it at the initialization of app.jsx it will save
-  //other components time to make the necessary api call (or renders).
+  //LOCATION IQ API CALL for lats/longs and region codes
   useEffect(() => {
     navigator.geolocation.getCurrentPosition((position) => {
 
@@ -58,6 +56,20 @@ const App = () => {
     axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); })
   }, []);
+
+  //EBIRD API CALL for list of every single mfing bird in existence
+  useEffect(() => {
+    axios.get(`https://api.ebird.org/v2/ref/taxonomy/ebird?locale=en&fmt=json`, {
+      headers: {
+        'X-eBirdApiToken': EBIRD_TOKEN
+      }
+    })
+      .then((result) => {
+        // console.log('all birds api call', result.data);
+        setAllBirds(result.data)
+      })
+      .catch(error => { console.log('There was an error retrieving data from API, ', error); })
+  }, [])
 
 
   //login & redirect (routing things)
@@ -100,7 +112,7 @@ const App = () => {
               <Route>
                 <div className="page-container">
                   <Route exact path="/home">
-                    <Homepage currentUser={currentUser} location={location} />
+                    <Homepage currentUser={currentUser} location={location} allBirds={allBirds} />
                   </Route>
                   <Route path="/user-profile">
                     <Profile currentUser={currentUser} location={location} />

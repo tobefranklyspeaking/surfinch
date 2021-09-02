@@ -8,6 +8,7 @@ import Map from '../Shared/Map.jsx';
 import LocalBirds from './LocalBirds.jsx';
 import { EBIRD_TOKEN } from '/config';
 
+
 const Homepage = ({currentUser, location}) => {
 
   const [top10Birds, setTop10Birds] = useState([]);
