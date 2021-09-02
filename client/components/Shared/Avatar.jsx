@@ -2,8 +2,8 @@ import React from 'react';
 
 const Avatar = (props) => {
   return (
-    <div className='rounded-circle' style={{ width: props.size, height: props.size, backgroundColor: props.color }}>
-      <img style={{ width: 75, height: 75 }} src={require('../../../public/assets/crane.svg')}></img>
+    <div className='avatar-img rounded-circle' style={{ width: props.size, height: props.size, backgroundColor: props.color }}>
+      <img className='svg-image' style={{ width: props.size - 20, height: props.size - 20 }} src={require(`../../../public/assets/${props.avatar_pic}.svg`)}></img>
     </div >
   );
 }

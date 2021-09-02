@@ -18,6 +18,8 @@ const Login = () => {
   const Auth = useContext(AuthContext);
   let history = useHistory();
 
+  // /********************************************* */
+
   const googleSignInPopup = provider => {
     var provider = new firebase.auth.GoogleAuthProvider();
     // [START auth_google_signin_redirect]
@@ -52,10 +54,9 @@ const Login = () => {
   }
 
   useEffect(() => {
-    const unsubscribe =
-    firebase.auth().onAuthStateChanged(user => {
+    const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       console.log('whats this?', user);
-      //Auth.setCurrentUser(user);
+      Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])
@@ -71,7 +72,7 @@ const Login = () => {
         Auth.setLoggedIn(true);
         axios.get(`/user/${email}`)
           .then((res) => {
-            console.log('response data', res);
+            console.log('response data', res.data);
             Auth.setCurrentUser(res.data[0])
           })
           .catch((err) => console.log('login err', err))
