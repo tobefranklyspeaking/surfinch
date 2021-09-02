@@ -4,10 +4,57 @@ import axios from 'axios';
 import Avatar from '../Shared/Avatar.jsx';
 import NavBar from '../Shared/NavBar.jsx';
 import Map from '../Shared/Map.jsx';
-
+import LocalBirds from './LocalBirds.jsx';
+import { EBIRD_TOKEN } from '/config';
 
 const Homepage = ({currentUser, location}) => {
-  var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
+  //var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
+  const [top10Birds, setTop10Birds] = useState([]);
+  const [top10Loc, setTop10Loc] = useState([]);
+  console.log(currentUser)
+  const sampleLocbirddata = [
+    {
+        speciesCode: "rthhum",
+        comName: "Ruby-throated Hummingbird",
+        sciName: "Archilochus colubris",
+        locId: "L9682819",
+        locName: "7211 McKamy Boulevard, Dallas, Texas, US (32.984, -96.782)",
+        obsDt: "2021-09-01 17:36",
+        howMany: 1,
+        coordinates: [32.9836112, -96.7820043],
+        obsValid: true,
+        obsReviewed: false,
+        locationPrivate: true,
+        subId: "S94050257"
+    },
+    {
+        speciesCode: "yebcuc",
+        comName: "Yellow-billed Cuckoo",
+        sciName: "Coccyzus americanus",
+        locId: "L1935350",
+        locName: "Back Yard",
+        obsDt: "2021-09-01 14:45",
+        howMany: 1,
+        coordinates: [32.8006406, -96.7647243],
+        obsValid: true,
+        obsReviewed: false,
+        locationPrivate: true,
+        subId: "S94044366"
+    },
+    {
+        speciesCode: "eursta",
+        comName: "European Starling",
+        sciName: "Sturnus vulgaris",
+        locId: "L16065128",
+        locName: "El Centro Campus Dallas College",
+        obsDt: "2021-09-01 10:48",
+        howMany: 1,
+        coordinates: [32.7802336, -96.8061208],
+        obsValid: true,
+        obsReviewed: false,
+        locationPrivate: true,
+        subId: "S94032980"
+    }]
 
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
@@ -16,6 +63,45 @@ const Homepage = ({currentUser, location}) => {
   //   reset: true,
   //   // delay: 1500,
   // })
+
+  useEffect(() => {
+    axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${parseFloat(location.lat)}&lng=${parseFloat(location.lng)}&sort=date`, {
+      headers: {
+        'X-eBirdApiToken': EBIRD_TOKEN
+      }})
+      .then((result) => {
+        //console.log('BIRD!!!', result.data);
+        let top10 = result.data.slice(0, 10);
+        setTop10Birds(top10);
+        console.log(top10);
+        let temp = [];
+        top10.map((bird) => {
+          temp.push({
+            speciesCode: bird.speciesCode,
+            comName: bird.comName,
+            sciName: bird.sciName,
+            locId: bird.locId,
+            locName: bird.locName,
+            obsDt: bird.obsDt,
+            howMany: bird.howMany,
+            coordinates: [bird.lat, bird.lng],
+            obsValid: bird.obsValid,
+            obsReviewed: bird.obsReviewed,
+            locationPrivate: bird.locationPrivate,
+            subId: bird.subId
+        });
+        })
+        console.log('BIRD DATA FOR PINS', temp);
+        setTop10Loc(temp);
+      })
+      .catch((err) => {
+        console.log('wah', err);
+      })
+  }, [location])
+
+
+
+  console.log('here', currentUser);
 
   return (
     <div className="home-container">
@@ -28,7 +114,10 @@ const Homepage = ({currentUser, location}) => {
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
-          <Map styleWidth={60} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={6}/>
+          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc}/>
+          <div className="birds-nearby-container">
+            <LocalBirds top10Birds={top10Birds}/>
+          </div>
         </div>
         </div>
         <div className="mini-info-container">

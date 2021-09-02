@@ -7,7 +7,7 @@ import { AuthContext } from '../App.jsx';
 import firebase from 'firebase';
 require('firebase/auth');
 
-const CreateBirdForm = () => {
+const CreateBirdForm = ({ location }) => {
   const Auth = useContext(AuthContext);
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
@@ -21,28 +21,25 @@ const CreateBirdForm = () => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
+  // const [currentUser, setCurrentUser] = useState({ userID: 1 })
 
   console.log(Auth, Auth.currentUser);
   let currentUser = Auth.currentUser;
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
+    if (location) {
+      console.log(location)
+      // setStreet(location.street);
+      // setCity(location.city);
+      // setSt(location.state);
+    }
 
-      var lat = position.coords.latitude.toString();
-      var lon = position.coords.longitude.toString();
+  }, [currentUser, location]);
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
-        .then(results => {
-          console.log('fsdfk', results.data)
-          setStreet(results.data.address.house_number + " " + results.data.address.road);
-          setCity(results.data.address.city);
-          setSt(results.data.address.state);
-        })
-        .catch(error => { console.log(error); });
-
-    });
+  useEffect(() => {
     axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
+
   }, []);
 
   var handleSearchBarChange = (event) => {
