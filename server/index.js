@@ -27,7 +27,7 @@ app.post('/newUser', postNewUser);
 app.get('/user/:email', getUserInfo);
 
 // get stats from the site
-app.get('/stats', getStats);
+app.get('/stats/:username', getStats);
 
 //get users saved birds info
 app.get('/userbirds/:userid', getUsersBirdInfo);
