@@ -2,7 +2,7 @@ var mysql = require('mysql2');
 
 var connection = mysql.createConnection({
   user: 'root',
-  password: '', // or whatever your password is
+  password: 'password', // or whatever your password is
   database: 'surfinch'
 });
 
@@ -11,3 +11,4 @@ connection.connect(function () {
 });
 
 module.exports = connection;
+
