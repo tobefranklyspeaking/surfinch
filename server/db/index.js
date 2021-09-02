@@ -3,6 +3,7 @@ var mysql = require('mysql2');
 var connection = mysql.createConnection({
   user: 'student',
   password: 'student', // or whatever your password is
+
   database: 'surfinch'
 });
 
