@@ -333,9 +333,9 @@ p.smol {
   text-align: center;
 }
 
-.prof-av-circle {
+/* .prof-av-circle {
 
-}
+} */
 
 .profile-badges {
   flex: 1 0 calc(20% - 10px);

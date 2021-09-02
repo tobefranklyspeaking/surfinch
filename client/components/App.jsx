@@ -24,7 +24,7 @@ export const AuthContext = React.createContext(null);
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({ username: 'Guest' });
+  const [currentUser, setCurrentUser] = useState({});
   const [birdEntries, setBirdEntries] = useState([]);
   const [location, setLocation] = useState({});
   const [allBirds, setAllBirds] = useState([]);
@@ -32,7 +32,7 @@ const App = () => {
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
 
   console.log('location object', location)
-  console.log(currentUser)
+  console.log('ohhhh currentUser', currentUser)
 
   //LOCATION IQ API CALL for lats/longs and region codes
   useEffect(() => {
@@ -53,9 +53,9 @@ const App = () => {
         })
         .catch(error => { console.log(error); });
     });
-    axios.get(`/entries/${currentUser.userID}`)
+    currentUser && axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); })
-  }, []);
+  }, [currentUser]);
 
   //EBIRD API CALL for list of every single mfing bird in existence
   useEffect(() => {
@@ -78,7 +78,7 @@ const App = () => {
   }, [isLoggedIn])
 
   useEffect(() => {
-    console.log('user has changed');
+    console.log('state update rerender');
   }, [currentUser])
 
 
@@ -89,7 +89,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>
