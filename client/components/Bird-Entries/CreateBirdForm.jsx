@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-
+import { LOC_TOKEN } from '/config.js';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
 
@@ -10,6 +10,7 @@ const CreateBirdForm = ({ }) => {
   const [filteredSet, setFilteredSet] = useState([]);
 
   const [species, setSpecies] = useState('');
+  const [date, setDate] = useState();
   const [fileUpload, setFileUpload] = useState();
 
   const [notes, setNotes] = useState('');
@@ -17,7 +18,6 @@ const CreateBirdForm = ({ }) => {
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
   const [currentUser, setCurrentUser] = useState({ userID: 1 })
-  var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
   useEffect(() => {
     console.log(currentUser)
@@ -26,7 +26,7 @@ const CreateBirdForm = ({ }) => {
       var lat = position.coords.latitude.toString();
       var lon = position.coords.longitude.toString();
 
-      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
+      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
         .then(results => {
           setStreet(results.data.address.house_number + " " + results.data.address.road);
           setCity(results.data.address.city);
@@ -54,7 +54,7 @@ const CreateBirdForm = ({ }) => {
     event.preventDefault();
     var form = document.getElementById('create-entry')
     var formData = new FormData(form);
-    axios.get(`https://us1.locationiq.com/v1/search.php?key=${auth}&city=${city}&state=${st}&format=json`)
+    axios.get(`https://us1.locationiq.com/v1/search.php?key=${LOC_TOKEN}&city=${city}&state=${st}&format=json`)
       .then(results => {
         var lat = results.data[0].lat;
         var lon = results.data[0].lon;
@@ -73,15 +73,14 @@ const CreateBirdForm = ({ }) => {
       })
       .then(() => {
         axios.post('/createBird', formData)
-          .then(results => { console.log(formData) })
-          .catch(error => { if (error) console.log(error); });
-      })
-      .then(() => {
-        axios.get(`/entries/${currentUser.userID}`)
-          .then(results => { setBirdEntries(results.data) })
-        // .then(results => { setFilteredSet(results.data) })
+          .then(results => {
+            console.log(formData);
+            axios.get(`/entries/${currentUser.userID}`)
+              .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
+          })
       })
       .catch(error => { if (error) console.log(error); });
+
   }
 
   var handleFileUpload = (event) => {
@@ -111,7 +110,7 @@ const CreateBirdForm = ({ }) => {
 
           <div className="form-group col-6">
             <label className="control-label" htmlFor="">Date</label>
-            <input type="date" name="date" className="form-control" onChange={() => { handleInputChange(event, setDate) }} />
+            <input type="date" name="date" className="form-control" required onChange={() => { handleInputChange(event, setDate) }} />
           </div>
         </div>
         <div className="form-group row align-items-end">
@@ -145,7 +144,7 @@ const CreateBirdForm = ({ }) => {
 
 
         <div>
-          <input className="form-control" type="submit" />
+          <input className="btn form-control" type="submit" />
         </div>
       </form >
 
