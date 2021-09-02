@@ -17,16 +17,16 @@ const CreateBirdForm = ({ currentUser, location }) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  // const [currentUser, setCurrentUser] = useState({ userID: 1 })
 
   useEffect(() => {
-    console.log(location)
-    console.log(currentUser)
+    // console.log(location)
+    // console.log(currentUser)
+    console.log(birdEntries[0])
     if (location) {
       console.log(location)
-      // setStreet(location.street);
-      // setCity(location.city);
-      // setSt(location.state);
+      setStreet(location.street);
+      setCity(location.city);
+      setSt(location.state);
     }
 
   }, [currentUser, location]);
@@ -39,7 +39,6 @@ const CreateBirdForm = ({ currentUser, location }) => {
 
   var handleSearchBarChange = (event) => {
     var value = event.target.value;
-    // setSearchBar(event.target.value);
     var pattern = new RegExp(`\^${value}`, 'i');
 
     var filteredResults = birdEntries.filter(function (value) {
@@ -95,59 +94,59 @@ const CreateBirdForm = ({ currentUser, location }) => {
   }
 
   return (
-    <div className="container" id="bird-entry-container">
-      <SearchBar handleSearchBarChange={handleSearchBarChange} />
-      <BirdEntryList birdEntries={filteredSet} handleCardClick={handleCardClick} />
+    <div className="container d-flex flex-column justify-content-center" id="bird-entry-container">
+      <div>
+        <SearchBar handleSearchBarChange={handleSearchBarChange} />
+        <BirdEntryList birdEntries={filteredSet} handleCardClick={handleCardClick} />
 
-      <form id="create-entry" onSubmit={handleSubmit}>
-        <div className="form-group row align-items-end">
-          <div className="form-group col-6">
-            <label className="control-label" htmlFor="">Species</label>
-            <input className="form-control" type="text" name="bird" value={species} onChange={() => { handleInputChange(event, setSpecies) }} />
+        <form id="create-entry" onSubmit={handleSubmit}>
+          <div className="form-group row align-items-end">
+            <div className="form-group col-6">
+              <label className="control-label" htmlFor="">Species</label>
+              <input className="form-control" type="text" name="bird" value={species} onChange={() => { handleInputChange(event, setSpecies) }} />
+            </div>
+
+            <div className="form-group col-6">
+              <label className="control-label" htmlFor="">Date</label>
+              <input type="date" name="date" className="form-control" required onChange={() => { handleInputChange(event, setDate) }} />
+            </div>
+          </div>
+          <div className="form-group row align-items-end">
+            <div className="form-group col-6">
+              <input className="form-control" type="file" name="birdPhoto" id="fileUpload" accept="image/*" onChange={() => { handleFileUpload(event) }} />
+            </div>
+            <div className="form-group col-6">
+              <label className="control-label" htmlFor="">Street</label>
+              <input className="form-control" name="street_sighted" type="text" onChange={() => { handleInputChange(event, setStreet) }} value={street} />
+            </div>
           </div>
 
-          <div className="form-group col-6">
-            <label className="control-label" htmlFor="">Date</label>
-            <input type="date" name="date" className="form-control" required onChange={() => { handleInputChange(event, setDate) }} />
+
+          <div className="form-group row">
+            <div className="col-6">
+              <label className="control-label" htmlFor="">City</label>
+              <input className="form-control" type="text" name="city_sighted" onChange={() => { handleInputChange(event, setCity) }} value={city} />
+
+            </div>
+            <div className="col-6">
+              <label className="control-label" htmlFor="">State</label>
+              <input className="form-control" type="text" name="state_sighted" onChange={() => { handleInputChange(event, setSt) }} value={st} />
+
+            </div>
           </div>
-        </div>
-        <div className="form-group row align-items-end">
-          <div className="form-group col-6">
-            <input className="form-control" type="file" name="birdPhoto" id="fileUpload" accept="image/*" onChange={() => { handleFileUpload(event) }} />
+
+          <div className="form-group">
+            <label className="control-label" htmlFor="">Notes</label>
+            <textarea className="form-control" name="notes" onChange={() => { handleInputChange(event, setNotes) }}></textarea>
           </div>
-          <div className="form-group col-6">
-            <label className="control-label" htmlFor="">Street</label>
-            <input className="form-control" type="text" onChange={() => { handleInputChange(event, setStreet) }} value={street} />
+
+
+          <div>
+            <input className="btn form-control" type="submit" />
           </div>
-        </div>
-
-
-        <div className="form-group row">
-          <div className="col-6">
-            <label className="control-label" htmlFor="">City</label>
-            <input className="form-control" type="text" name="city_sighted" onChange={() => { handleInputChange(event, setCity) }} value={city} />
-
-          </div>
-          <div className="col-6">
-            <label className="control-label" htmlFor="">State</label>
-            <input className="form-control" type="text" name="state_sighted" onChange={() => { handleInputChange(event, setSt) }} value={st} />
-
-          </div>
-        </div>
-
-        <div className="form-group">
-          <label className="control-label" htmlFor="">Notes</label>
-          <textarea className="form-control" name="notes" onChange={() => { handleInputChange(event, setNotes) }}></textarea>
-        </div>
-
-
-        <div>
-          <input className="btn form-control" type="submit" />
-        </div>
-      </form >
-
-    </div >
-
+        </form >
+      </div >
+    </div>
   )
 };
 

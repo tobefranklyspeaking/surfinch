@@ -22,8 +22,16 @@ firebase.default.initializeApp(firebaseConfig);
 export const AuthContext = React.createContext(null);
 
 const App = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({
+    avatar_background: "#c8994d",
+    avatar_pic: "crane",
+    email: "shanna@admin.com",
+    entries: 8,
+    logins: 2,
+    userID: 6
+  })
+  const [isLoggedIn, setLoggedIn] = useState(true);
+  // const [currentUser, setCurrentUser] = useState({});
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
   const [birdEntries, setBirdEntries] = useState([]);
   const [location, setLocation] = useState({});
