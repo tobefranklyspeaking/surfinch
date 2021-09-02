@@ -10,6 +10,7 @@ const fileUpload = require('express-fileupload');
 const { updateBird } = require('./models/updateBird.js')
 const { getUserInfo } = require('./models/getUserInfo');
 const { createBird, getEntries } = require('./models/birdEntries');
+const { getStats } = require('./models/getStats.js');
 
 const port = 3333;
 app.use(express.json());
@@ -25,6 +26,8 @@ app.post('/newUser', postNewUser);
 
 // get a particular user's profile info
 app.get('/user/:userid', getUserInfo);
+// get stats from the site
+app.get('/stats', getStats);
 
 //get users saved birds info
 app.get('/userbirds/:userid', getUsersBirdInfo);
