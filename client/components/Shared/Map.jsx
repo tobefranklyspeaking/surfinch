@@ -11,7 +11,9 @@ const DisplayMap = (props) => {
   const currentCenter = props.props.center;
   const currentUserData = props.props.userData;
   const currentFriendData = props.props.friendData;
+  const currentLocalBirdsData = props.props.localBirdsData;
   const currentHeatMap = props.props.heatmapLayer;
+
 
   console.log(currentUserData);
 
@@ -45,6 +47,19 @@ const DisplayMap = (props) => {
         }}
         />
         ))}
+        {currentLocalBirdsData &&
+        currentLocalBirdsData.map((bird, index) => (
+        <Marker
+        key={index}
+        position={{
+          lat: bird.coordinates[0],
+          lng: bird.coordinates[1]
+        }}
+        onClick={() => {
+          setSelectedBird(bird);
+        }}
+        />
+        ))}
       {selectedBird && (
         <InfoWindow position={{
           lat: selectedBird.coordinates[0],
@@ -55,8 +70,13 @@ const DisplayMap = (props) => {
         }}
         >
           <div>bird details
-            <h2>{selectedBird["bird_name"]}</h2>
-            <p>{selectedBird["bird_notes"]}</p>
+            {selectedBird.bird_name && <h2>{selectedBird["bird_name"]}</h2>}
+           {selectedBird.bird_notes &&  <p>{selectedBird["bird_notes"]}</p>}
+           {selectedBird.bird_pics &&  <img src={selectedBird["bird_pics"]} alt="Smiley face" />}
+           {selectedBird.comName &&  <h2>{selectedBird["comName"]}</h2>}
+           {selectedBird.sciName &&  <p>Scientific Name: {selectedBird["sciName"]}</p>}
+           {selectedBird.locName &&  <p>Location: {selectedBird["locName"]}</p>}
+           {selectedBird.howMany &&  <p>How many seen: {selectedBird["howMany"]}</p>}
           </div>
         </InfoWindow>
       )}
@@ -79,6 +99,7 @@ const Map = (props) => {
   const defaultCenter = props.defaultCenter || { lat: 39.8283, lng: -98.5795 };
   const userMarkers = props.userMarkers || null;
   const friendMarkers = props.friendMarkers || null;
+  const localBirdsMarkers = props.localBirdsMarkers || null;
   const heatMap = props.heatMap || null;
   const styleWidth = props.styleWidth || 100;
   const styleHeight = props.styleHeight || 100;
@@ -94,6 +115,7 @@ const Map = (props) => {
         center={defaultCenter}
         userData={userMarkers}
         friendData={friendMarkers}
+        localBirdsData={localBirdsMarkers}
         heatmapLayer={heatMap}
       />
     </div>
@@ -121,7 +143,7 @@ userMarker: array of objects [{
   coordinates: [lat(int), long(int)]
 }]
 
-friendMarker: array of objects [{
+friendMarkers: array of objects [{
   friend_name: text,
   bird_name: string,
   bird_notes: string,
@@ -134,6 +156,21 @@ friendMarker: array of objects [{
   bird_notes: string,
   bird_pics: string,
   coordinates: [lat(int), long(int)]
+}]
+
+localBirdsMarker :  array of objects [{
+  speciesCode: text,
+  comName: text,
+  sciName: text,
+  locId: int,
+  locName: text
+  obsDt: text,
+  howMany: int,
+  coordinates: [lat(int), long(int)],
+  obsValid: bool,
+  obsReviewed: bool,
+  locationPrivate: bool,
+  subId: text
 }]
 
 heatMap: array of arrays:
@@ -156,6 +193,49 @@ example:
     coordinates: [32.820989, -96.791009]
   }];
 
+  const sample locbirddata = [
+    {
+        speciesCode: "rthhum",
+        comName: "Ruby-throated Hummingbird",
+        sciName: "Archilochus colubris",
+        locId: "L9682819",
+        locName: "7211 McKamy Boulevard, Dallas, Texas, US (32.984, -96.782)",
+        obsDt: "2021-09-01 17:36",
+        howMany: 1,
+        coordinates: [32.9836112, -96.7820043],
+        obsValid: true,
+        obsReviewed: false,
+        locationPrivate: true,
+        subId: "S94050257"
+    },
+    {
+        speciesCode: "yebcuc",
+        comName: "Yellow-billed Cuckoo",
+        sciName: "Coccyzus americanus",
+        locId: "L1935350",
+        locName: "Back Yard",
+        obsDt: "2021-09-01 14:45",
+        howMany: 1,
+        coordinates: [32.8006406, -96.7647243],
+        obsValid: true,
+        obsReviewed: false,
+        locationPrivate: true,
+        subId: "S94044366"
+    },
+    {
+        speciesCode: "eursta",
+        comName: "European Starling",
+        sciName: "Sturnus vulgaris",
+        locId: "L16065128",
+        locName: "El Centro Campus Dallas College",
+        obsDt: "2021-09-01 10:48",
+        howMany: 1,
+        coordinates: [32.7802336, -96.8061208],
+        obsValid: true,
+        obsReviewed: false,
+        locationPrivate: true,
+        subId: "S94032980"
+    }]
   const heatData = [[32.7769, -96.7970], [32.7767, -96.7970], [32.7790, -96.7970], [32.7794, -96.7970]];
 
 <div><Map styleWidth={50} styleHeight={50} userMarkers={sampleFriendData} heatMap={heatData}/></div>
