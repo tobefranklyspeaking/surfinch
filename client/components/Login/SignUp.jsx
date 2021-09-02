@@ -22,7 +22,6 @@ const SignUp = (props) => {
     e.preventDefault();
     setError('');
     setLoading(true);
-    console.log(name);
     if (provider) {
       firebase
         .auth()
@@ -30,8 +29,7 @@ const SignUp = (props) => {
         .currentUser(name)
         .then(res => {
           history.push('/login');
-          console.log('inside create', name)
-
+          //console.log('inside create', name)
           return res.user.updateProfile({
             displayName: name
           })
@@ -46,15 +44,14 @@ const SignUp = (props) => {
         .then(res => {
           if (res.user) {
             let user = { 'email': email, 'name': name, pic: '' };
-            console.log(res.user);
             axios.post('/newUser', user)
               .then((result) => {
-                console.log('woohoo!', result.data);
-                Auth.setCurrentUser(user.name);
+                user.userId = result.data.insertId;
+                console.log('AWH YEAH', user);
+                Auth.setCurrentUser(user);
               })
               .catch((err) => console.log('signup err', err))
             history.push('/login');
-            console.log('inside create', name)
             return res.user.updateProfile({
               displayName: name
             })
@@ -64,7 +61,6 @@ const SignUp = (props) => {
           setError(err.message)
         });
     }
-
     setLoading(false)
   };
 
