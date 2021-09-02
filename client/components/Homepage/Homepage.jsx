@@ -99,6 +99,10 @@ const Homepage = ({currentUser, location}) => {
       })
   }, [location])
 
+  useEffect(() => {
+    console.log('hi')
+  }, [currentUser])
+
 
 
   console.log('here', currentUser);
@@ -123,15 +127,18 @@ const Homepage = ({currentUser, location}) => {
         <div className="mini-info-container">
           <h3 className="toptitle">TOP BIRD WATCHERS</h3>
           <div className="topbirdersicon">
-            <Avatar size={75} color='#c8994d' />
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
           </div>
           <div className="descriptiontag1">Mr. Raymonds</div>
           <div className="topbirdersicon">
-            <Avatar size={75} color='#c8994d' />
+            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
           </div>
           <div className="descriptiontag2">Smitty</div>
           <div className="topbirdersicon">
-            <Avatar size={75} color='#c8994d' />
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
           </div>
           <div className="descriptiontag3">Regionald</div>
         </div>
