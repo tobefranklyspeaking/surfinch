@@ -3,11 +3,11 @@ import axios from 'axios';
 import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
 import { GOOGLE_TOKEN } from '../../../config.js';
-import { EBIRD_TOKEN  } from '../../../config.js';
+import { EBIRD_TOKEN } from '../../../config.js';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
 
-const BirdProfile = () => {
+const BirdProfile = (props) => {
   const [bird, setBird] = useState([]);
   const [location, setLocation] = useState([]);
   const [notes, setNotes] = useState([]);
@@ -18,9 +18,14 @@ const BirdProfile = () => {
   const [map, setMap] = useState(false);
   const [button, setButton] = useState(false);
 
+  const regionCode = props.region || "US-RI";
+  const speciesCode = props.species || "cangoo";
+  const birdName = props.birdName || "Branta canadensis";
+  const user = props.userID || 1;
+
   // //get recent observation of bird
   useEffect(() => {
-    axios.get('https://api.ebird.org/v2/data/obs/US-RI/recent/cangoo', {
+    axios.get(`https://api.ebird.org/v2/data/obs/${regionCode}/recent/${speciesCode}`, {
       headers: {
         'X-eBirdApiToken': EBIRD_TOKEN
       }
@@ -30,9 +35,7 @@ const BirdProfile = () => {
         setLocation(result2);
         setBird(result.data);
       })
-      .catch(error => {
-        console.log('There was an error retrieving data from API, ', error);
-      })
+      .catch(error => { console.log('There was an error retrieving data from API, ', error); })
   }, [])
 
   //get bird info
@@ -42,29 +45,24 @@ const BirdProfile = () => {
     var params = {
       action: "query",
       list: "search",
-      srsearch: "Branta canadensis",
+      srsearch: `${birdName}`,
       format: "json"
     };
-
     url = url + "?origin=*";
     Object.keys(params).forEach(function (key) { url += "&" + key + "=" + params[key]; });
-
     axios.get(url)
       .then((result) => {
         var data = result.data.query.search[0].snippet
         var text = data.replace(/(<([^>]+)>)/ig, '')
         setTax(text);
       })
-      .catch((error) => {
-        console.log('error from Wiki api', error)
-      });
-
+      .catch((error) => { console.log('error from Wiki api', error) });
   }, [])
 
 
   //get user notes
   // useEffect(() => {
-  //   axios.get('/userbirds/${currentUser.userID}')
+  //   axios.get(`/userbirds/${user}`)
   //   .then((result) => {
   //     console.log(result);
   //     // setNotes(result)
@@ -119,15 +117,15 @@ const BirdProfile = () => {
         </div>
         <div className="viewer">
           {photo ? <div className='birdProfilePic'>
-            <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="Responsive image"></img>
+            <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="canada goose"></img>
           </div> : null}
           {map ? <div className='heatMap'>
-            <Map styleHeight={40} styleWidth={40} defaultCenter={{ lat: location[0][0], lng: location[0][1] }} heatMap={location} />
+            <Map styleHeight={40} styleWidth={40} defaultZoom={ 7 } defaultCenter={{ lat: location[0][0], lng: location[0][1] }} heatMap={location} />
           </div> : null}
           {show ? <div className="birdNotes">
             <h4 className='notesTitle'> My Notes</h4>
             <hr className="dash"></hr>
-            <p className='notesText'>To be fair, you have to have a very high IQ to understand Rick and Morty. The humor is extremely subtle, and without a solid grasp of theoretical physics most of the jokes will go over a typical viewer's head. There's also Rick's nihilistic outlook, which is deftly woven into his characterisation - his personal philosophy draws heavily from Narodnaya Volya literature, for instance. The fans understand this stuff; they have the Dan Harmon's genius unfolds itself on their television screens. What fools... how I pity them. And yes by the way, I DO have a Rick and Morty tattoo. And no, you cannot see it. It's for the ladies' eyes only- And even they have to demonstrate that they're within 5 IQ points of my own (preferably lower) beforehand.</p>
+            <p className='notesText'>YOOOO, WOW LOVE THIS BIRD OMG! SO GREAT! CANADA GOOSE! LETS GO BABY!</p>
           </div> : null}
         </div>
       </div>
