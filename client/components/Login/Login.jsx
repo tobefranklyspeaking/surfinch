@@ -5,6 +5,7 @@ import { AuthContext } from '../App.jsx';
 import { Link, Switch, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 require('firebase/auth');
+import axios from 'axios';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -17,7 +18,8 @@ const Login = () => {
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      Auth.setCurrentUser(user);
+      console.log('whats this?', user);
+      //Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])
@@ -31,12 +33,17 @@ const Login = () => {
         setError("");
         setLoading(true);
         Auth.setLoggedIn(true);
+        axios.get(`/user/${email}`)
+          .then((res) => {
+            //console.log('response data', res.data);
+            Auth.setCurrentUser(res.data[0])
+          })
+          .catch((err) => console.log('login err', err))
         history.push('/home');
       })
       .catch((err) => {
         setError(err.message)
       });
-
     setLoading(false);
   };
 

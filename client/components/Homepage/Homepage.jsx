@@ -9,24 +9,6 @@ import Map from '../Shared/Map.jsx';
 const Homepage = ({currentUser, location}) => {
   var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
 
-  //console.log('loc', location)
-
-  ///if (location.lat)
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition((position) => {
-
-  //     var lat = position.coords.latitude;
-  //     var lng = position.coords.longitude;
-
-  //     setLocation({lat: lat, lng: lng});
-  //     // setLocation({lat: 42.13284, lng: -72.7875727});
-  //     setLocationLoaded(true);
-  //     console.log('locINSIDE', lat, lng);
-
-  //   })}, [locationLoaded, location]);
-
-  //console.log('loc', location)
-
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
   //   from: { opacity: 0, marginTop: 150 },
@@ -42,7 +24,7 @@ const Homepage = ({currentUser, location}) => {
         <div className="usericon topbirdersicon">
         <Avatar className="usericon topbirdersicon" size={75} color='#c8994d' />
         </div>
-          <h2>Welcome, {currentUser.displayName}! Thanks for flyin in today!</h2>
+          <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">

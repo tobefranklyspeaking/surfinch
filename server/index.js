@@ -2,9 +2,8 @@ const express = require('express');
 const app = express();
 const path = require('path');
 
-// const { getUserInfo } = require('./models/getUserInfo');
 const { getUsersBirdInfo } = require('./models/getUsersBirdInfo');
-const { postNewUser } = require('./models/postNewUser')
+const { postNewUser } = require('./models/postNewUser');
 const { postUserBird } = require('./models/postUserBird');
 const fileUpload = require('express-fileupload');
 const { updateBird } = require('./models/updateBird.js')
@@ -25,7 +24,8 @@ app.use(express.static('public'));
 app.post('/newUser', postNewUser);
 
 // get a particular user's profile info
-app.get('/user/:userid', getUserInfo);
+app.get('/user/:email', getUserInfo);
+
 // get stats from the site
 app.get('/stats', getStats);
 
