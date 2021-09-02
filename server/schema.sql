@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS surfinch;
+
 CREATE DATABASE surfinch;
 
 USE surfinch;
@@ -59,3 +61,12 @@ CREATE TABLE bird_data (
   extinct_year TEXT
 );
 
+INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Admin', 'email@admin.com', 'goose', 'pink', 5, 29);
+
+INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('AJP', 'email@admin.com', 'eagle', 'pink', 17, 14);
+
+INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shay', 'email@admin.com', 'hummingbird', 'pink', 2, 3);
+
+INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Jimmy', 'email@admin.com', 'tropical', 'pink', 0, 7);
+
+INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Robert', 'email@admin.com', 'crane', 'pink', 8, 2);
