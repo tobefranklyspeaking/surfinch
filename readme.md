@@ -15,7 +15,7 @@ forms and maps. Data will be stored to each user's profile and will be accessibl
 
 ## Creating Surfinch App from Source Code
 
-- [ ] Obtain the code for this app: [Surfinch](https://github.com/Kauri-2021/Surfinch)
+- [ ] Obtain the code for this app: [Surfinch](https://github.com/Kauri-2021/Surfinch | width=100)
 
 ### Download or Generate Essential Items
 
