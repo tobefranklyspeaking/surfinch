@@ -38,3 +38,18 @@
         {/* <img src={Logo} width='20%' height='20%' alt='finch' /> */}
         {/* </div> */}
       </div>
+
+
+
+
+<span class="bubble">
+<a title="GitHub" href="https://github.com/{username}" target="_blank " rel="noopener noreferrer">
+  <div>
+    <i class="icon fab fa-github fa-2x"></i>
+  </div>
+  <div>
+    <span>Github</span>
+  </div>
+</a>
+</span>
+
