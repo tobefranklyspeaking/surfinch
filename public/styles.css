@@ -222,21 +222,27 @@ span.homeNav:hover {
 }
 
 .birds-nearby-container {
-  background: #e9e1ce;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* background: #f3b118; */
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
   height: 390px;
-  width: 250px;
+  width: 280px;
   justify-self: center;
   overflow: scroll;
 }
 
 .local-bird {
-  background: #ccc5b6;
+  background: #e9ab27;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  margin-bottom: 10px;
+  font-size: 12;
 }
 /* .birds-nearby-container:hover {
   background:rgba(0, 0, 0, 0.1);
 } */
+p.toobig {
+  font-size: 13;
+  font-weight: bold;
+}
 
 /* PROFILE SECTION */
 .profile-parent {
