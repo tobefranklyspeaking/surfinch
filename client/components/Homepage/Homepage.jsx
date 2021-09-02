@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { AuthContext } from '../App.jsx';
-require('firebase/auth');
 
 import Avatar from '../Shared/Avatar.jsx';
 import NavBar from '../Shared/NavBar.jsx';
