@@ -14,6 +14,7 @@ const DisplayMap = (props) => {
   const currentHeatMap = props.props.heatmapLayer;
 
   console.log(currentUserData);
+  console.log('currentCenter', currentCenter);
 
   return (
     <GoogleMap
