@@ -6,10 +6,7 @@
 
 
 
-# Surfinch
-
-<img  src="https://i.imgur.com/6pDMm0T.png"  width="100"  height="auto">
-
+# <center> Surfinch <center> <img  src="https://i.imgur.com/6pDMm0T.png"  width="100"  height="auto">
 
 
 This app is for bird watchers (birders) to track sightings and compare with other birders in your Surfinch network.
