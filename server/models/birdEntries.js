@@ -9,8 +9,8 @@ module.exports = {
 
     var body = req.body;
 
-    var queryString = 'INSERT INTO user_birds (bird, city_sighted, state_sighted, notes, latitude, longitude, birdpic_url, userID) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
-    var params = [body.bird, body.city_sighted, body.state_sighted, body.notes, body.latitude, body.longitude, body.birdpic_url, req.body.userID];
+    var queryString = 'INSERT INTO user_birds (bird, city_sighted, state_sighted, notes, latitude, longitude, birdpic_url, userID, date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)';
+    var params = [body.bird, body.city_sighted, body.state_sighted, body.notes, body.latitude, body.longitude, body.birdpic_url, req.body.userID, req.body.date];
 
     db.query(queryString, params, function(err, results, fields) {
       if (err) console.log(err)
