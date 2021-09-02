@@ -7,36 +7,9 @@ import Avatar from '../Shared/Avatar.jsx';
 import NavBar from '../Shared/NavBar.jsx';
 import Map from '../Shared/Map.jsx';
 
-var auth = 'pk.d7d064c84a94d6bb8ce9a8fbca7cc4d0';
 
-const Homepage = (props) => {
-  const Auth = useContext(AuthContext);
-  const [birdEntries, setBirdEntries] = useState([]);
-
+const Homepage = ({currentUser, location}) => {
   var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
-  console.log(Auth);
-  console.log('uuuussaaahhhh', Auth.currentUser);
-
-  // useEffect(() => {
-  //   //console.log(currentUser)
-  //   navigator.geolocation.getCurrentPosition((position) => {
-
-  //     var lat = position.coords.latitude.toString();
-  //     var lon = position.coords.longitude.toString();
-
-  //     axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
-  //       .then(results => {
-  //         console.log('location results', results.data)
-  //         // setStreet(results.data.address.house_number + " " + results.data.address.road);
-  //         // setCity(results.data.address.city);
-  //         // setSt(results.data.address.state);
-  //       })
-  //       .catch(error => { console.log('errr', error); });
-
-  //   });
-  //   axios.get(`/entries/${props.currentUser.userID}`)
-  //     .then(results => { setBirdEntries(results.data); console.log('user bird stuff?', results.data)})
-  // }, []);
 
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
@@ -53,11 +26,11 @@ const Homepage = (props) => {
         <div className="usericon topbirdersicon">
         <Avatar className="usericon topbirdersicon" size={75} color='#c8994d' />
         </div>
-          <h2>Welcome, {Auth.currentUser.displayName}! Thanks for flyin in today!</h2>
+          <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
-          <Map styleWidth={60} styleHeight={40} />
+          <Map styleWidth={60} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={6}/>
         </div>
         </div>
         <div className="mini-info-container">

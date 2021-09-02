@@ -3,6 +3,7 @@ import { AuthContext } from "../App.jsx";
 import { Link, useHistory } from 'react-router-dom';
 import firebase from 'firebase';
 require('firebase/auth');
+import axios from 'axios';
 
 
 const SignUp = (props) => {
@@ -14,14 +15,13 @@ const SignUp = (props) => {
   const [passConfirm, setPassConfirm] = useState('');
   const [name, setName] = useState('');
   const [error, setError] = useState('');
-  const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
 
   const handleForm = (e, provider) => {
     e.preventDefault();
     setError('');
     setLoading(true);
-    console.log(name);
     if (provider) {
       firebase
         .auth()
@@ -29,8 +29,7 @@ const SignUp = (props) => {
         .currentUser(name)
         .then(res => {
           history.push('/login');
-          console.log('inside create', name)
-
+          //console.log('inside create', name)
           return res.user.updateProfile({
             displayName: name
           })
@@ -44,11 +43,15 @@ const SignUp = (props) => {
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
           if (res.user) {
-            let user = { 'email': email, 'name': name };
-            console.log(res.user);
-            Auth.setCurrentUser(user.name);
+            let user = { 'email': email, 'name': name, pic: '' };
+            axios.post('/newUser', user)
+              .then((result) => {
+                user.userId = result.data.insertId;
+                console.log('AWH YEAH', user);
+                Auth.setCurrentUser(user);
+              })
+              .catch((err) => console.log('signup err', err))
             history.push('/login');
-            console.log('inside create', name)
             return res.user.updateProfile({
               displayName: name
             })
@@ -58,70 +61,57 @@ const SignUp = (props) => {
           setError(err.message)
         });
     }
-
     setLoading(false)
   };
 
 
   return (
-    <div className='loginContainer'>
-      <div className="headerLogin">
-        <h2 className='text-white'>Surfinch</h2>
+    <div className="signUpContainer">
+      <div className="signUpHeader">
+      <img src="https://i.imgur.com/6pDMm0T.png" width='20px' height='30px' alt='finch' />
       </div>
-      <div className='secondaryContainerLogin'>
-        {error && <div className="alert" role="alert">
-          Failed to sign up: {error}
-        </div>}
-        <div className="loginBox">
-          <div className="loginTitle">
-            <h3 className="loginText">Create Account</h3>
-          </div>
-          <div className="loginFormContainer">
-            <form className='loginForm' onSubmit={e => handleForm(e)}>
-              <small className="smallText">Full Name</small>
-              <input className="emailInput"
-                value={email}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <small className="smallText">Your Email</small>
-              <input className="passwordInput"
-                onChange={(e) => setEmail(e.target.value)}
-                value={password}
-              />
-              <small className="smallText">Your Password</small>
-              <input className="passwordInput"
-                onChange={(e) => setPassword(e.target.value)}
-                value={password}
-                type='password'
-              />
-              <small className="smallText">Confirm Password</small>
-              <input className="passwordInput"
-                onChange={(e) => setPassConfirm(e.target.value)}
-                value={password}
-                type='password'
-              />
-              <hr />
-              <div className="buttonContainer">
-                {/* <button className="googleBtn" type="button">
-                  <img
-                    src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
-                    alt="logo"
-                  />
-                  <div className="withGoogle">Sign Up With Google</div>
-                </button> */}
-                <button className="loginSubmit" disabled={loading} type="submit">Submit</button>
-              </div>
-            </form>
-          </div>
-          <div>
-            <Link to="/Login">
-              <button className="signUp" type="button">
-                Back to Login?
-              </button>
-            </Link>
+      <div className="signUpBlock">
+      {error && <div className="registerAlert" role="alert">
+            Failed to create account: {error}
+          </div>}
+        <div className="register">
+          <h4 className="signUpText">Sign Up</h4>
+            <input
+              type="text"
+              className="registerInput"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+            />
+            <input
+              type="text"
+              className="registerInput"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
+            />
+            <input
+              type="password"
+              className="registerInput"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <input
+              type="password"
+              className="registerInput"
+              value={passConfirm}
+              onChange={(e) => setPassConfirm(e.target.value)}
+              placeholder="Verify Password"
+            />
+            <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
+              Register
+            </button>
+            <div className="AccountLink">
+              Already have an account? <Link to="/login">Login</Link> now.
+            </div>
           </div>
         </div>
-      </div>
     </div>
   );
 };

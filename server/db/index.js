@@ -6,7 +6,7 @@ var connection = mysql.createConnection({
   database: 'surfinch'
 });
 
-connection.connect(function() {
+connection.connect(function () {
   console.log('Connected to db');
 });
 

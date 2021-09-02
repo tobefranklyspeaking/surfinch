@@ -28,6 +28,7 @@ const CreateBirdForm = ({ }) => {
 
       axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${auth}&lat=${lat}&lon=${lon}&format=json`)
         .then(results => {
+          console.log('fsdfk', results.data)
           setStreet(results.data.address.house_number + " " + results.data.address.road);
           setCity(results.data.address.city);
           setSt(results.data.address.state);
