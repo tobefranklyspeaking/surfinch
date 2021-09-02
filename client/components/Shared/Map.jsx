@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { GoogleMap, withScriptjs, withGoogleMap, Marker, InfoWindow } from "react-google-maps";
 import HeatmapLayer from "react-google-maps/lib/components/visualization/HeatmapLayer";
-import API_KEY from "../../../config.js";
+import { GOOGLE_TOKEN } from "../../../config.js";
 
 
 const DisplayMap = (props) => {
@@ -13,8 +13,8 @@ const DisplayMap = (props) => {
   const currentFriendData = props.props.friendData;
   const currentHeatMap = props.props.heatmapLayer;
 
-  console.log(currentUserData);
-  console.log('in the thing', currentCenter);
+  // console.log(currentUserData);
+  // console.log('in the thing', currentCenter);
 
   return (
     <GoogleMap
@@ -75,7 +75,7 @@ const DisplayMap = (props) => {
 const WrappedMap = withScriptjs(withGoogleMap(props => (<DisplayMap props={props}/>)));
 
 const Map = (props) => {
-  console.log('hii', props)
+  // console.log('hii', props)
 
 
   const defaultZoom = props.defaultZoom || 5;
@@ -86,12 +86,12 @@ const Map = (props) => {
   const styleWidth = props.styleWidth || 100;
   const styleHeight = props.styleHeight || 100;
 
-  console.log('here i am', defaultCenter);
+  // console.log('here i am', defaultCenter);
 
 
   return (
     <div style={{ width: `${styleWidth}vw`, height: `${styleHeight}vh` }}>
-      <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,visualization,drawing,places&key=${API_KEY}`}
+      <WrappedMap googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,visualization,drawing,places&key=${GOOGLE_TOKEN}`}
         loadingElement={<div style={{ height: "100%" }} />}
         containerElement={<div style={{ height: "100%" }} />}
         mapElement={<div style={{ height: "100%" }} />}

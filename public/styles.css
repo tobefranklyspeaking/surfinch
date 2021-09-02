@@ -541,7 +541,7 @@ button.googleBtn {
   align-items: center;
   width: 230px;
   height: 40px;
-  background: #9fa69f;
+  background: #b0b8b0;
   border: none;
   margin-left: 70px;
   margin-bottom: 15px;
@@ -564,7 +564,7 @@ button.googleBtn:hover {
 button.loginSubmit {
   width: 230px;
   height: 40px;
-  background: #9fa69f;
+  background: #b0b8b0;
   border: none;
   margin-left: 70px;
   margin-bottom: 15px;
@@ -613,3 +613,107 @@ small.poweredBY {
   color: #BDC3C7 ;
 }
 /**LOGIN CSS SECTION END */
+
+
+/**SIGN UP SECTION START */
+.signUpHeader {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(-45deg, rgba(109,113,103,1) 6%, rgba(174,190,154,1) 37%, rgba(182,193,170,1) 50%, rgba(140,148,130,1) 64%, rgba(106,110,101,1) 88%);
+  background-size: 200% 200%;
+  animation: colorful 15s ease-in-out infinite;
+}
+
+@keyframes colorful {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+.signUpContainer {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+  background: white;
+}
+
+.signUpBlock {
+  width: 100%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.register {
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 500px;
+  height: 450px;
+  background: #E5E7E9 ;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+input.registerInput {
+  margin: 10px;
+  width: 350px;
+  height: 40px;
+  padding: 5px;
+  /* border: none; */
+}
+
+button.registerBtn {
+  width: 230px;
+  height: 40px;
+  background: #b0b8b0;
+  border: none;
+  margin-left: 10px;
+  margin-bottom: 15px;
+}
+
+button.registerBtn:hover {
+  width: 230px;
+  height: 40px;
+  background: #606160;
+  border: none;
+  margin-left: 10px;
+  margin-bottom: 15px;
+  color: #E9DAC4;
+}
+
+.registerAlert {
+  position: relative;
+  width: auto;
+  height: 30px;
+  background: #F5B7B1;
+  color: #E74C3C;
+  font-weight: bold;
+  font-size: 15px;
+  margin-top: 30px;
+}
+
+h4.signUpText {
+  color: #85929E ;
+  font-weight: bold;
+}
+
+.AccountLink {
+  font-family:  'Almarai', sans-serif;
+  color: #566573;
+}
+/**SIGN UP SECTION END */

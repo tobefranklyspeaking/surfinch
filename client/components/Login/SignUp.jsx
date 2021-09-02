@@ -70,49 +70,53 @@ const SignUp = (props) => {
 
 
   return (
-    <>
-      <div className="register">
-        {error && <div className="alert alert-danger" role="alert">
-          Failed to create account: {error}
-        </div>}
-        <div className="register__container">
-          <input
-            type="text"
-            className="register__textBox"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            placeholder="Full Name"
-          />
-          <input
-            type="text"
-            className="register__textBox"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            placeholder="E-mail Address"
-          />
-          <input
-            type="password"
-            className="register__textBox"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-          <input
-            type="password"
-            className="register__textBox"
-            value={passConfirm}
-            onChange={(e) => setPassConfirm(e.target.value)}
-            placeholder="Verify Password"
-          />
-          <button disabled={loading} className="w-25" type="submit" onClick={handleForm}>
-            Register
-          </button>
-          <div>
-            Already have an account? <Link to="/login">Login</Link> now.
+    <div className="signUpContainer">
+      <div className="signUpHeader">
+      <img src="https://i.imgur.com/6pDMm0T.png" width='20px' height='30px' alt='finch' />
+      </div>
+      <div className="signUpBlock">
+      {error && <div className="registerAlert" role="alert">
+            Failed to create account: {error}
+          </div>}
+        <div className="register">
+          <h4 className="signUpText">Sign Up</h4>
+            <input
+              type="text"
+              className="registerInput"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+            />
+            <input
+              type="text"
+              className="registerInput"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
+            />
+            <input
+              type="password"
+              className="registerInput"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <input
+              type="password"
+              className="registerInput"
+              value={passConfirm}
+              onChange={(e) => setPassConfirm(e.target.value)}
+              placeholder="Verify Password"
+            />
+            <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
+              Register
+            </button>
+            <div className="AccountLink">
+              Already have an account? <Link to="/login">Login</Link> now.
+            </div>
           </div>
         </div>
-      </div>
-    </>
+    </div>
   );
 };
 

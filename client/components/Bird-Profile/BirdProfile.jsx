@@ -2,9 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
-import  API_KEY from '../../../config.js';
-import { API_TOKEN  } from '../../../config2.js';
-// import { useSpring, animated } from 'react-spring';
+import { GOOGLE_TOKEN } from '../../../config.js';
+import { EBIRD_TOKEN  } from '../../../config.js';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -23,7 +22,7 @@ const BirdProfile = () => {
   useEffect(() => {
     axios.get('https://api.ebird.org/v2/data/obs/US-RI/recent/cangoo', {
       headers: {
-        'X-eBirdApiToken': API_TOKEN
+        'X-eBirdApiToken': EBIRD_TOKEN
       }
     })
       .then((result) => {
