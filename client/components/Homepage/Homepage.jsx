@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Switch, Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Avatar from '../Shared/Avatar.jsx';
@@ -9,11 +10,144 @@ import { EBIRD_TOKEN } from '/config';
 
 
 const Homepage = ({currentUser, location}) => {
-  //var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
+
   const [top10Birds, setTop10Birds] = useState([]);
   const [top10Loc, setTop10Loc] = useState([]);
+  const [birdEntries, setBirdEntries] = useState([]);
 
-  const sampleLocbirddata = [
+  // const propz = useSpring({
+  //   to: { opacity: 1, marginTop: 0 },
+  //   from: { opacity: 0, marginTop: 150 },
+  //   config: { duration: 2000 },
+  //   reset: true,
+  //   // delay: 1500,
+  // })
+
+  // get entries
+  // format response
+  // send to map
+
+  // const sampleuserMarker = [{
+  //   bird_name: string,
+  //   bird_notes: string,
+  //   bird_pics: string,
+  //   coordinates: [lat(int), long(int)]
+  // },
+  // {
+  //   bird_name: string,
+  //   bird_notes: string,
+  //   bird_pics: string,
+  //   coordinates: [lat(int), long(int)]
+  // }]
+
+  useEffect(() => {
+    axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${parseFloat(location.lat)}&lng=${parseFloat(location.lng)}&sort=date`, {
+      headers: {
+        'X-eBirdApiToken': EBIRD_TOKEN
+      }})
+      .then((result) => {
+        //console.log('BIRD!!!', result.data);
+        let top10 = result.data.slice(0, 10);
+        setTop10Birds(top10);
+        console.log(top10);
+        let temp = [];
+        top10.map((bird) => {
+          temp.push({
+            speciesCode: bird.speciesCode,
+            comName: bird.comName,
+            sciName: bird.sciName,
+            locId: bird.locId,
+            locName: bird.locName,
+            obsDt: bird.obsDt,
+            howMany: bird.howMany,
+            coordinates: [bird.lat, bird.lng],
+            obsValid: bird.obsValid,
+            obsReviewed: bird.obsReviewed,
+            locationPrivate: bird.locationPrivate,
+            subId: bird.subId
+          });
+        })
+        setTop10Loc(temp);
+      })
+      .catch((err) => {
+        console.log('wah', err);
+      })
+  }, [location])
+
+  useEffect(() => {
+    axios.get(`/entries/${currentUser.userID}`)
+      .then((res) => {
+        console.log('wooo', res.data)
+        let temp2 = [];
+       res.data.map((entry) => {
+         temp2.push({
+          bird_name: entry.bird,
+          bird_notes: entry.notes,
+          bird_pics: entry.birdpic_url,
+          coordinates: [parseFloat(entry.latitude), parseFloat(entry.longitude)]
+         })
+       })
+       setBirdEntries(temp2);
+      })
+      .catch((err) => {
+        console.log('nooo', err)
+      })
+  }, [currentUser])
+
+
+
+  console.log('here', currentUser);
+
+  return (
+    <div className="home-container">
+      <div className="mini-home-container">
+        <div className="mini-profile-container">
+        <div className="usericon topbirdersicon">
+        <a>
+          <Switch><Link to="/user-profile">
+            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+          </Link></Switch>
+        </a>
+        </div>
+          <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
+          <div>more info go here</div>
+        </div>
+        <div className="mini-map-container">
+          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries}/>
+          <div className="birds-nearby-container">
+            <LocalBirds top10Birds={top10Birds}/>
+          </div>
+        </div>
+        </div>
+        <div className="mini-info-container">
+          <h3 className="toptitle">TOP BIRD WATCHERS</h3>
+          <div className="topbirdersicon">
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+          </div>
+          <div className="descriptiontag1">Mr. Raymonds</div>
+          <div className="topbirdersicon">
+            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+          </div>
+          <div className="descriptiontag2">Smitty</div>
+          <div className="topbirdersicon">
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+          </div>
+          <div className="descriptiontag3">Regionald</div>
+        </div>
+    </div>
+  )
+}
+
+export default Homepage;
+
+/*
+<div><Map styleWidth={50} styleHeight={50} userMarkers={sampleFriendData} heatMap={heatData}/></div>
+
+const sampleLocbirddata = [
     {
         speciesCode: "rthhum",
         comName: "Ruby-throated Hummingbird",
@@ -56,102 +190,6 @@ const Homepage = ({currentUser, location}) => {
         locationPrivate: true,
         subId: "S94032980"
     }]
-
-  // const propz = useSpring({
-  //   to: { opacity: 1, marginTop: 0 },
-  //   from: { opacity: 0, marginTop: 150 },
-  //   config: { duration: 2000 },
-  //   reset: true,
-  //   // delay: 1500,
-  // })
-
-  useEffect(() => {
-    axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${parseFloat(location.lat)}&lng=${parseFloat(location.lng)}&sort=date`, {
-      headers: {
-        'X-eBirdApiToken': EBIRD_TOKEN
-      }})
-      .then((result) => {
-        //console.log('BIRD!!!', result.data);
-        let top10 = result.data.slice(0, 10);
-        setTop10Birds(top10);
-        console.log(top10);
-        let temp = [];
-        top10.map((bird) => {
-          temp.push({
-            speciesCode: bird.speciesCode,
-            comName: bird.comName,
-            sciName: bird.sciName,
-            locId: bird.locId,
-            locName: bird.locName,
-            obsDt: bird.obsDt,
-            howMany: bird.howMany,
-            coordinates: [bird.lat, bird.lng],
-            obsValid: bird.obsValid,
-            obsReviewed: bird.obsReviewed,
-            locationPrivate: bird.locationPrivate,
-            subId: bird.subId
-        });
-        })
-        console.log('BIRD DATA FOR PINS', temp);
-        setTop10Loc(temp);
-      })
-      .catch((err) => {
-        console.log('wah', err);
-      })
-  }, [location])
-
-  useEffect(() => {
-    console.log('hi')
-  }, [currentUser])
-
-
-
-  console.log('here', currentUser);
-
-  return (
-    <div className="home-container">
-      <div className="mini-home-container">
-        <div className="mini-profile-container">
-        <div className="usericon topbirdersicon">
-        <Avatar size={75} color={currentUser.avatar_background || '#C8994D'}
-           avatar_pic={currentUser.avatar_pic || 'crane'} />
-        </div>
-          <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
-          <div>more info go here</div>
-        </div>
-        <div className="mini-map-container">
-          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc}/>
-          <div className="birds-nearby-container">
-            <LocalBirds top10Birds={top10Birds}/>
-          </div>
-        </div>
-        </div>
-        <div className="mini-info-container">
-          <h3 className="toptitle">TOP BIRD WATCHERS</h3>
-          <div className="topbirdersicon">
-          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </div>
-          <div className="descriptiontag1">Mr. Raymonds</div>
-          <div className="topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </div>
-          <div className="descriptiontag2">Smitty</div>
-          <div className="topbirdersicon">
-          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </div>
-          <div className="descriptiontag3">Regionald</div>
-        </div>
-    </div>
-  )
-}
-
-export default Homepage;
-
-/*
-<div><Map styleWidth={50} styleHeight={50} userMarkers={sampleFriendData} heatMap={heatData}/></div>
 
 const sampleFriendData = [{
     bird_name: "red bird",
