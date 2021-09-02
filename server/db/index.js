@@ -11,4 +11,3 @@ connection.connect(function () {
 });
 
 module.exports = connection;
-
