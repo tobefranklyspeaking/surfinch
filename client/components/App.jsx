@@ -23,7 +23,7 @@ export const AuthContext = React.createContext(null);
 
 const App = () => {
   const [isLoggedIn, setLoggedIn] = useState(false);
-  const [currentUser, setCurrentUser] = useState({});
+  const [currentUser, setCurrentUser] = useState({username: 'Guest'});
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
   const [birdEntries, setBirdEntries] = useState([]);
   const [location, setLocation] = useState({});
@@ -66,7 +66,7 @@ const App = () => {
   }, [isLoggedIn])
 
   useEffect(() => {
-    console.log('state update rerender');
+    console.log('user has changed');
   }, [currentUser])
 
 

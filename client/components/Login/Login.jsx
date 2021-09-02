@@ -65,7 +65,7 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       console.log('whats this?', user);
-      Auth.setCurrentUser(user);
+      //Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])
@@ -81,7 +81,7 @@ const Login = () => {
         Auth.setLoggedIn(true);
         axios.get(`/user/${email}`)
           .then((res) => {
-            console.log('response data', res.data);
+            console.log('response data', res);
             Auth.setCurrentUser(res.data[0])
           })
           .catch((err) => console.log('login err', err))
