@@ -67,4 +67,7 @@ INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entrie
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shay', 'Shay@admin.com', 'hummingbird', '#c8994d', 2, 3);
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Smitty', 'Smitty@admin.com', 'tropical', '#c8994d', 0, 7);
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Regionald', 'Regionald@admin.com', 'crane', '#c8994d', 8, 2);
+-- insert a bird to admin
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted) VALUES (1, 'Humming bird', NOW(), "/uploads/hummingbird.jpg", "I love this humming bird so much, look how cute!", "Cape Coral", 'Florida');
+
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shanna', 'shanna@admin.com', 'crane', '#c8994d', 8, 2);
