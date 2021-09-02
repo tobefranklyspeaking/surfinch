@@ -22,7 +22,7 @@ firebase.default.initializeApp(firebaseConfig);
 export const AuthContext = React.createContext(null);
 
 const App = () => {
-  const [isLoggedIn, setLoggedIn] = useState(false);
+  const [isLoggedIn, setLoggedIn] = useState(true);
   const [currentUser, setCurrentUser] = useState({});
 
   const history = useHistory();

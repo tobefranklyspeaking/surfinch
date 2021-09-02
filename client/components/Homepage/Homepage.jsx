@@ -14,7 +14,7 @@ const Homepage = (props) => {
   const [birdEntries, setBirdEntries] = useState([]);
 
   var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
-
+  console.log(Auth);
   console.log('uuuussaaahhhh', Auth.currentUser);
 
   // useEffect(() => {

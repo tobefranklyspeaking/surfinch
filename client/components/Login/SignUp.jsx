@@ -67,7 +67,6 @@ const SignUp = (props) => {
     <div className='loginContainer'>
       <div className="headerLogin">
         <h2 className='text-white'>Surfinch</h2>
-        {/* <img src="https://i.imgur.com/Cqy7EEY.png" width='20%' height='20%' alt='finch' /> */}
       </div>
       <div className='secondaryContainerLogin'>
         {error && <div className="alert" role="alert">
@@ -122,10 +121,8 @@ const SignUp = (props) => {
             </Link>
           </div>
         </div>
-
       </div>
     </div>
-
   );
 };
 

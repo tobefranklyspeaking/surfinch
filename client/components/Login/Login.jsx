@@ -13,8 +13,47 @@ const Login = () => {
   const [name, setName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false)
+
   const Auth = useContext(AuthContext);
   let history = useHistory();
+
+  // /********************************************* */
+  // var provider = new firebase.auth.GoogleAuthProvider();
+
+  // function googleSignInPopup(provider) {
+  //   // [START auth_google_signin_popup]
+  //   firebase.auth()
+  //     .signInWithPopup(provider)
+  //     .then((result) => {
+  //       /** @type {firebase.auth.OAuthCredential} */
+  //       var credential = result.credential;
+
+  //       // This gives you a Google Access Token. You can use it to access the Google API.
+  //       var token = credential.accessToken;
+  //       // The signed-in user info.
+  //       var user = result.user;
+  //       // ...
+  //     }).catch((error) => {
+  //       // Handle Errors here.
+  //       var errorCode = error.code;
+  //       var errorMessage = error.message;
+  //       // The email of the user's account used.
+  //       var email = error.email;
+  //       // The firebase.auth.AuthCredential type that was used.
+  //       var credential = error.credential;
+  //       // ...
+  //     });
+  //   // [END auth_google_signin_popup]
+  // }
+
+
+
+
+
+
+
+
+  /**************************************** */
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
@@ -59,7 +98,7 @@ const Login = () => {
         </div>}
         <div className="centerLogo">
           <div className="logoLogin">
-          <h2 className='text-white'>SURFINCH</h2>
+            <h2 className='text-white'>SURFINCH</h2>
             <img src="https://i.imgur.com/6pDMm0T.png" width='20%' height='20%' alt='finch' />
           </div>
           <div className="loginBox">
@@ -78,6 +117,7 @@ const Login = () => {
                 <input className="passwordInput"
                   onChange={(e) => setPassword(e.target.value)}
                   value={password}
+                  type='password'
                   placeholder="Password"
                 />
                 <hr />
