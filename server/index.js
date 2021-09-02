@@ -39,7 +39,7 @@ app.post('/bird', postUserBird);
 // increment the login and count for a user
 app.put('/incrementCount', incrementCount);
 
-app.put('./updateBird', updateBird);
+app.put('/updateBird', updateBird);
 
 app.post('/createBird', createBird);
 app.get('/entries/:userid', getEntries);
