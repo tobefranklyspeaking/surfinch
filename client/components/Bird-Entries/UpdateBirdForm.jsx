@@ -64,7 +64,9 @@ const UpdateBirdForm = ({ birdEntry }) => {
   }
 
   return (
-    <div>
+    <div className="updateFormContainer">
+      <h3 className="updateTitle">Update Bird Entry</h3>
+      <div className="updateTwo">
       <form id="update-entry" onSubmit={handleSubmit}>
         <div className="form-group row align-items-end">
           <div className="form-group col-6">
@@ -111,6 +113,7 @@ const UpdateBirdForm = ({ birdEntry }) => {
           <input className="btn form-control" type="submit" />
         </div>
       </form >
+      </div>
     </div>
 
   )

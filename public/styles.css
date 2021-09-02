@@ -14,6 +14,16 @@
   padding: 0;
 }
 
+a {
+  text-decoration: none;
+  color: #fcfaf7;
+}
+
+a:hover {
+  color: #E5E7E9;
+
+}
+
 html, body {
   width: 100vw;
   min-height: 100vh;
@@ -31,7 +41,6 @@ html, body {
   /* justify-content: flex-start; */
   height: 100vh;
   width: 100vw;
-  /* position: relative; */
 }
 
 .big-page-container {
@@ -58,7 +67,7 @@ html, body {
   margin-left: 4.5rem;
   margin-top: 0px;
   height: 100%;
-  width: 100vw;
+  /* width: 100vw; */
   background: #fcfaf7;
   /* background: #fffbf5; */
   /* background: linear-gradient(360deg, rgba(233,218,196,1) 5%, rgba(250,235,212,1) 59%, rgba(255,253,250,1) 100%); */
@@ -82,7 +91,8 @@ html, body {
   /* background: rgb(184,164,164);
   background: linear-gradient(90deg, rgba(184,164,164,1) 0%, rgba(184,164,164,  1) 29%, rgba(158,142,142,1) 100%); */
   /* background: #263D23; */
-  background: linear-gradient(180deg, rgba(109,113,103,1) 6%, rgba(174,190,154,1) 37%, rgba(182,193,170,1) 50%, rgba(140,148,130,1) 64%, rgba(106,110,101,1) 88%);
+  background: linear-gradient(180deg, rgba(109,113,103,1) 6%, rgba(174,190,154,1) 37%,
+  rgba(182,193,170,1) 50%, rgba(140,148,130,1) 64%, rgba(106,110,101,1) 88%);
   background-size: 200% 200%;
   animation: colorful 15s ease-in-out infinite;
 }
@@ -103,25 +113,55 @@ li.nav-item {
   margin-bottom: 30px;
 }
 
-/* span.homeNav {
-  background: gray;
-  transform: translateX(40px);
-  width: 50px;
-  height: 20px;
-  margin-left: 60px;
+li.nav-home {
+  margin-bottom: 30px;
 }
 
-span.homeNav:hover {
-  background: #CCD1D1 ;
-  transform: translateX(40px);
-  width: 50px;
-  height: 20px;
-  margin-left: 60px;
-} */
+li.nav-home:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
 
+li.nav-profile {
+  margin-bottom: 30px;
+}
 
+li.nav-profile:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
 
+li.nav-entry {
+  margin-bottom: 30px;
+}
 
+li.nav-entry:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
+
+li.nav-bprofile {
+  margin-bottom: 30px;
+}
+
+li.nav-bprofile:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
+
+li.nav-logout {
+  margin-bottom: 30px;
+}
+
+li.nav-logout:hover {
+  margin-bottom: 30px;
+  height: auto;
+  background: #898f83;
+}
 
 /*--HOME PAGE--*/
 .home-container {
@@ -143,20 +183,25 @@ span.homeNav:hover {
 
 .mini-profile-container {
   text-align: center;
+  padding: 30px;
   /* background:  rgba(94, 104, 38, .7); */
+  /* background: #E5E7E9;
   background: rgb(233,225,206);
-  background: linear-gradient(360deg, rgba(233,225,206,1) 0%, rgba(226,220,206,1) 29%, rgba(168,172,162,1) 100%);
+  background: linear-gradient(360deg, rgba(233,225,206,1) 20%, rgba(226,220,206,1) 49%, rgb(165, 170, 159) 100%); */
+  background: rgb(229,231,233);
+background: linear-gradient(347deg, rgba(229,231,233,1) 0%, rgba(226,220,206,1) 58%, rgba(168,172,162,1) 97%);
   height: 400px;
 }
 
 .mini-profile-container:hover {
-  background:rgba(0, 0, 0, 0.1);
+  /* background:rgba(0, 0, 0, 0.1); */
+  background: linear-gradient(180deg, rgba(229,231,233,.8) 0%, rgba(226,220,206,.8) 58%, rgba(168,172,162,.8) 97%);
 }
 
 .mini-info-container {
   /* background: rgb(166,172,159);
   background: linear-gradient(360deg, rgba(166,172,159,1) 0%, rgba(175,179,171,  1) 29%, rgba(168,172,162,1) 100%); */
-  background: #e9e1ce;
+  background: #E5E7E9;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 700px;
   width: 400px;
@@ -189,9 +234,9 @@ span.homeNav:hover {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.usericon {
+/* .usericon {
   margin: 30px;
-}
+} */
 
 .descriptiontag1 {
   grid-column: 2/3;
@@ -222,21 +267,31 @@ span.homeNav:hover {
 }
 
 .birds-nearby-container {
-  background: #e9e1ce;
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* background: #f3b118; */
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
   height: 390px;
-  width: 250px;
+  width: 280px;
   justify-self: center;
   overflow: scroll;
 }
 
 .local-bird {
-  background: #ccc5b6;
+  background: #c8994d;
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* margin-bottom: 10px; */
+  font-size: 12;
 }
 /* .birds-nearby-container:hover {
   background:rgba(0, 0, 0, 0.1);
 } */
+p.toobig {
+  font-size: 13;
+  font-weight: bold;
+}
+
+p.smol {
+  margin-bottom: 10px;
+}
 
 /* PROFILE SECTION */
 .profile-parent {
@@ -266,7 +321,7 @@ span.homeNav:hover {
 }
 
 .avatar-img {
-  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
 }
 
 .profile-avatar {
@@ -344,7 +399,7 @@ span.homeNav:hover {
 }
 
 .birdProfilePic {
-  margin: 10px 40px 10px 200px;
+  margin: 10px 40px 10px 150px;
   padding: 7px;
 }
 
@@ -363,6 +418,7 @@ span.homeNav:hover {
 
 h1.birdTitle {
   font-weight: bold;
+  color: #566573;
 }
 
 h3.scientific {
@@ -815,3 +871,29 @@ h4.signUpText {
   color: #566573;
 }
 /**SIGN UP SECTION END */
+
+
+
+/**UPDATE FORM */
+.updateFormContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.updateTwo {
+  margin-top: 80px;
+}
+
+h3.updateTitle {
+  margin-top: 30px;
+  font-family: 'Almarai', sans-serif;
+  font-weight: bold;
+  color: #566573;
+}
+
+
+/**UPDATE FORM END*/
