@@ -29,7 +29,7 @@ const Profile = (props) => {
         <div className="bird-nest">
           {fakeData.map((bird, i) => {
             return (
-              <div className='bird-nest-item'>
+              <div key={i} className='bird-nest-item'>
                 <Avatar size={75} pic={bird.pic} name={bird.name} color='red' />
               </div>
             );
