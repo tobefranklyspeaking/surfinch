@@ -6,6 +6,7 @@ USE surfinch;
 CREATE TABLE user_profile (
   userID INT NOT NULL AUTO_INCREMENT,
   username TEXT,
+  email TEXT,
   avatar_pic TEXT,
   avatar_background TEXT,
   entries INT DEFAULT 0,
