@@ -3,12 +3,12 @@ import axios from 'axios';
 import CreateBirdForm from './CreateBirdForm.jsx';
 import BirdEntryList from './BirdEntryList.jsx';
 
-const BirdEntry = ({ currentUser }) => {
+const BirdEntry = ({ currentUser, location }) => {
 
 
   return (
     <div>
-      <CreateBirdForm currentUser={currentUser} />
+      <CreateBirdForm currentUser={currentUser} location={location}/>
     </div>
   )
 }

@@ -4,7 +4,7 @@ import { LOC_TOKEN } from '/config.js';
 import BirdEntryList from './BirdEntryList.jsx';
 import SearchBar from './SearchBar.jsx';
 
-const CreateBirdForm = ({ }) => {
+const CreateBirdForm = ({ currentUser, location }) => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [searchBar, setSearchBar] = useState('');
   const [filteredSet, setFilteredSet] = useState([]);
@@ -17,10 +17,8 @@ const CreateBirdForm = ({ }) => {
   const [street, setStreet] = useState('');
   const [city, setCity] = useState('');
   const [st, setSt] = useState('');
-  const [currentUser, setCurrentUser] = useState({ userID: 1 })
 
   useEffect(() => {
-    console.log(currentUser)
     navigator.geolocation.getCurrentPosition((position) => {
 
       var lat = position.coords.latitude.toString();
