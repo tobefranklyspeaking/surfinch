@@ -43,6 +43,7 @@ const SignUp = (props) => {
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
           if (res.user) {
+            // WE NEED TO ADD THE AVATAR FUNCTIONALITY HERE
             let user = { 'email': email, 'name': name, pic: '' };
             axios.post('/newUser', user)
               .then((result) => {

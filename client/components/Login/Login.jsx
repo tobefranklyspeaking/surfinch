@@ -19,33 +19,39 @@ const Login = () => {
   let history = useHistory();
 
   // /********************************************* */
-  // var provider = new firebase.auth.GoogleAuthProvider();
 
-  // function googleSignInPopup(provider) {
-  //   // [START auth_google_signin_popup]
-  //   firebase.auth()
-  //     .signInWithPopup(provider)
-  //     .then((result) => {
-  //       /** @type {firebase.auth.OAuthCredential} */
-  //       var credential = result.credential;
+  const googleSignInPopup = provider => {
+    var provider = new firebase.auth.GoogleAuthProvider();
+    // [START auth_google_signin_popup]
+    firebase.auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        // /** @type {firebase.auth.OAuthCredential} */
+        var credential = result.credential;
 
-  //       // This gives you a Google Access Token. You can use it to access the Google API.
-  //       var token = credential.accessToken;
-  //       // The signed-in user info.
-  //       var user = result.user;
-  //       // ...
-  //     }).catch((error) => {
-  //       // Handle Errors here.
-  //       var errorCode = error.code;
-  //       var errorMessage = error.message;
-  //       // The email of the user's account used.
-  //       var email = error.email;
-  //       // The firebase.auth.AuthCredential type that was used.
-  //       var credential = error.credential;
-  //       // ...
-  //     });
-  //   // [END auth_google_signin_popup]
-  // }
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        var token = credential.accessToken;
+        // The signed-in user info.
+        var user = result.user;
+        console.log('login from google', result);
+        setError("");
+        setLoading(true);
+        Auth.setLoggedIn(true);
+        Auth.setCurrentUser(user);
+        history.push('/home');
+      }).catch((error) => {
+        // Handle Errors here.
+        var errorCode = error.code;
+        var errorMessage = error.message;
+        // The email of the user's account used.
+        var email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        var credential = error.credential;
+        setError(errorMessage);
+        // ...
+      });
+    // [END auth_google_signin_popup]
+  }
 
 
 
@@ -59,7 +65,7 @@ const Login = () => {
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
       console.log('whats this?', user);
-      //Auth.setCurrentUser(user);
+      Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])
@@ -75,7 +81,7 @@ const Login = () => {
         Auth.setLoggedIn(true);
         axios.get(`/user/${email}`)
           .then((res) => {
-            //console.log('response data', res.data);
+            console.log('response data', res.data);
             Auth.setCurrentUser(res.data[0])
           })
           .catch((err) => console.log('login err', err))
@@ -133,7 +139,7 @@ const Login = () => {
                     src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
                     alt="logo"
                   />
-                  <div className="withGoogle">Login With Google</div>
+                  <div className="withGoogle" onClick={googleSignInPopup}>Login With Google</div>
                 </button>
                 <button className="loginSubmit" disabled={loading} type="submit">Login</button>
               </form>

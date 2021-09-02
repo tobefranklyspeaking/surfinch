@@ -6,8 +6,19 @@ import { GiBirdHouse, GiKiwiBird } from 'react-icons/gi';
 import { FaKiwiBird } from 'react-icons/fa';
 import { AiOutlineLogout } from 'react-icons/ai';
 import addFinch from '../../../public/img/converted-addFinch-01 copy.svg';
+import firebase from 'firebase';
+import 'firebase/auth';
 
 const NavBar = (props) => {
+
+  const logout = () => {
+    firebase.auth().signOut().then(() => {
+      console.log('sign out successful')
+    }).catch((error) => {
+      console.log('logout error', error);
+    });
+  }
+
   return (
     <IconContext.Provider value={{ color: "white"}}>
     <div className="nav-container d-flex">
@@ -40,7 +51,7 @@ const NavBar = (props) => {
           </li>
           <li className="nav-item logout">
             <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/login"><AiOutlineLogout size="30"/></Link>
+              <Link onClick={logout} to="/login"><AiOutlineLogout size="30"/></Link>
             </Switch>
           </li>
         </ul>
