@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import Avatar from '../Shared/Avatar.jsx';
 import ProfileBadges from './ProfileBadges.jsx';
+import BirdNest from './BirdNest.jsx';
 import axios from 'axios';
 
 const Profile = ({ currentUser }) => {
 
-  var fakeData = [{ pic: 'URL', name: 'Parrot' }, { pic: 'URL', name: 'Crane' }, { pic: 'URL', name: 'Eagle' }];
-
   /// HOOKS WILL BE HERE FOR DB CALLS
   const [badges, setBadges] = useState();
+  const [entries, setEntries] = useState([]);
 
   useEffect(() => {
     axios.get(`/stats/${currentUser.username}`)
@@ -19,6 +19,14 @@ const Profile = ({ currentUser }) => {
       })
       .catch((error) => {
         console.log('error fetching badges: ', error);
+      });
+    axios.get(`/userbirds/${currentUser.userID}`)
+      .then((results) => {
+        console.log('Birds: ', results);
+        setEntries(results.data);
+      })
+      .catch((error) => {
+        console.log('Error fetching birds: ', error);
       });
   }, [])
 
@@ -61,17 +69,7 @@ const Profile = ({ currentUser }) => {
       </div>
       <div className='bird-nest-section'>
         <h3>Bird Nest:</h3>
-        <div className="bird-nest">
-          {fakeData.map((bird, i) => {
-            return (
-              <div className='bird-nest-item'>
-                <Avatar size={75}
-                  color={currentUser.avatar_background || '#c8994d'}
-                  avatar_pic={currentUser.avatar_pic || 'crane'} />
-              </div>
-            );
-          })}
-        </div>
+        <BirdNest birds={entries} />
       </div>
     </div>
   );

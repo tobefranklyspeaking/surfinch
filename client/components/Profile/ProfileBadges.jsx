@@ -62,7 +62,7 @@ const ProfileBadges = ({ badges, currentUser, profile }) => {
         <Badge title={'Frequent Flyer'} color={logColor} />
         <Badge title={'Most Entries'} color={entColor} />
         <Badge title={'Migrant'} color={migColor} />
-        <Badge title={'Coop collection'} color={coopColor} />
+        <Badge title={'Coup collection'} color={coopColor} />
         <Badge title={'Little birdie'} color={'bg-info text-dark'} />
       </div>
     );
