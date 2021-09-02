@@ -1,3 +1,5 @@
+DROP DATABASE IF EXISTS surfinch;
+
 CREATE DATABASE surfinch;
 
 USE surfinch;
