@@ -31,7 +31,7 @@ const App = () => {
   const history = useHistory();
 
   console.log('location object', location)
-  console.log(currentUser)
+  console.log('ohhhh currentUser', currentUser)
 
   //This useEffect is for location purposes for all maps + bird entry
   //form address. Because this api is time/performance intensive,
@@ -55,9 +55,9 @@ const App = () => {
         })
         .catch(error => { console.log(error); });
     });
-    axios.get(`/entries/${currentUser.userID}`)
+    currentUser && axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); })
-  }, []);
+  }, [currentUser]);
 
 
   //login & redirect (routing things)

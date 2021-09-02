@@ -28,7 +28,6 @@ const Login = () => {
       .then((result) => {
         // /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
-
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = credential.accessToken;
         // The signed-in user info.
@@ -55,7 +54,7 @@ const Login = () => {
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      console.log('whats this?', user);
+      console.log('whats this inside login?', user);
       Auth.setCurrentUser(user);
     })
     return unsubscribe;

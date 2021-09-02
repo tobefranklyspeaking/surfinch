@@ -45,10 +45,9 @@ const SignUp = (props) => {
           if (res.user) {
             // WE NEED TO ADD THE AVATAR FUNCTIONALITY HERE
             let user = { 'email': email, 'name': name, pic: '' };
-            axios.post('/newUser', user)
+            axios.post('/newUser')
               .then((result) => {
                 user.userId = result.data.insertId;
-                console.log('AWH YEAH', user);
                 Auth.setCurrentUser(user);
               })
               .catch((err) => console.log('signup err', err))
@@ -66,55 +65,58 @@ const SignUp = (props) => {
   };
 
 
-return (
-  <div className="signUpContainer">
-    <div className="signUpHeader">
-      <img src="https://i.imgur.com/6pDMm0T.png" width='20px' height='30px' alt='finch' />
-    </div>
-    <div className="signUpBlock">
-      {error && <div className="registerAlert" role="alert">
-        Failed to create account: {error}
-      </div>}
-      <div className="register">
-        <h4 className="signUpText">Sign Up</h4>
-        <input
-          type="text"
-          className="registerInput"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
-        />
-        <input
-          type="text"
-          className="registerInput"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="registerInput"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <input
-          type="password"
-          className="registerInput"
-          value={passConfirm}
-          onChange={(e) => setPassConfirm(e.target.value)}
-          placeholder="Verify Password"
-        />
-        <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
-          Register
-        </button>
-        <div className="AccountLink">
-          Already have an account? <Link to="/login">Login</Link> now.
-        </div>
+  return (
+    <div className="signUpContainer">
+      <div className="signUpHeader">
+        <img src="https://i.imgur.com/6pDMm0T.png" width='20px' height='30px' alt='finch' />
+      </div>
+      <div className="signUpBlock">
+        {error && <div className="registerAlert" role="alert">
+          Failed to create account: {error}
+        </div>}
+        {/* <div className="register"> */}
+          <form className="register">
+
+            <h4 className="signUpText">Sign Up</h4>
+            <input
+              type="text"
+              className="registerInput"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Full Name"
+            />
+            <input
+              type="text"
+              className="registerInput"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="E-mail Address"
+            />
+            <input
+              type="password"
+              className="registerInput"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+            <input
+              type="password"
+              className="registerInput"
+              value={passConfirm}
+              onChange={(e) => setPassConfirm(e.target.value)}
+              placeholder="Verify Password"
+            />
+            <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
+              Register
+            </button>
+          </form>
+          <div className="AccountLink">
+            Already have an account? <Link to="/login">Login</Link> now.
+          </div>
+        {/* </div> */}
       </div>
     </div>
-  </div>
-);
+  );
 };
 
 export default SignUp;

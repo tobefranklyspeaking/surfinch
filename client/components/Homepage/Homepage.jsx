@@ -105,45 +105,42 @@ const Homepage = ({ currentUser, location }) => {
   console.log('here', currentUser);
 
   return (
-    currentUser ? (
-
-      <div className="home-container">
-        <div className="mini-home-container">
-          <div className="mini-profile-container">
-            <div className="usericon topbirdersicon">
-              <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-                avatar_pic={currentUser.avatar_pic || 'crane'} />
-            </div>
-            <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
-            <div>more info go here</div>
+    <div className="home-container">
+      <div className="mini-home-container">
+        <div className="mini-profile-container">
+          <div className="usericon topbirdersicon">
+            <Avatar size={75} color={currentUser.avatar_background || '#C8994D'}
+              avatar_pic={currentUser.avatar_pic || 'crane'} />
           </div>
-          <div className="mini-map-container">
-            <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} />
-            <div className="birds-nearby-container">
-              <LocalBirds top10Birds={top10Birds} />
-            </div>
-          </div>
+          <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
+          <div>more info go here</div>
         </div>
-        <div className="mini-info-container">
-          <h3 className="toptitle">TOP BIRD WATCHERS</h3>
-          <div className="topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-              avatar_pic={currentUser.avatar_pic || 'crane'} />
+        <div className="mini-map-container">
+          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} />
+          <div className="birds-nearby-container">
+            <LocalBirds top10Birds={top10Birds} />
           </div>
-          <div className="descriptiontag1">Mr. Raymonds</div>
-          <div className="topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-              avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </div>
-          <div className="descriptiontag2">Smitty</div>
-          <div className="topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-              avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </div>
-          <div className="descriptiontag3">Regionald</div>
-        </div>
+          Î                </div>
       </div>
-    ) : <div>Loading...</div>
+      <div className="mini-info-container">
+        <h3 className="toptitle">TOP BIRD WATCHERS</h3>
+        <div className="topbirdersicon">
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+        </div>
+        <div className="descriptiontag1">Mr. Raymonds</div>
+        <div className="topbirdersicon">
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+        </div>
+        <div className="descriptiontag2">Smitty</div>
+        <div className="topbirdersicon">
+          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+            avatar_pic={currentUser.avatar_pic || 'crane'} />
+        </div>
+        <div className="descriptiontag3">Regionald</div>
+      </div>
+    </div>
   )
 }
 
