@@ -48,7 +48,6 @@ const Homepage = ({ currentUser, location }) => {
       }
     })
       .then((result) => {
-        //console.log('BIRD!!!', result.data);
         let top10 = result.data.slice(0, 10);
         setTop10Birds(top10);
         console.log(top10);
@@ -66,7 +65,8 @@ const Homepage = ({ currentUser, location }) => {
             obsValid: bird.obsValid,
             obsReviewed: bird.obsReviewed,
             locationPrivate: bird.locationPrivate,
-            subId: bird.subId
+            subId: bird.subId,
+            pic: ''
           });
         })
         setTop10Loc(temp);
@@ -120,7 +120,7 @@ const Homepage = ({ currentUser, location }) => {
           <div className="birds-nearby-container">
             <LocalBirds top10Birds={top10Birds} />
           </div>
-          Î                </div>
+        </div>
       </div>
       <div className="mini-info-container">
         <h3 className="toptitle">TOP BIRD WATCHERS</h3>
