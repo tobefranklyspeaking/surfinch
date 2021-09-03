@@ -31,7 +31,7 @@ const App = () => {
   const [allBirds, setAllBirds] = useState([]);
   const [birdRequest, setBirdRequest] = useState({});
   const [entries, setEntries] = useState([]);
-  const [individualBird, setIndividualBird] = useState({})
+  const [individualBird, setIndividualBird] = useState({});
 
   const history = useHistory();
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })

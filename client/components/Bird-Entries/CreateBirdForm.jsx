@@ -25,8 +25,8 @@ const CreateBirdForm = ({ currentUser, location }) => {
       setSt(location.state);
     }
 
-      var lat = position.coords.latitude.toString();
-      var lon = position.coords.longitude.toString();
+      var lat = location.lat.toString();
+      var lon = location.lng.toString();
 
       axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
         .then(results => {
