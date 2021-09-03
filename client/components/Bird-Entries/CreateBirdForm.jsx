@@ -11,7 +11,7 @@ const CreateBirdForm = ({ currentUser, location }) => {
 
   const [species, setSpecies] = useState('');
   const [date, setDate] = useState();
-  const [fileUpload, setFileUpload] = useState();
+  const [fileUpload, setFileUpload] = useState('');
 
   const [notes, setNotes] = useState('');
   const [street, setStreet] = useState('');
@@ -25,12 +25,20 @@ const CreateBirdForm = ({ currentUser, location }) => {
       setSt(location.state);
     }
 
-  }, [currentUser, location]);
+      var lat = position.coords.latitude.toString();
+      var lon = position.coords.longitude.toString();
 
-  useEffect(() => {
+      axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
+        .then(results => {
+          console.log('fsdfk', results.data)
+          setStreet(results.data.address.house_number + " " + results.data.address.road);
+          setCity(results.data.address.city);
+          setSt(results.data.address.state);
+        })
+        .catch(error => { console.log(error); });
+
     axios.get(`/entries/${currentUser.userID}`)
       .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
-
   }, []);
 
   var handleSearchBarChange = (event) => {

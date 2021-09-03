@@ -1,10 +1,12 @@
 import React, { useState, useContext, useEffect } from 'react';
 import Logo from '/public/img/Logo.png';
 import SignUp from './SignUp.jsx';
-import { AuthContext } from '../App.jsx';
 import { Link, Switch, useHistory } from 'react-router-dom';
+
+import { AuthContext } from '../App.jsx';
 import firebase from 'firebase';
 require('firebase/auth');
+
 import axios from 'axios';
 
 
@@ -16,25 +18,25 @@ const Login = () => {
   const [loading, setLoading] = useState(false)
 
   const Auth = useContext(AuthContext);
+
   let history = useHistory();
 
   // /********************************************* */
 
   const googleSignInPopup = provider => {
     var provider = new firebase.auth.GoogleAuthProvider();
-    // [START auth_google_signin_popup]
+    // [START auth_google_signin_redirect]
     firebase.auth()
-      .signInWithPopup(provider)
+      .signInWithRedirect(provider)
       .then((result) => {
         // /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
-
         // This gives you a Google Access Token. You can use it to access the Google API.
         var token = credential.accessToken;
         // The signed-in user info.
         var user = result.user;
         console.log('login from google', result);
-        setError("");
+        setError('');
         setLoading(true);
         Auth.setLoggedIn(true);
         Auth.setCurrentUser(user);
@@ -50,22 +52,13 @@ const Login = () => {
         setError(errorMessage);
         // ...
       });
-    // [END auth_google_signin_popup]
+    // [END auth_google_signin_redirect]
   }
-
-
-
-
-
-
-
-
-  /**************************************** */
 
   useEffect(() => {
     const unsubscribe = firebase.auth().onAuthStateChanged(user => {
-      console.log('whats this?', user);
-      //Auth.setCurrentUser(user);
+      // console.log('whats this inside login?', user);
+      // Auth.setCurrentUser(user);
     })
     return unsubscribe;
   }, [])
@@ -81,7 +74,7 @@ const Login = () => {
         Auth.setLoggedIn(true);
         axios.get(`/user/${email}`)
           .then((res) => {
-            console.log('response data', res);
+            console.log('response data', res.data);
             Auth.setCurrentUser(res.data[0])
           })
           .catch((err) => console.log('login err', err))
