@@ -29,8 +29,9 @@ const BirdProfile = (props) => {
   const note = props.birdRequest.notes || 'No notes for this bird watcher!';
   // const user = props.userID || 1;
 
+  //pexel api call
   const client = createClient(PIXEL_TOKEN);
-  const query = commonName;
+  const query = commonName || scientific;
   client.photos.search({ query, per_page: 1 }).then(photos => {
     console.log('pexel photos, ', photos.photos[0].src.large)
     setPics(photos.photos[0].src.large);
@@ -97,7 +98,7 @@ const BirdProfile = (props) => {
   }
 
   if (pictures === undefined) {
-    console.log('true pictures has no length!')
+    // console.log('true pictures has no length!')
     setPics('https://t3.ftcdn.net/jpg/03/53/78/32/360_F_353783241_kJr5np3yVR0hgzMsgON96DmqRkcMIoRs.jpg')
   }
 
