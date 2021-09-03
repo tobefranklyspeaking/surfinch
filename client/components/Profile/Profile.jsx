@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Avatar from '../Shared/Avatar.jsx';
 import ProfileBadges from './ProfileBadges.jsx';
 import BirdNest from './BirdNest.jsx';
+import Rankings from '../Shared/Rankings.jsx';
 import axios from 'axios';
 
 const Profile = ({ currentUser }) => {
@@ -9,6 +10,11 @@ const Profile = ({ currentUser }) => {
   /// HOOKS WILL BE HERE FOR DB CALLS //
   const [badges, setBadges] = useState();
   const [entries, setEntries] = useState([]);
+  // const [ranks, setRanks] = useState([]);
+
+  // useEffect(() => {
+
+  // }, []);
 
   useEffect(() => {
     axios.get(`/stats/${currentUser.username}`)
@@ -28,6 +34,15 @@ const Profile = ({ currentUser }) => {
       .catch((error) => {
         console.log('Error fetching birds: ', error);
       });
+    // axios.get(`/rankings`)
+    //   .then((results) => {
+    //     var rankings = results.data;
+    //     console.log('Ranks: ', rankings);
+    //     setRanks(rankings);
+    //   })
+    //   .catch((error) => {
+    //     console.log('error fetching rankings: ', error);
+    //   });
   }, [])
 
   return (
@@ -64,7 +79,7 @@ const Profile = ({ currentUser }) => {
       <div className='social-section'>
         <h3>Social stats:</h3>
         <div className="social-view">
-          <h2>Need to decide what stats matter here</h2>
+          <ProfileBadges badges={badges} currentUser={currentUser} social={1} />
         </div>
       </div>
       <div className='bird-nest-section'>
