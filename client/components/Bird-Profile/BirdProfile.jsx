@@ -49,7 +49,7 @@ const BirdProfile = (props) => {
     var params = {
       action: "query",
       list: "search",
-      srsearch: `${birdName}`,
+      srsearch: `${scientific}`,
       format: "json"
     };
     url = url + "?origin=*";
