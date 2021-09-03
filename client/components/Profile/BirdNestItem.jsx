@@ -52,8 +52,10 @@ const BirdNestItem = ({ bird }) => {
         <img src={bird.birdpic_url} className="card-img-top" alt="..." onClick={sendBird}></img>
         <div className="card-body">
           <h5 className="card-title">{bird.bird}</h5>
-          <p className="card-text">{bird.state_sighted}</p>
-          <button onClick={handleBird} className="btn btn-primary">Edit</button>
+          <small className="card-text">{bird.state_sighted}</small>
+          <button onClick={handleBird} className="editBtn">Edit</button>
+          <div class="hoverBtn"></div>
+          <div class="hoverBtn-bottom"></div>
         </div>
       </div>
     </div>

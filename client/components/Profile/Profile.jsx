@@ -4,6 +4,7 @@ import ProfileBadges from './ProfileBadges.jsx';
 import BirdNest from './BirdNest.jsx';
 import Rankings from '../Shared/Rankings.jsx';
 import axios from 'axios';
+import { FaFeatherAlt } from 'react-icons/fa';
 
 const Profile = ({ currentUser }) => {
 
@@ -47,8 +48,10 @@ const Profile = ({ currentUser }) => {
 
   return (
     <div className="profile-parent">
+       <div className='profile-header'>
+          <h3 className='profileTitle'>Your Profile</h3>
+        </div>
       <div className='profile-section'>
-        <h3>Profile info:</h3>
         <div className="profile-info">
           <div className='profile-avatar'>
             <Avatar size={75}
@@ -56,8 +59,9 @@ const Profile = ({ currentUser }) => {
               avatar_pic={currentUser.avatar_pic || 'crane'} />
             <h6 className='profile-username'>{currentUser.username}</h6>
           </div>
+          <div className='badgeContainer'>
           <ProfileBadges badges={badges} currentUser={currentUser} profile={currentUser.username} />
-
+          </div>
           <div className='profile-details'>
             <div className='user-info-container'>
               <div className='profile-detail-item'>
@@ -82,9 +86,14 @@ const Profile = ({ currentUser }) => {
           <ProfileBadges badges={badges} currentUser={currentUser} social={1} />
         </div>
       </div>
-      <div className='bird-nest-section'>
-        <h3>Bird Nest:</h3>
-        <BirdNest birds={entries} />
+      <div className="bird-nest-container">
+        <div className='bird-nest-section'>
+          <div className="bird-nest-header">
+            <h3 className='birdNestTitle'>Bird Nest</h3>
+            <FaFeatherAlt size="25px" color="#566573" marginTop="5px" />
+          </div>
+          <BirdNest birds={entries} />
+        </div>
       </div>
     </div>
   );
