@@ -17,6 +17,7 @@ import Profile from './Profile/Profile.jsx';
 import BirdEntry from './Bird-Entries/BirdEntry.jsx';
 import BirdProfile from './Bird-Profile/BirdProfile.jsx';
 import regions from './Shared/RegionCode.js';
+import UpdateBirdForm from './Bird-Entries/UpdateBirdForm.jsx'
 
 firebase.default.initializeApp(firebaseConfig);
 
@@ -28,11 +29,16 @@ const App = () => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [location, setLocation] = useState({});
   const [allBirds, setAllBirds] = useState([]);
+  const [birdRequest, setBirdRequest] = useState({});
+  const [entries, setEntries] = useState([]);
+  const [individualBird, setIndividualBird] = useState({});
+
   const history = useHistory();
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
 
   console.log('location object', location)
-  console.log('ohhhh currentUser', currentUser)
+  console.log('bird request', birdRequest)
+  // console.log('ohhhh currentUser', currentUser)
 
   //LOCATION IQ API CALL for lats/longs and region codes
   useEffect(() => {
@@ -89,7 +95,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest, individualBird, setIndividualBird }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>
@@ -120,8 +126,11 @@ const App = () => {
                   <Route path="/bird-entry">
                     <BirdEntry currentUser={currentUser} location={location} />
                   </Route>
+                  <Route path="/update-bird-form">
+                    <UpdateBirdForm currentUser={currentUser} location={location} />
+                  </Route>
                   <Route path="/BirdProfile">
-                    <BirdProfile currentUser={currentUser} />
+                    <BirdProfile currentUser={currentUser} birdRequest={birdRequest} />
                   </Route>
                 </div>
               </Route>

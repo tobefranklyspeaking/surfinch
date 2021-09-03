@@ -18,10 +18,16 @@ const BirdProfile = (props) => {
   const [map, setMap] = useState(false);
   const [button, setButton] = useState(false);
 
-  const regionCode = props.region || "RI";
-  const speciesCode = props.species || "cangoo";
-  const birdName = props.birdName || "Branta canadensis";
-  const user = props.userID || 1;
+  const regionCode = props.birdRequest.region || "RI";
+  const speciesCode = props.birdRequest.species || "cangoo";
+  const commonName = props.birdRequest.commonName || "canada goose";
+  const scientific = props.birdRequest.scientific || "Branta canadensis";
+  const pic = props.birdRequest.photos || 'https://t3.ftcdn.net/jpg/03/53/78/32/360_F_353783241_kJr5np3yVR0hgzMsgON96DmqRkcMIoRs.jpg';
+  const note = props.birdRequest.notes || 'No notes for this bird watcher!';
+  // const user = props.userID || 1;
+
+
+  console.log('props in bird profile', props)
 
   // //get recent observation of bird
   useEffect(() => {
@@ -42,11 +48,10 @@ const BirdProfile = (props) => {
   //get bird info
   useEffect(() => {
     var url = "https://en.wikipedia.org/w/api.php";
-
     var params = {
       action: "query",
       list: "search",
-      srsearch: `${birdName}`,
+      srsearch: `${scientific}`,
       format: "json"
     };
     url = url + "?origin=*";
@@ -100,8 +105,8 @@ const BirdProfile = (props) => {
   return (
     <div className='birdProfileContainer'>
       <div className='birdBio'>
-        <h1 className='birdTitle'>Canada Goose</h1>
-        <h3 className='scientific'><em>Branta canadensis</em> </h3>
+        <h1 className='birdTitle'>{commonName}</h1>
+        <h3 className='scientific'><em>{scientific}</em> </h3>
         <small>| General Information |</small>
         <div className='paragraphBird'>
           {taxonomy ? <p>{taxonomy}...click here for more</p> : null}
@@ -118,7 +123,7 @@ const BirdProfile = (props) => {
         </div>
         <div className="viewer">
           {photo ? <div className='birdProfilePic'>
-            <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' alt="canada goose"></img>
+            <img src={pic} alt="canada goose"></img>
           </div> : null}
           {map ? <div className='heatMap'>
             <Map styleHeight={40} styleWidth={40} defaultZoom={ 7 } defaultCenter={{ lat: location[0][0], lng: location[0][1] }} heatMap={location} />
@@ -126,7 +131,7 @@ const BirdProfile = (props) => {
           {show ? <div className="birdNotes">
             <h4 className='notesTitle'> My Notes</h4>
             <hr className="dash"></hr>
-            <p className='notesText'>YOOOO, WOW LOVE THIS BIRD OMG! SO GREAT! CANADA GOOSE! LETS GO BABY!</p>
+            <p className='notesText'>{note}</p>
           </div> : null}
         </div>
       </div>
