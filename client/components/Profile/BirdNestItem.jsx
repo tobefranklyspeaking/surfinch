@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BirdNestItem = ({ bird }) => {
+const BirdNestItem = () => {
 
   return (
     <div className='bird-nest-item'>

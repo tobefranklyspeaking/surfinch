@@ -75,8 +75,6 @@ const Homepage = ({currentUser, location}) => {
       })
   }, [location])
 
-<<<<<<< HEAD
-=======
   useEffect(() => {
     axios.get(`/entries/${currentUser.userID}`)
       .then((res) => {
@@ -97,7 +95,6 @@ const Homepage = ({currentUser, location}) => {
       })
   }, [currentUser])
 
->>>>>>> 5c24c3f8d577f47b88e53c9021d412caebaba971
 
 
   console.log('i need some avatars!', currentUser);
@@ -106,12 +103,6 @@ const Homepage = ({currentUser, location}) => {
     <div className="home-container">
       <div className="mini-home-container">
         <div className="mini-profile-container">
-<<<<<<< HEAD
-          <div className="usericon topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-              avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </div>
-=======
         <div className="usericon topbirdersicon">
         <a>
           <Switch><Link to="/user-profile">
@@ -120,16 +111,11 @@ const Homepage = ({currentUser, location}) => {
           </Link></Switch>
         </a>
         </div>
->>>>>>> 5c24c3f8d577f47b88e53c9021d412caebaba971
           <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
-<<<<<<< HEAD
-          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} />
-=======
           <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries}/>
->>>>>>> 5c24c3f8d577f47b88e53c9021d412caebaba971
           <div className="birds-nearby-container">
             <LocalBirds top10Birds={top10Birds} />
           </div>
