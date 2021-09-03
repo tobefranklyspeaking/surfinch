@@ -19,6 +19,10 @@ const BirdNestItem = ({ bird }) => {
     const isThere = (entry) => entry.comName.toLowerCase().includes(bird.bird.toLowerCase().replace(' ', ''));
     var index = Auth.allBirds.findIndex(isThere);
 
+    if (index < 0) {
+      index = 7;
+    }
+
     speciesCode = Auth.allBirds[index].speciesCode;
     commonName = Auth.allBirds[index].comName;
     scientific = Auth.allBirds[index].sciName;
@@ -46,9 +50,8 @@ const BirdNestItem = ({ bird }) => {
 
   return (
     <div className='bird-nest-item' >
-      <div className="card"
-        onClick={sendBird}>
-        <img src={bird.birdpic_url} className="card-img-top" alt="..."></img>
+      <div className="card">
+        <img src={bird.birdpic_url} className="card-img-top" alt="..." onClick={sendBird}></img>
         <div className="card-body">
           <h5 className="card-title">{bird.bird}</h5>
           <p className="card-text">{bird.state_sighted}</p>
