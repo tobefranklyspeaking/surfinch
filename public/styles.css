@@ -16,11 +16,11 @@
 
 a {
   text-decoration: none;
-  color: #fcfaf7;
+  color: #b8a4a4;
 }
 
 a:hover {
-  color: #E5E7E9;
+  color: #BB8FCE;
 
 }
 
@@ -320,9 +320,6 @@ p.smol {
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.avatar-img {
-  /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
-}
 
 .profile-avatar {
   flex: 1 0 calc(10% - 10px);
@@ -867,6 +864,7 @@ h4.signUpText {
 }
 
 .AccountLink {
+  margin-top: 20px;
   font-family:  'Almarai', sans-serif;
   color: #566573;
 }
