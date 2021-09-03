@@ -112,10 +112,10 @@ const SignUp = (props) => {
             <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
               Register
             </button>
-          </form>
           <div className="AccountLink">
             Already have an account? <Link to="/login">Login</Link> now.
           </div>
+          </form>
         {/* </div> */}
       </div>
     </div>
