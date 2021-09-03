@@ -124,9 +124,9 @@ const App = () => {
                   <Route path="/bird-entry">
                     <BirdEntry currentUser={currentUser} location={location} />
                   </Route>
-                  {/* UNUSED Ready to implement with nav <Route path="/update-bird">
+                  <Route path="/update-bird-form">
                     <UpdateBirdForm currentUser={currentUser} location={location} />
-                  </Route> */}
+                  </Route>
                   <Route path="/BirdProfile">
                     <BirdProfile currentUser={currentUser} />
                   </Route>
