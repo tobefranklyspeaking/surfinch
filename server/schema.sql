@@ -69,9 +69,8 @@ INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entrie
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Regionald', 'Regionald@admin.com', 'crane', '#c8994d', 8, 2);
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shanna', 'shanna@admin.com', 'crane', '#c8994d', 8, 2);
 
--- insert data into user_birds and update entry count in user_profile
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, street_sighted, city_sighted, state_sighted) VALUES (1, 'Humming bird', NOW(), '/uploads/hummingbird.jpg', 'I love this humming bird so much, look how cute!', '123 Sesame St', 'Cape Coral', 'Florida');
 
--- user 1 (20 entries) = Admin
 
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Blue Jay", NOW(), "uploads/blue_jay.jpeg", "Blue above and white below, with a prominent crest and a bold black necklace. The wings and tail are barred with black, and it has a bold white wingbar.", "New Baltimore", "MI", '-82.736831', "42.681159", 1);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;

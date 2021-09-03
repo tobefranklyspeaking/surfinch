@@ -4,7 +4,7 @@ const Badge = ({ title, color, rank }) => {
 
   if (rank) {
     return (
-      <h5>{title}<span class={`badge ${color}`}>{rank}</span></h5>
+      <h5>{title}<span className={`badge ${color}`}>{rank}</span></h5>
     );
   } else {
     return (

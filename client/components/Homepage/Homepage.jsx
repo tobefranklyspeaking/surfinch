@@ -106,23 +106,32 @@ const Homepage = ({ currentUser, location }) => {
       <div className="mini-home-container">
         <div className="mini-profile-container">
           <div className="usericon topbirdersicon">
-            <a>
-              <Switch><Link to="/user-profile">
+            <Switch>
+              <Link to="/user-profile">
                 <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
                   avatar_pic={currentUser.avatar_pic || 'crane'} />
-              </Link></Switch>
-            </a>
+              </Link>
+            </Switch>
           </div>
           <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
+<<<<<<< HEAD
           {loaded ?  <div className="mini-map-container">
           <Map styleWidth={35} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={9} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
           <div className="birds-nearby-container">
             <LocalBirds top10Birds={top10Birds} location={location} />
           </div>
           </div> :<div className="loading"> <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
+=======
+          {loaded ? <div className="mini-map-container">
+            <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
+            <div className="birds-nearby-container">
+              <LocalBirds top10Birds={top10Birds} location={location} />
+            </div>
+          </div> : <div className="loading"> <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
+>>>>>>> 0a4e92f0a57da7c5e89ef9934e02e443693c0701
         </div>
       </div>
       <div className="mini-info-container">
