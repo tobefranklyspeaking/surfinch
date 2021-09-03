@@ -107,6 +107,7 @@ const CreateBirdForm = ({ currentUser, location }) => {
 
   return (
     <div className="container d-flex flex-column justify-content-center" id="bird-entry-container">
+      <h3 className="entryFormTitle">Seen A New Bird? Enter It To Your List</h3>
       <div>
         <SearchBar handleSearchBarChange={handleSearchBarChange} />
         <BirdEntryList birdEntries={filteredSet} handleCardClick={handleCardClick} />
