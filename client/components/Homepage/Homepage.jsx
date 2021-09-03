@@ -124,7 +124,7 @@ const Homepage = ({ currentUser, location }) => {
           <div className="birds-nearby-container">
             <LocalBirds top10Birds={top10Birds} location={location} />
           </div>
-          </div> :<div className="loading"> <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
+          </div> :<div className="loading"> <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
         </div>
       </div>
       <div className="mini-info-container">
