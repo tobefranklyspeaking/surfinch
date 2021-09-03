@@ -9,7 +9,6 @@ module.exports = {
     filename: 'bundle.js',
     path: path.join(__dirname, 'public') //this is the folder you want to save your bundle in
   },
-
   module: {
     rules: [
       {

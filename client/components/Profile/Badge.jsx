@@ -1,14 +1,16 @@
 import React from 'react';
 
-const Badge = ({ title, color }) => {
+const Badge = ({ title, color, rank }) => {
 
-
-
-  return (
-    <span className={`badge rounded-pill ${color}`}>{title}</span>
-  );
-
-
+  if (rank) {
+    return (
+      <h5>{title}<span className={`badge ${color}`}>{rank}</span></h5>
+    );
+  } else {
+    return (
+      <span className={`badge rounded-pill ${color}`}>{title}</span>
+    );
+  }
 
 }
 

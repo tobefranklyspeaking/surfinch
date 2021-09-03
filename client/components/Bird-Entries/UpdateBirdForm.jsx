@@ -1,27 +1,22 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { LOC_TOKEN } from '/config.js';
 import axios from 'axios';
-
 import { AuthContext } from '../App.jsx';
-import firebase from 'firebase';
-require('firebase/auth');
 
 const UpdateBirdForm = ({ birdEntry }) => {
-  const [species, setSpecies] = useState();
+  const [species, setSpecies] = useState('');
   const [date, setDate] = useState(new Date());
-  const [fileUpload, setFileUpload] = useState();
+  const [fileUpload, setFileUpload] = useState('');
 
-  const [notes, setNotes] = useState();
-  const [street, setStreet] = useState();
-  const [city, setCity] = useState();
-  const [st, setSt] = useState();
+  const [notes, setNotes] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [st, setSt] = useState('');
 
 
   const Auth = useContext(AuthContext);
   const eachBird = Auth.individualBird;
 
-
-  console.log('inside update birdform bullshit', Auth)
   useEffect(() => {
     if (eachBird) {
       setSpecies(eachBird.bird);

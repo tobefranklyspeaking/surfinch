@@ -17,6 +17,10 @@ const SignUp = (props) => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
+  var colors = ['#E9DAC4', '#b89a73', '#c8994d', '#82857f', '#b8a4a4', '#566573'];
+  var images = ['anhinga', 'crane', 'eagle', 'flamingo', 'goose', 'hummingbird', 'parrot', 'pigeon', 'swallow', 'tropical'];
+
+  console.log('color choice: ', colors[Math.floor(Math.random() * colors.length)]);
 
   const handleForm = (e, provider) => {
     e.preventDefault();
@@ -44,7 +48,7 @@ const SignUp = (props) => {
         .then(res => {
           if (res.user) {
             // WE NEED TO ADD THE AVATAR FUNCTIONALITY HERE
-            let user = { 'email': email, 'name': name, pic: 'eagle', color: '#c8994d'  };
+            let user = { 'email': email, 'name': name, pic: images[Math.floor(Math.random() * images.length)], color: colors[Math.floor(Math.random() * colors.length)] };
             axios.post('/newUser', user)
               .then((result) => {
                 user.userId = result.data.insertId;
@@ -78,44 +82,44 @@ const SignUp = (props) => {
           Failed to create account: {error}
         </div>}
         {/* <div className="register"> */}
-          <form className="register">
+        <form className="register">
 
-            <h4 className="signUpText">Sign Up</h4>
-            <input
-              type="text"
-              className="registerInput"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              placeholder="Full Name"
-            />
-            <input
-              type="text"
-              className="registerInput"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              placeholder="E-mail Address"
-            />
-            <input
-              type="password"
-              className="registerInput"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              placeholder="Password"
-            />
-            <input
-              type="password"
-              className="registerInput"
-              value={passConfirm}
-              onChange={(e) => setPassConfirm(e.target.value)}
-              placeholder="Verify Password"
-            />
-            <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
-              Register
-            </button>
+          <h4 className="signUpText">Sign Up</h4>
+          <input
+            type="text"
+            className="registerInput"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Full Name"
+          />
+          <input
+            type="text"
+            className="registerInput"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail Address"
+          />
+          <input
+            type="password"
+            className="registerInput"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <input
+            type="password"
+            className="registerInput"
+            value={passConfirm}
+            onChange={(e) => setPassConfirm(e.target.value)}
+            placeholder="Verify Password"
+          />
+          <button disabled={loading} className="registerBtn" type="submit" onClick={handleForm}>
+            Register
+          </button>
           <div className="AccountLink">
             Already have an account? <Link to="/login">Login</Link> now.
           </div>
-          </form>
+        </form>
         {/* </div> */}
       </div>
     </div>
