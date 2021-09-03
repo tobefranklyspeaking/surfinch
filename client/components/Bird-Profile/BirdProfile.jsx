@@ -4,6 +4,7 @@ import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
 import { GOOGLE_TOKEN } from '../../../config.js';
 import { EBIRD_TOKEN } from '../../../config.js';
+import { PIXEL_TOKEN } from '../../../config.js';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -11,6 +12,7 @@ const BirdProfile = (props) => {
   const [bird, setBird] = useState([]);
   const [location, setLocation] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [pictures, setPics] = useState("");
   const [taxonomy, setTax] = useState('');
   //boolean flag indicators **************
   const [show, setShow] = useState(false);
@@ -27,7 +29,11 @@ const BirdProfile = (props) => {
   // const user = props.userID || 1;
 
 
-  console.log('props in bird profile', props)
+  // console.log('props in bird profile', props)
+  if (pictures.length > 0) {
+    console.log('large image', pictures[0].largeImageURL)
+  }
+
 
   // //get recent observation of bird
   useEffect(() => {
@@ -65,6 +71,16 @@ const BirdProfile = (props) => {
       .catch((error) => { console.log('error from Wiki api', error) });
   }, [])
 
+  useEffect(() => {
+    axios.get(`https://pixabay.com/api/?key=23214474-e3c0d5ff2e067f495a4b7d9a8q=${commonName.toLowerCase()}&image_type=photo`)
+    .then((result) => {
+      // console.log('image api', result.data.hits[0].largeImageURL);
+      //result.data.hits.largeImageURL
+      var first = result.data.hits[0].largeImageURL;
+      setPics(first);
+    })
+  }, [])
+
 
   //get user notes
   // useEffect(() => {
@@ -100,7 +116,10 @@ const BirdProfile = (props) => {
     setButton(!button);
   }
 
-
+  if (pictures === undefined) {
+    console.log('true pictures has no length!')
+    setPics('https://t3.ftcdn.net/jpg/03/53/78/32/360_F_353783241_kJr5np3yVR0hgzMsgON96DmqRkcMIoRs.jpg')
+  }
 
   return (
     <div className='birdProfileContainer'>
@@ -123,7 +142,7 @@ const BirdProfile = (props) => {
         </div>
         <div className="viewer">
           {photo ? <div className='birdProfilePic'>
-            <img src={pic} alt="canada goose"></img>
+            <img src={pictures} alt="canada goose"></img>
           </div> : null}
           {map ? <div className='heatMap'>
             <Map styleHeight={40} styleWidth={40} defaultZoom={ 7 } defaultCenter={{ lat: location[0][0], lng: location[0][1] }} heatMap={location} />
