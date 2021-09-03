@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import { createClient } from 'pexels';
 import axios from 'axios';
 import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
 import { GOOGLE_TOKEN } from '../../../config.js';
 import { EBIRD_TOKEN } from '../../../config.js';
+import { PIXEL_TOKEN } from '../../../config.js';
 import { FaAngleRight } from 'react-icons/fa';
 import { FaAngleLeft } from 'react-icons/fa';
 
@@ -11,6 +13,7 @@ const BirdProfile = (props) => {
   const [bird, setBird] = useState([]);
   const [location, setLocation] = useState([]);
   const [notes, setNotes] = useState([]);
+  const [pictures, setPics] = useState("");
   const [taxonomy, setTax] = useState('');
   //boolean flag indicators **************
   const [show, setShow] = useState(false);
@@ -26,8 +29,13 @@ const BirdProfile = (props) => {
   const note = props.birdRequest.notes || 'No notes for this bird watcher!';
   // const user = props.userID || 1;
 
+  const client = createClient(PIXEL_TOKEN);
+  const query = commonName;
+  client.photos.search({ query, per_page: 1 }).then(photos => {
+    console.log('pexel photos, ', photos.photos[0].src.large)
+    setPics(photos.photos[0].src.large);
+  });
 
-  console.log('props in bird profile', props)
 
   // //get recent observation of bird
   useEffect(() => {
@@ -100,7 +108,10 @@ const BirdProfile = (props) => {
     setButton(!button);
   }
 
-
+  if (pictures === undefined) {
+    console.log('true pictures has no length!')
+    setPics('https://t3.ftcdn.net/jpg/03/53/78/32/360_F_353783241_kJr5np3yVR0hgzMsgON96DmqRkcMIoRs.jpg')
+  }
 
   return (
     <div className='birdProfileContainer'>
@@ -123,7 +134,7 @@ const BirdProfile = (props) => {
         </div>
         <div className="viewer">
           {photo ? <div className='birdProfilePic'>
-            <img src={pic} alt="canada goose"></img>
+            <img src={pictures} alt="canada goose"></img>
           </div> : null}
           {map ? <div className='heatMap'>
             <Map styleHeight={40} styleWidth={40} defaultZoom={ 7 } defaultCenter={{ lat: location[0][0], lng: location[0][1] }} heatMap={location} />

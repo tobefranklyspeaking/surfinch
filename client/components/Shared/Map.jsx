@@ -15,7 +15,7 @@ const DisplayMap = (props) => {
   const currentHeatMap = props.props.heatmapLayer;
 
 
-  console.log(currentLocalBirdsData);
+  // console.log(currentLocalBirdsData);
 
   return (
     <GoogleMap
@@ -90,7 +90,7 @@ const DisplayMap = (props) => {
           <div>bird details
             {selectedBird.bird_name && <h2>{selectedBird["bird_name"]}</h2>}
            {selectedBird.bird_notes &&  <p>{selectedBird["bird_notes"]}</p>}
-           {selectedBird.bird_pics &&  <img src={selectedBird["bird_pics"]} alt="bird pic" />}
+           {selectedBird.bird_pics &&  <div><img src={selectedBird["bird_pics"]} alt="bird pic" width="70" height="70" /></div>}
            {selectedBird.comName &&  <h2>{selectedBird["comName"]}</h2>}
            {selectedBird.sciName &&  <p>Scientific Name: {selectedBird["sciName"]}</p>}
            {selectedBird.locName &&  <p>Location: {selectedBird["locName"]}</p>}
