@@ -996,5 +996,12 @@ h3.updateTitle {
   color: #566573;
 }
 
+.entryFormTitle {
+  margin-top: 30px;
+  font-family: 'Almarai', sans-serif;
+  font-weight: bold;
+  color: #566573;
+}
+
 
 /**UPDATE FORM END*/
