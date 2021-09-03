@@ -6,15 +6,19 @@ import Avatar from '../Shared/Avatar.jsx';
 import NavBar from '../Shared/NavBar.jsx';
 import Map from '../Shared/Map.jsx';
 import LocalBirds from './LocalBirds.jsx';
+import Rankings from '../Shared/Rankings.jsx';
 import { EBIRD_TOKEN } from '/config';
+import { createClient } from 'pexels';
 
 
-const Homepage = ({ currentUser, location }) => {
+const Homepage = ({ currentUser, location, allBirds }) => {
 
   const [top10Birds, setTop10Birds] = useState([]);
   const [top10Loc, setTop10Loc] = useState([]);
   const [birdEntries, setBirdEntries] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [ranks, setRanks] = useState([]);
+
   //
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
@@ -23,23 +27,6 @@ const Homepage = ({ currentUser, location }) => {
   //   reset: true,
   //   // delay: 1500,
   // })
-
-  // get entries
-  // format response
-  // send to map
-
-  // const sampleuserMarker = [{
-  //   bird_name: string,
-  //   bird_notes: string,
-  //   bird_pics: string,
-  //   coordinates: [lat(int), long(int)]
-  // },
-  // {
-  //   bird_name: string,
-  //   bird_notes: string,
-  //   bird_pics: string,
-  //   coordinates: [lat(int), long(int)]
-  // }]
 
   useEffect(() => {
     axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${parseFloat(location.lat)}&lng=${parseFloat(location.lng)}&sort=date`, {
@@ -100,8 +87,18 @@ const Homepage = ({ currentUser, location }) => {
   }, [currentUser])
 
 
+  useEffect(() => {
+    axios.get(`/rankings`)
+      .then((results) => {
+        var rankings = results.data;
+        console.log('Ranks: ', rankings);
+        setRanks(rankings);
+      })
+      .catch((error) => {
+        console.log('error fetching rankings: ', error);
+      });
+  }, []);
 
-  // console.log('i need some avatars!', currentUser);
 
   return (
     <div className="home-container">
@@ -115,8 +112,15 @@ const Homepage = ({ currentUser, location }) => {
               </Link>
             </Switch>
           </div>
-          <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
-          <div>more info go here</div>
+          <div className="welcome-banner">
+            <h1>Welcome, {currentUser.username}!</h1>
+            <h3>Thanks for flyin in today!</h3>
+          </div>
+          <div className="bird-of-day">
+            <h2>Bird of the day</h2>
+            <img src={"https://images.unsplash.com/photo-1611871917387-5bc92bc0b0d8?ixid=MnwxMjA3fDB8MHxzZWFy[…]b3RvZ3JhcGh5fGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&w=1000&q=80"} width="200px" height="250px" alt="bird pic lol"></img>
+            <h4>Ceader Waxwing</h4>
+          </div>
         </div>
         <div className="mini-map-container">
           {loaded ? <div className="mini-map-container">
@@ -127,89 +131,9 @@ const Homepage = ({ currentUser, location }) => {
           </div> : <div className="loading"> <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
         </div>
       </div>
-      <div className="mini-info-container">
-        <h3 className="toptitle">TOP BIRD WATCHERS</h3>
-        <div className="topbirdersicon">
-          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-        </div>
-        <div className="descriptiontag1">Mr. Raymonds</div>
-        <div className="topbirdersicon">
-          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-        </div>
-        <div className="descriptiontag2">Smitty</div>
-        <div className="topbirdersicon">
-          <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-        </div>
-        <div className="descriptiontag3">Regionald</div>
-      </div>
+          <Rankings rankings={ranks} currentUser={currentUser} />
     </div>
   )
 }
 
-export default Homepage;
-
-/*
-<div><Map styleWidth={50} styleHeight={50} userMarkers={sampleFriendData} heatMap={heatData}/></div>
-
-const sampleLocbirddata = [
-    {
-        speciesCode: "rthhum",
-        comName: "Ruby-throated Hummingbird",
-        sciName: "Archilochus colubris",
-        locId: "L9682819",
-        locName: "7211 McKamy Boulevard, Dallas, Texas, US (32.984, -96.782)",
-        obsDt: "2021-09-01 17:36",
-        howMany: 1,
-        coordinates: [32.9836112, -96.7820043],
-        obsValid: true,
-        obsReviewed: false,
-        locationPrivate: true,
-        subId: "S94050257"
-    },
-    {
-        speciesCode: "yebcuc",
-        comName: "Yellow-billed Cuckoo",
-        sciName: "Coccyzus americanus",
-        locId: "L1935350",
-        locName: "Back Yard",
-        obsDt: "2021-09-01 14:45",
-        howMany: 1,
-        coordinates: [32.8006406, -96.7647243],
-        obsValid: true,
-        obsReviewed: false,
-        locationPrivate: true,
-        subId: "S94044366"
-    },
-    {
-        speciesCode: "eursta",
-        comName: "European Starling",
-        sciName: "Sturnus vulgaris",
-        locId: "L16065128",
-        locName: "El Centro Campus Dallas College",
-        obsDt: "2021-09-01 10:48",
-        howMany: 1,
-        coordinates: [32.7802336, -96.8061208],
-        obsValid: true,
-        obsReviewed: false,
-        locationPrivate: true,
-        subId: "S94032980"
-    }]
-
-const sampleFriendData = [{
-  bird_name: "red bird",
-  bird_notes: "looks cool",
-  bird_pics: "string",
-    coordinates: [32.822376, -96.807374]
-  },
-  {
-    bird_name: "blue bird",
-    bird_notes: "has blue wings",
-    bird_pics: "string",
-    coordinates: [32.820989, -96.791009]
-  }];
-
-  const heatData = [[32.7769, -96.7970], [32.7767, -96.7970], [32.7790, -96.7970], [32.7794, -96.7970]];
-*/
+      export default Homepage;

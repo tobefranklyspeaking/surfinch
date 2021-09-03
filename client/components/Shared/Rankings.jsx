@@ -47,24 +47,35 @@ const Rankings = ({ rankings, currentUser }) => {
 
   // Youll probably want to add one more div or something to grab their usernames so this has all three pieces you need :)
   return (
-    <div>
-      <div>
-        <Avatar avatar_pic={firstEntry.avatar_pic} color={firstEntry.avatar_background} size={75} />
-        <Badge title={'Most bird entries'} color={'bg-warning text-dark'} rank={1} />
+    <div className="mini-info-container">
+      <h3 className="toptitle">TOP BIRD WATCHERS</h3>
+      <div className="firstEntry">
+        <Avatar className="topbirdersicon" avatar_pic={firstEntry.avatar_pic} color={firstEntry.avatar_background} size={75} />
+        <div className="descriptiontag1">
+          <div>{firstEntry.username}</div>
+          <Badge title={'Most bird entries'} color={'bg-warning text-dark'} rank={1} />
+        </div>
       </div>
 
-      <div>
-        <Avatar avatar_pic={firstLogin.avatar_pic} color={firstLogin.avatar_background} size={75} />
-        <Badge title={'Most visits to Surfinch'} color={'bg-warning text-dark'} rank={1} />
+      <div className="most-visits">
+        <div className="topbirdersicon">
+        <Avatar className="topbirdersicon" avatar_pic={firstLogin.avatar_pic} color={firstLogin.avatar_background} size={75} />
+        </div>
+        <div className="descriptiontag2">
+          <div>{firstLogin.username}</div>
+          <Badge title={'Most visits to Surfinch'} color={'bg-warning text-dark'} rank={1} />
+        </div>
       </div>
 
-      <div>
-        <Avatar avatar_pic={currentUser.avatar_pic} color={currentUser.avatar_background} size={75} />
-        <Badge title={'An eye for the exotic'} color={'bg-dark'} rank={38} />
+      <div className="exotic">
+        <Avatar className="topbirdersicon" avatar_pic={currentUser.avatar_pic} color={currentUser.avatar_background} size={75} />
+        <div className="descriptiontag3">
+          <div>{currentUser.username}</div>
+          <Badge title={'An eye for the exotic'} color={'bg-dark'} rank={38}/>
+        </div>
       </div>
     </div>
   );
-
 }
 
 
