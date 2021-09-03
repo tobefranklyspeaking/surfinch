@@ -1,11 +1,11 @@
 import React from 'react';
 import Badge from './Badge.jsx';
 
-const ProfileBadges = ({ badges, currentUser, profile }) => {
+const ProfileBadges = ({ badges, currentUser, profile, social }) => {
 
   if (!badges) {
     return (
-      <div className='profile-badges'></div>
+      <div className='profile-badges'>Loading...</div>
     );
   } else {
     var logColor;
@@ -57,17 +57,30 @@ const ProfileBadges = ({ badges, currentUser, profile }) => {
     } else {
       coopColor = 'bg-danger';
     }
-    return (
-      <div className='profile-badges'>
-        <Badge title={'Frequent Flyer'} color={logColor} />
-        <Badge title={'Most Entries'} color={entColor} />
-        <Badge title={'Migrant'} color={migColor} />
-        <Badge title={'Coup collection'} color={coopColor} />
-        <Badge title={'Little birdie'} color={'bg-info text-dark'} />
-      </div>
-    );
-  }
 
+    // final check to see if this is for the profile section or social section
+    if (social) {
+      return (
+        <div>
+          <Badge title={'Most visits to the site:'} color={logColor} rank={badges.login_rank} />
+          <Badge title={'Most Entries on Surfinch:'} color={entColor} rank={badges.entry_rank} />
+          <Badge title={'Number of logins on Surfinch:'} color={migColor} rank={currentUser.logins} />
+          <Badge title={'Size of your bird nest:'} color={coopColor} rank={currentUser.entries} />
+          <Badge title={'You are new to Surfinch:'} color={'bg-info text-dark'} rank={Math.floor(Math.random() * 6)} />
+        </div>
+      );
+    } else {
+      return (
+        <div className='profile-badges'>
+          <Badge title={'Frequent Flyer'} color={logColor} />
+          <Badge title={'Most Entries'} color={entColor} />
+          <Badge title={'Migrant'} color={migColor} />
+          <Badge title={'Coup collection'} color={coopColor} />
+          <Badge title={'Little birdie'} color={'bg-info text-dark'} />
+        </div>
+      );
+    }
+  }
 }
 
 export default ProfileBadges;
