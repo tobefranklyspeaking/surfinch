@@ -185,7 +185,12 @@ li.nav-logout:hover {
 
 .mini-profile-container {
   text-align: center;
-  padding: 30px;
+  padding: 20px;
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: 100px;
+  gap: 10px;
   /* background:  rgba(94, 104, 38, .7); */
   /* background: #E5E7E9;
   background: rgb(233,225,206);
@@ -193,9 +198,26 @@ li.nav-logout:hover {
 
   /* background: rgb(229,231,233);
   background: linear-gradient(347deg, rgba(229,231,233,1) 0%, rgba(226,220,206,1) 58%,   rgba(168,172,162,1) 97%); */
-  background: rgb(229,231,233);
-  background: linear-gradient(0deg, rgba(229,231,233,1) 0%, rgba(226,220,206,1) 80%, rgba(238,216,194,1) 100%);
+  background:rgba(0, 0, 0, 0.1);
+  background: linear-gradient(0deg, rgb(240, 241, 241) 0%, rgb(230, 229, 228) 80%, rgb(207, 203, 199) 100%);
   height: 400px;
+}
+
+.bird-of-day {
+  /* background:rgba(0, 0, 0, 0.3); */
+  /* background:rgba(0, 0, 0, 0.1); */
+  color: #566573;
+  grid-row: 1/4;
+}
+
+.avatar-image rounded-cirle {
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+}
+
+.bird-of-day > img {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .mini-profile-container:hover {
@@ -203,12 +225,19 @@ li.nav-logout:hover {
   background: linear-gradient(180deg, rgba(229,231,233,.8) 0%, rgba(226,220,206,.8) 58%, rgba(168,172,162,.8) 97%);
 }
 
+.welcome-banner {
+  grid-row: 2/3;
+  grid-column: 1/2;
+  color: #566573;
+}
+
 .mini-info-container {
   /* background: rgb(166,172,159);
   background: linear-gradient(360deg, rgba(166,172,159,1) 0%, rgba(175,179,171,  1) 29%, rgba(168,172,162,1) 100%); */
   /* background: #E5E7E9; */
-  background: rgb(229,231,233);
-  background: linear-gradient(0deg, rgba(229,231,233,1) 0%, rgba(226,220,206,1) 80%, rgba(238,216,194,1) 100%);
+  /* background: rgb(229,231,233); */
+  background:rgba(0, 0, 0, 0.1);
+  background: linear-gradient(0deg, rgb(240, 241, 241) 0%, rgb(230, 229, 228) 80%, rgb(207, 203, 199) 100%);
   box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
   height: 700px;
   width: 400px;
@@ -217,7 +246,7 @@ li.nav-logout:hover {
   display: grid;
   grid-template-rows: repeat(5, 1fr);
   grid-template-columns: repeat(2, 1fr);
-  /* grid-column-gap: 30px; */
+  grid-column-gap: 30px;
 }
 
 .mini-info-container:hover {
@@ -228,23 +257,56 @@ li.nav-logout:hover {
   margin-top: 40px;
   justify-self: center;
   grid-column: 1/3;
+  grid-row: 1/2;
+  color: #566573;
 }
 
 .topbirdersicon {
   /* background: #c8994d; */
-  border-radius: 50%;
+  /* border-radius: 50%; */
   /* height: 75px;
   width: 75px; */
   justify-self: end;
   align-self: end;
-  grid-column: 1/2;
+
+  /* grid-column: 1/2; */
   /* box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px; */
+}
+
+.usericon {
+  justify-self: start;
+  align-self: start;
+  grid-row: 1/2;
+}
+
+.firstEntry {
+  justify-self: start;
+  align-self: start;
+  grid-column: 1/3;
+  grid-row: 2/3;
+  margin-left: 60px;
+}
+
+.most-visits {
+  justify-self: start;
+  align-self: start;
+  grid-column: 1/3;
+  grid-row: 3/4;
+  margin-left: 60px;
+}
+
+.exotic {
+  justify-self: start;
+  align-self: start;
+  grid-column: 1/3;
+  grid-row: 4/5;
+  margin-left: 60px;
 }
 
 .descriptiontag1 {
   grid-column: 2/3;
   grid-row: 2/3;
-  align-self: end;
+  justify-self: end;
 }
 
 .descriptiontag2 {
@@ -267,6 +329,7 @@ li.nav-logout:hover {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  color: #566573;
 }
 
 .loading {
@@ -435,6 +498,7 @@ p.smol {
 
 .profile-avatar {
   flex: 1 0 calc(10% - 10px);
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
 .profile-username {
