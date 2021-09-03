@@ -29,9 +29,11 @@ const App = () => {
   const [location, setLocation] = useState({});
   const [allBirds, setAllBirds] = useState([]);
   const [entries, setEntries] = useState([]);
+  const [individualBird, setIndividualBird] = useState({})
+
   const history = useHistory();
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
-
+  //update form from birdnestitem
   console.log('location object', location)
   console.log('ohhhh currentUser', currentUser)
 
@@ -90,7 +92,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, entries, setEntries }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, individualBird, setIndividualBird }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>
@@ -119,6 +121,9 @@ const App = () => {
                     <Profile currentUser={currentUser} location={location} />
                   </Route>
                   <Route path="/bird-entry">
+                    <BirdEntry currentUser={currentUser} location={location} />
+                  </Route>
+                  <Route path="/update-entry">
                     <BirdEntry currentUser={currentUser} location={location} />
                   </Route>
                   <Route path="/BirdProfile">
