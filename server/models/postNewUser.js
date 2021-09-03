@@ -5,7 +5,6 @@ exports.postNewUser = (req, res) => {
   let sql = `INSERT INTO user_profile (username, email, avatar_pic, avatar_background)
                VALUES ('${req.body.name}', '${req.body.email}', '${req.body.pic}', '${req.body.color}')`;
   db.query(sql, (err, result) => {
-    console.log('hi there', result);
     if (err) console.log(err);
     res.send(result);
   })
