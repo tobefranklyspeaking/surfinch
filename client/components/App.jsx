@@ -95,7 +95,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest, individualBird, setIndividualBird }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>
@@ -130,7 +130,7 @@ const App = () => {
                     <UpdateBirdForm currentUser={currentUser} location={location} />
                   </Route>
                   <Route path="/BirdProfile">
-                    <BirdProfile currentUser={currentUser} birdRequest={birdRequest}/>
+                    <BirdProfile currentUser={currentUser} birdRequest={birdRequest} />
                   </Route>
                 </div>
               </Route>
