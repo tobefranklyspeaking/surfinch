@@ -19,11 +19,7 @@ const CreateBirdForm = ({ currentUser, location }) => {
   const [st, setSt] = useState('');
 
   useEffect(() => {
-    // console.log(location)
-    // console.log(currentUser)
-    console.log(birdEntries[0])
     if (location) {
-      console.log(location)
       setStreet(location.street);
       setCity(location.city);
       setSt(location.state);
@@ -38,13 +34,16 @@ const CreateBirdForm = ({ currentUser, location }) => {
   }, []);
 
   var handleSearchBarChange = (event) => {
+    console.log(event.target.value)
     var value = event.target.value;
     var pattern = new RegExp(`\^${value}`, 'i');
 
     var filteredResults = birdEntries.filter(function (value) {
-      return pattern.test(value.bird)
+      return pattern.test(value.bird) || pattern.test(value.city_sighted) || pattern.test(value.state_sighted);
     })
     setFilteredSet(filteredResults);
+
+    // handleInputChange(event, setSpecies);
   }
 
   var handleSubmit = (event) => {
@@ -55,7 +54,6 @@ const CreateBirdForm = ({ currentUser, location }) => {
       .then(results => {
         var lat = results.data[0].lat;
         var lon = results.data[0].lon;
-        console.log(lat, lon)
         formData.append('latitude', lat);
         formData.append('longitude', lon);
         formData.append('userID', currentUser.userID);
@@ -70,13 +68,19 @@ const CreateBirdForm = ({ currentUser, location }) => {
       })
       .then(() => {
         axios.post('/createBird', formData)
-          .then(results => {
-            console.log(formData);
-            axios.get(`/entries/${currentUser.userID}`)
-              .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
-          })
+          .catch(err => { if (err) console.log(err) })
       })
-      .catch(error => { if (error) console.log(error); });
+      .then(() => {
+        axios.get(`/entries/${currentUser.userID}`)
+          .then(results => { setBirdEntries(results.data); setFilteredSet(results.data) })
+          .catch(err => { if (err) console.log(err) })
+      })
+      .then(() => {
+        setNotes('');
+        setSpecies('');
+        setDate('');
+      })
+      .catch(err => { if (error) console.log(err); });
 
   }
 
@@ -103,12 +107,12 @@ const CreateBirdForm = ({ currentUser, location }) => {
           <div className="form-group row align-items-end">
             <div className="form-group col-6">
               <label className="control-label" htmlFor="">Species</label>
-              <input className="form-control" type="text" name="bird" value={species} onChange={() => { handleInputChange(event, setSpecies) }} />
+              <input className="form-control" type="text" name="bird" value={species} onChange={() => {handleInputChange(event, setSpecies)}} />
             </div>
 
             <div className="form-group col-6">
               <label className="control-label" htmlFor="">Date</label>
-              <input type="date" name="date" className="form-control" required onChange={() => { handleInputChange(event, setDate) }} />
+              <input type="date" name="date" className="form-control" value={date} required onChange={() => { handleInputChange(event, setDate) }} />
             </div>
           </div>
           <div className="form-group row align-items-end">
@@ -137,9 +141,8 @@ const CreateBirdForm = ({ currentUser, location }) => {
 
           <div className="form-group">
             <label className="control-label" htmlFor="">Notes</label>
-            <textarea className="form-control" name="notes" onChange={() => { handleInputChange(event, setNotes) }}></textarea>
+            <textarea className="form-control" name="notes" value={notes} onChange={() => { handleInputChange(event, setNotes) }}></textarea>
           </div>
-
 
           <div>
             <input className="btn form-control" type="submit" />

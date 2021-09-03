@@ -1,22 +1,21 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 
-const EntryItem = ({ photo, notes, city, state, name, handleCardClick }) => {
+const EntryItem = ({ photo, city, state, name, handleCardClick }) => {
+  const [pic, setPic] = useState('/uploads/noimageavail.jpg');
+
   return (
-    <div className="d-flex card" style={{ width: '14rem', minWidth: '14rem' }} onClick={handleCardClick} data-birdname={name}>
-
+    <div className="d-flex card" style={{ width: '196px', minWidth: '196px' }} onClick={handleCardClick} data-birdname={name}>
       <div data-birdname={name} className="card-header text-center font-weight-bold">{name}</div>
-      <div data-birdname={name} className="card-img-top" style={{ width: "222px", height: "180px", overflow: 'hidden', backgroundImage: `url(.${photo})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
-        {/* <img src={photo} className="card-img-top" /> */}
+      <div data-birdname={name} className="card-img-top" style={{ width: "194px", height: "150px", overflow: 'hidden', backgroundImage: `url(.${photo ? photo : pic})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
       </div>
       <div className="card-body" data-birdname={name}>
-        <p data-birdname={name}>
+        <small data-birdname={name} className="text-right">
           {
             city &&
             <span>{city}, </span>
           }
           {state}
-        </p>
-        <p data-birdname={name}>{notes}</p>
+        </small>
       </div>
     </div>
   )
