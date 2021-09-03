@@ -16,8 +16,6 @@ const UpdateBirdForm = ({ birdEntry }) => {
 
   const Auth = useContext(AuthContext);
   const eachBird = Auth.individualBird;
-  eachBird.filter(each => console.log(each))
-  // const found = array1.find(element => element > 10);
 
   useEffect(() => {
     if (eachBird) {
