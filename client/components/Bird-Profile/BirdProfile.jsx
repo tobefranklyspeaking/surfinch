@@ -20,7 +20,10 @@ const BirdProfile = (props) => {
 
   const regionCode = props.region || "RI";
   const speciesCode = props.species || "cangoo";
-  const birdName = props.birdName || "Branta canadensis";
+  const commonName = props.commonName || "canada goose";
+  const scientific = props.scientific || "Branta canadensis";
+  const pic = props.photos || '';
+  const note = props.notes || '';
   const user = props.userID || 1;
 
   // //get recent observation of bird
