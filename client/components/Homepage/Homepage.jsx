@@ -108,7 +108,7 @@ const Homepage = ({ currentUser, location }) => {
           <div className="usericon topbirdersicon">
             <a>
               <Switch><Link to="/user-profile">
-                <Avatar size={100} color={currentUser.avatar_background || '#c8994d'}
+                <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
                   avatar_pic={currentUser.avatar_pic || 'crane'} />
               </Link></Switch>
             </a>
@@ -118,7 +118,7 @@ const Homepage = ({ currentUser, location }) => {
         </div>
         <div className="mini-map-container">
           {loaded ?  <div className="mini-map-container">
-          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={9} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
+          <Map styleWidth={35} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={9} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
           <div className="birds-nearby-container">
             <LocalBirds top10Birds={top10Birds} location={location} />
           </div>
