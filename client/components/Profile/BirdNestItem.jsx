@@ -1,9 +1,18 @@
 import React from 'react';
 
+import { AuthContext } from '../App.jsx';
+import firebase from 'firebase';
+require('firebase/auth');
+
 const BirdNestItem = ({ bird }) => {
+  const Auth = useContext(AuthContext);
+
+  const handleBird = () => {
+    setIndividualBird(bird);
+  }
 
   return (
-    <div className='bird-nest-item'>
+    <div className='bird-nest-item' onClick={handleBird} >
       <div className="card">
         <img src={bird.birdpic_url} className="card-img-top" alt="..."></img>
         <div className="card-body">

@@ -11,9 +11,9 @@ const LocalBirds = ({top10Birds}) => {
 
   return (
     <>
-      {top10Birds.map((bird) => {
+      {top10Birds.map((bird, i) => {
         return (
-          <div className="local-bird" onClick={() => {setBirdRequest({speciesCode: bird.speciesCode, commonName: bird.comName, commonName: bird.comName, scientific: bird.sciName, pic: bird.pic})}}>
+          <div key={i} className="local-bird" onClick={() => {setBirdRequest({speciesCode: bird.speciesCode, commonName: bird.comName, commonName: bird.comName, scientific: bird.sciName, pic: bird.pic})}}>
              <a>
                <Switch><Link to="/birdProfile">
                  <p className="toobig">{bird.comName}</p>

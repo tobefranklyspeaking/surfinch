@@ -17,6 +17,7 @@ import Profile from './Profile/Profile.jsx';
 import BirdEntry from './Bird-Entries/BirdEntry.jsx';
 import BirdProfile from './Bird-Profile/BirdProfile.jsx';
 import regions from './Shared/RegionCode.js';
+import UpdateBirdForm from './Bird-Entries/UpdateBirdForm.jsx'
 
 firebase.default.initializeApp(firebaseConfig);
 
@@ -29,6 +30,9 @@ const App = () => {
   const [location, setLocation] = useState({});
   const [allBirds, setAllBirds] = useState([]);
   const [birdRequest, setBirdRequest] = useState({});
+  const [entries, setEntries] = useState([]);
+  const [individualBird, setIndividualBird] = useState({})
+
   const history = useHistory();
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
 
@@ -121,6 +125,9 @@ const App = () => {
                   <Route path="/bird-entry">
                     <BirdEntry currentUser={currentUser} location={location} />
                   </Route>
+                  {/* UNUSED Ready to implement with nav <Route path="/update-bird">
+                    <UpdateBirdForm currentUser={currentUser} location={location} />
+                  </Route> */}
                   <Route path="/BirdProfile">
                     <BirdProfile currentUser={currentUser} />
                   </Route>
