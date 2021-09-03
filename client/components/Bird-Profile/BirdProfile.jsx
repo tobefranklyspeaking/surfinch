@@ -74,18 +74,6 @@ const BirdProfile = (props) => {
   }, [])
 
 
-  //get user notes
-  // useEffect(() => {
-  //   axios.get(`/userbirds/${user}`)
-  //   .then((result) => {
-  //     console.log(result);
-  //     // setNotes(result)
-  //   })
-  //   .catch(error => {
-  //     consol.log('There was an error retrieving notes from DB', error)
-  //   })
-  // }, [notes])
-
   const handleClick = (event) => {
     event.preventDefault();
     setShow(!show);
@@ -153,30 +141,3 @@ const BirdProfile = (props) => {
 export default BirdProfile;
 
 
-
-//Get Species list for a region
-//https://api.ebird.org/v2/product/spplist/{{regionCode}}
-
-//Get observations of a given species in a given region
-//https://api.ebird.org/v2/data/obs/{{regionCode}}/recent/{{speciesCode}}
-
-//bird information
-//https://api.ebird.org/v2/ref/taxonomy/ebird?species=cangoo
-
-
-// <img src='https://images.unsplash.com/photo-1451493683580-9ec8db457610?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y2FuZGlhbiUyMGdvb3NlfGVufDB8fDB8fA%3D%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60' class=".img-fluid" alt="Responsive image"></img>
-
-
-// axios.get('https://api.ebird.org/v2/ref/taxonomy/ebird?species=cangoo', {
-//   headers: {
-//     'X-eBirdApiToken': API_TOKEN
-//   }
-// })
-// .then((result) => {
-//   var test = taxonomySplit(result.data)
-//   console.log(test);
-//   // setTax(result.data);
-// })
-// .catch(error => {
-//   console.log('There was an error retrieving data from API, ', error);
-// })
