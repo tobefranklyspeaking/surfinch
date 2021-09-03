@@ -4,14 +4,14 @@ import axios from 'axios';
 import { AuthContext } from '../App.jsx';
 
 const UpdateBirdForm = ({ birdEntry }) => {
-  const [species, setSpecies] = useState();
+  const [species, setSpecies] = useState('');
   const [date, setDate] = useState(new Date());
-  const [fileUpload, setFileUpload] = useState();
+  const [fileUpload, setFileUpload] = useState('');
 
-  const [notes, setNotes] = useState();
-  const [street, setStreet] = useState();
-  const [city, setCity] = useState();
-  const [st, setSt] = useState();
+  const [notes, setNotes] = useState('');
+  const [street, setStreet] = useState('');
+  const [city, setCity] = useState('');
+  const [st, setSt] = useState('');
 
 
   const Auth = useContext(AuthContext);
