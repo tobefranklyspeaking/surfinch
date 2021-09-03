@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { createClient } from 'pexels';
 import axios from 'axios';
 import Map from '.././Shared/Map.jsx';
 import { compileCoordinates } from './coordinates.js';
@@ -28,11 +29,12 @@ const BirdProfile = (props) => {
   const note = props.birdRequest.notes || 'No notes for this bird watcher!';
   // const user = props.userID || 1;
 
-
-  // console.log('props in bird profile', props)
-  if (pictures.length > 0) {
-    console.log('large image', pictures[0].largeImageURL)
-  }
+  const client = createClient(PIXEL_TOKEN);
+  const query = commonName;
+  client.photos.search({ query, per_page: 1 }).then(photos => {
+    console.log('pexel photos, ', photos.photos[0].src.large)
+    setPics(photos.photos[0].src.large);
+  });
 
 
   // //get recent observation of bird
@@ -69,16 +71,6 @@ const BirdProfile = (props) => {
         setTax(text);
       })
       .catch((error) => { console.log('error from Wiki api', error) });
-  }, [])
-
-  useEffect(() => {
-    axios.get(`https://pixabay.com/api/?key=23214474-e3c0d5ff2e067f495a4b7d9a8q=${commonName.toLowerCase()}&image_type=photo`)
-    .then((result) => {
-      // console.log('image api', result.data.hits[0].largeImageURL);
-      //result.data.hits.largeImageURL
-      var first = result.data.hits[0].largeImageURL;
-      setPics(first);
-    })
   }, [])
 
 

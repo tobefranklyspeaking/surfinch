@@ -1,5 +1,6 @@
 const path = require('path');
 var SRC_DIR = path.join(__dirname, '/client/');
+var webpack = require('webpack');
 
 module.exports = {
   entry: `${SRC_DIR}index.js`,
@@ -52,5 +53,10 @@ module.exports = {
         ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.ProvidePlugin({
+      process: 'process/browser',
+    }),
+]
 };
