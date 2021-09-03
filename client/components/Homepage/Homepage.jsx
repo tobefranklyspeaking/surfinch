@@ -9,12 +9,13 @@ import LocalBirds from './LocalBirds.jsx';
 import { EBIRD_TOKEN } from '/config';
 
 
-const Homepage = ({currentUser, location}) => {
+const Homepage = ({ currentUser, location }) => {
 
   const [top10Birds, setTop10Birds] = useState([]);
   const [top10Loc, setTop10Loc] = useState([]);
   const [birdEntries, setBirdEntries] = useState([]);
 
+  //
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
   //   from: { opacity: 0, marginTop: 150 },
@@ -75,29 +76,26 @@ const Homepage = ({currentUser, location}) => {
       })
   }, [location])
 
-<<<<<<< HEAD
-=======
   useEffect(() => {
     axios.get(`/entries/${currentUser.userID}`)
       .then((res) => {
         console.log('wooo', res.data)
         let temp2 = [];
-       res.data.map((entry) => {
-         temp2.push({
-          bird_name: entry.bird,
-          bird_notes: entry.notes,
-          bird_pics: entry.birdpic_url,
-          coordinates: [parseFloat(entry.latitude), parseFloat(entry.longitude)]
-         })
-       })
-       setBirdEntries(temp2);
+        res.data.map((entry) => {
+          temp2.push({
+            bird_name: entry.bird,
+            bird_notes: entry.notes,
+            bird_pics: entry.birdpic_url,
+            coordinates: [parseFloat(entry.latitude), parseFloat(entry.longitude)]
+          })
+        })
+        setBirdEntries(temp2);
       })
       .catch((err) => {
         console.log('nooo', err)
       })
   }, [currentUser])
 
->>>>>>> 5c24c3f8d577f47b88e53c9021d412caebaba971
 
 
   console.log('i need some avatars!', currentUser);
@@ -106,30 +104,19 @@ const Homepage = ({currentUser, location}) => {
     <div className="home-container">
       <div className="mini-home-container">
         <div className="mini-profile-container">
-<<<<<<< HEAD
           <div className="usericon topbirdersicon">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-              avatar_pic={currentUser.avatar_pic || 'crane'} />
+            <a>
+              <Switch><Link to="/user-profile">
+                <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
+                  avatar_pic={currentUser.avatar_pic || 'crane'} />
+              </Link></Switch>
+            </a>
           </div>
-=======
-        <div className="usericon topbirdersicon">
-        <a>
-          <Switch><Link to="/user-profile">
-            <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
-            avatar_pic={currentUser.avatar_pic || 'crane'} />
-          </Link></Switch>
-        </a>
-        </div>
->>>>>>> 5c24c3f8d577f47b88e53c9021d412caebaba971
           <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
-<<<<<<< HEAD
-          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} />
-=======
-          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries}/>
->>>>>>> 5c24c3f8d577f47b88e53c9021d412caebaba971
+          <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
           <div className="birds-nearby-container">
             <LocalBirds top10Birds={top10Birds} />
           </div>
