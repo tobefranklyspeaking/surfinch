@@ -10,6 +10,7 @@ const { updateBird } = require('./models/updateBird.js')
 const { getUserInfo } = require('./models/getUserInfo');
 const { createBird, getEntries } = require('./models/birdEntries');
 const { getStats } = require('./models/getStats.js');
+const { getSiteRankings } = require('./models/getSiteRankings.js');
 const { incrementCount } = require('./models/incrementCount');
 
 const port = 3333;
@@ -29,6 +30,7 @@ app.get('/user/:email', getUserInfo);
 
 // get stats from the site
 app.get('/stats/:username', getStats);
+app.get('/rankings', getSiteRankings);
 
 //get users saved birds info
 app.get('/userbirds/:userid', getUsersBirdInfo);
