@@ -62,7 +62,7 @@ CREATE TABLE bird_data (
   extinct_year TEXT
 );
 
-INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Admin', 'email@admin.com', 'goose', '#c8994d', 5, 29);
+INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Mr. Raymond', 'email@admin.com', 'goose', '#c8994d', 5, 29);
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('AJP', 'AJP@admin.com', 'eagle', '#c8994d', 17, 14);
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Shay', 'Shay@admin.com', 'hummingbird', '#c8994d', 2, 3);
 INSERT INTO user_profile (username, email, avatar_pic, avatar_background, entries, logins) VALUES ('Smitty', 'Smitty@admin.com', 'tropical', '#c8994d', 0, 7);
