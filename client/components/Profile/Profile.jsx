@@ -6,7 +6,7 @@ import axios from 'axios';
 
 const Profile = ({ currentUser }) => {
 
-  /// HOOKS WILL BE HERE FOR DB CALLS
+  /// HOOKS WILL BE HERE FOR DB CALLS //
   const [badges, setBadges] = useState();
   const [entries, setEntries] = useState([]);
 
