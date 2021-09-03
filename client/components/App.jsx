@@ -29,6 +29,7 @@ const App = () => {
   const [birdEntries, setBirdEntries] = useState([]);
   const [location, setLocation] = useState({});
   const [allBirds, setAllBirds] = useState([]);
+  const [birdRequest, setBirdRequest] = useState({});
   const [entries, setEntries] = useState([]);
   const [individualBird, setIndividualBird] = useState({})
 
@@ -93,7 +94,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, individualBird, setIndividualBird }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>
