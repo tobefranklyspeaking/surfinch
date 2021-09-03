@@ -31,7 +31,7 @@ const App = () => {
   const [allBirds, setAllBirds] = useState([]);
   const [birdRequest, setBirdRequest] = useState({});
   const [entries, setEntries] = useState([]);
-  const [individualBird, setIndividualBird] = useState({})
+  const [individualBird, setIndividualBird] = useState({});
 
   const history = useHistory();
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
@@ -95,7 +95,7 @@ const App = () => {
 
 
   return (
-    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest }}>
+    <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest, individualBird, setIndividualBird }}>
       <div className="boolean">
         {JSON.stringify(isLoggedIn)}
       </div>
@@ -126,11 +126,11 @@ const App = () => {
                   <Route path="/bird-entry">
                     <BirdEntry currentUser={currentUser} location={location} />
                   </Route>
-                  {/* UNUSED Ready to implement with nav <Route path="/update-bird">
+                  <Route path="/update-bird-form">
                     <UpdateBirdForm currentUser={currentUser} location={location} />
-                  </Route> */}
+                  </Route>
                   <Route path="/BirdProfile">
-                    <BirdProfile currentUser={currentUser} birdRequest={birdRequest}/>
+                    <BirdProfile currentUser={currentUser} birdRequest={birdRequest} />
                   </Route>
                 </div>
               </Route>
