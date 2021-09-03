@@ -37,7 +37,8 @@ const App = () => {
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
 
   console.log('location object', location)
-  console.log('ohhhh currentUser', currentUser)
+  console.log('bird request', birdRequest)
+  // console.log('ohhhh currentUser', currentUser)
 
   //LOCATION IQ API CALL for lats/longs and region codes
   useEffect(() => {
@@ -129,7 +130,7 @@ const App = () => {
                     <UpdateBirdForm currentUser={currentUser} location={location} />
                   </Route> */}
                   <Route path="/BirdProfile">
-                    <BirdProfile currentUser={currentUser} />
+                    <BirdProfile currentUser={currentUser} birdRequest={birdRequest}/>
                   </Route>
                 </div>
               </Route>

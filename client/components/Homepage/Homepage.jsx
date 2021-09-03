@@ -122,9 +122,9 @@ const Homepage = ({ currentUser, location }) => {
           {loaded ?  <div className="mini-map-container">
           <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
           <div className="birds-nearby-container">
-            <LocalBirds top10Birds={top10Birds} />
+            <LocalBirds top10Birds={top10Birds} location={location} />
           </div>
-          </div> :<div className="loading"> <div class="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
+          </div> :<div className="loading"> <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
         </div>
       </div>
       <div className="mini-info-container">
