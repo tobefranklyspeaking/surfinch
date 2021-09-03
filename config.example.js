@@ -3,5 +3,6 @@
 module.exports = {
   LOC_TOKEN: "Token from LocationIQ API",
   GOOGLE_TOKEN: "Token from Google API",
-  EBIRD_TOKEN: "Token from Ebird API"
+  EBIRD_TOKEN: "Token from Ebird API",
+  PIXEL_TOKEN: "Token from Pixel API"
 }
