@@ -1,9 +1,7 @@
 import React, { useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { AuthContext } from '../App.jsx';
-import firebase from 'firebase';
 import Region from '../Shared/RegionCode.js';
-require('firebase/auth');
 
 const BirdNestItem = ({ bird }) => {
   const Auth = useContext(AuthContext);
