@@ -34,7 +34,7 @@ const App = () => {
 
   const history = useHistory();
   // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
-  //update form from birdnestitem
+
   console.log('location object', location)
   console.log('ohhhh currentUser', currentUser)
 
