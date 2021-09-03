@@ -15,7 +15,7 @@ const DisplayMap = (props) => {
   const currentHeatMap = props.props.heatmapLayer;
 
 
-  console.log(currentLocalBirdsData);
+  // console.log(currentLocalBirdsData);
 
   return (
     <GoogleMap

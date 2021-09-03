@@ -502,6 +502,8 @@ p.smol {
 
 .birdProfilePic > img {
   border-radius: 10px;
+  height: 400px;
+  width: 500px;
 }
 
 .birdBio {
@@ -718,6 +720,7 @@ h2.text-white {
 }
 
 .secondaryContainerLogin {
+  position: absolute;
   display: flex;
   margin-top: 5%;
   flex-direction: column;
