@@ -20,7 +20,7 @@ const BirdNestItem = ({ bird }) => {
         <div className="card-body">
           <h5 className="card-title">{bird.bird}</h5>
           <p className="card-text">{bird.state_sighted}</p>
-          <button  onClick={handleBird} className="btn btn-primary">Edit</button>
+          <button onClick={handleBird} className="btn btn-primary">Edit</button>
         </div>
       </div>
     </div>

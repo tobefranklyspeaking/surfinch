@@ -14,7 +14,7 @@ const Homepage = ({ currentUser, location }) => {
   const [top10Birds, setTop10Birds] = useState([]);
   const [top10Loc, setTop10Loc] = useState([]);
   const [birdEntries, setBirdEntries] = useState([]);
-
+  const [loaded, setLoaded] = useState(false);
   //
   // const propz = useSpring({
   //   to: { opacity: 1, marginTop: 0 },
@@ -48,7 +48,6 @@ const Homepage = ({ currentUser, location }) => {
       }
     })
       .then((result) => {
-        //console.log('BIRD!!!', result.data);
         let top10 = result.data.slice(0, 10);
         setTop10Birds(top10);
         console.log(top10);
@@ -66,10 +65,14 @@ const Homepage = ({ currentUser, location }) => {
             obsValid: bird.obsValid,
             obsReviewed: bird.obsReviewed,
             locationPrivate: bird.locationPrivate,
-            subId: bird.subId
+            subId: bird.subId,
+            pic: ''
           });
         })
         setTop10Loc(temp);
+        setTimeout(() => {
+          setLoaded(true);
+        }, 2000)
       })
       .catch((err) => {
         console.log('wah', err);
@@ -98,7 +101,7 @@ const Homepage = ({ currentUser, location }) => {
 
 
 
-  console.log('i need some avatars!', currentUser);
+  // console.log('i need some avatars!', currentUser);
 
   return (
     <div className="home-container">
@@ -116,11 +119,13 @@ const Homepage = ({ currentUser, location }) => {
           <div>more info go here</div>
         </div>
         <div className="mini-map-container">
+          {loaded ?  <div className="mini-map-container">
           <Map styleWidth={40} styleHeight={40} defaultCenter={{ lat: parseFloat(location.lat), lng: parseFloat(location.lng) }} defaultZoom={7} localBirdsMarkers={top10Loc} userMarkers={birdEntries} />
           <div className="birds-nearby-container">
-            <LocalBirds top10Birds={top10Birds} />
+            <LocalBirds top10Birds={top10Birds} location={location} />
           </div>
-          Î                </div>
+          </div> :<div className="loading"> <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>  </div>}
+        </div>
       </div>
       <div className="mini-info-container">
         <h3 className="toptitle">TOP BIRD WATCHERS</h3>

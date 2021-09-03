@@ -1,10 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { LOC_TOKEN } from '/config.js';
 import axios from 'axios';
-
 import { AuthContext } from '../App.jsx';
-import firebase from 'firebase';
-require('firebase/auth');
 
 const UpdateBirdForm = ({ birdEntry }) => {
   const [species, setSpecies] = useState();
@@ -21,7 +18,6 @@ const UpdateBirdForm = ({ birdEntry }) => {
   const eachBird = Auth.individualBird;
 
 
-  console.log('inside update birdform bullshit', Auth)
   useEffect(() => {
     if (eachBird) {
       setSpecies(eachBird.bird);
