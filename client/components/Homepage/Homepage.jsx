@@ -108,12 +108,10 @@ const Homepage = ({ currentUser, location }) => {
       <div className="mini-home-container">
         <div className="mini-profile-container">
           <div className="usericon topbirdersicon">
-            <a>
               <Switch><Link to="/user-profile">
                 <Avatar size={75} color={currentUser.avatar_background || '#c8994d'}
                   avatar_pic={currentUser.avatar_pic || 'crane'} />
               </Link></Switch>
-            </a>
           </div>
           <h2>Welcome, {currentUser.username}! Thanks for flyin in today!</h2>
           <div>more info go here</div>
