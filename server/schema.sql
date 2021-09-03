@@ -81,13 +81,13 @@ UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Blue Jay", NOW(), "uploads/blue_jay.jpeg", "Male and female blue jays look alike with a white face, throat, and chin bordered by a prominent black necklace that extends from the nape to the breast.", "Edinboro", "PA", '-80.15905', "41.88166", 1);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;
 
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "Wilson", "WI", '-92.201359', "44.92717", 1);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "Wilson", "WI", '-92.201359', "44.92717", 1);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Pale brown overall with warm reddish tinges in the wings, tail, and crest", "New Cumberland", "WV", '-80.584208', "40.526908", 1);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Pale brown overall with warm reddish tinges in the wings, tail, and crest", "New Cumberland", "WV", '-80.584208', "40.526908", 1);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Both males and females have thick orange bills, but those of the male tend to have some black coloration.", "Jacksons Gap", "AL", '-85.833194', "32.873293", 1);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Both males and females have thick orange bills, but those of the male tend to have some black coloration.", "Jacksons Gap", "AL", '-85.833194', "32.873293", 1);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Cardinals tend to sit low in shrubs and trees or forage on or near the ground, often in pairs.", "Grady", "AL", '-86.158263', "31.977073", 1);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Cardinals tend to sit low in shrubs and trees or forage on or near the ground, often in pairs.", "Grady", "AL", '-86.158263', "31.977073", 1);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 1;
 
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (1, "Hummingbird", NOW(), "uploads/hummingbird.jpg", "Bright emerald or golden-green on the back and crown, with gray-white underparts.", "Osterville", "MA", '-70.388089', "41.632841", 1);
@@ -126,11 +126,11 @@ UPDATE user_profile SET entries = entries + 1 WHERE userID = 2;
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Blue Jay", NOW(), "uploads/blue_jay.jpeg", "Blue jays are loud and noisy, though they are uncharacteristically quiet during the nesting season.", "Madison", "OH", '-81.04979', "41.771218", 2);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 2;
 
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "North Kingstown", "RI", '-71.459516', "41.59107", 2);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "North Kingstown", "RI", '-71.459516', "41.59107", 2);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 2;
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Pale brown overall with warm reddish tinges in the wings, tail, and crest", "Luray", "VA", '-78.462098', "38.666793", 2);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Pale brown overall with warm reddish tinges in the wings, tail, and crest", "Luray", "VA", '-78.462098', "38.666793", 2);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 2;
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Both males and females have thick orange bills, but those of the male tend to have some black coloration.", "Millbrook", "AL", '-86.367443', "32.486736", 2);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Both males and females have thick orange bills, but those of the male tend to have some black coloration.", "Millbrook", "AL", '-86.367443', "32.486736", 2);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 2;
 
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (2, "Hummingbird", NOW(), "uploads/hummingbird.jpg", "Bright emerald or golden-green on the back and crown, with gray-white underparts.", "Pittsford", "VA", '-72.997821', "43.725124", 2);
@@ -161,9 +161,9 @@ UPDATE user_profile SET entries = entries + 1 WHERE userID = 3;
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (3, "Blue Jay", NOW(), "uploads/blue_jay.jpeg", "Its bright blue mantle contrasts with a white breast. Its wings have intricate patterns of blue, black, and white.", "Hagerstown", "MD", '-77.718907', "39.639579", 3);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 3;
 
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (3, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "Jamestown", "CA", '-120.467276', "37.891257", 3);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (3, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "Jamestown", "CA", '-120.467276', "37.891257", 3);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 3;
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (3, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Pale brown overall with warm reddish tinges in the wings, tail, and crest", "Willingboro", "NJ", '-74.884375', "40.029546", 3);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (3, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Pale brown overall with warm reddish tinges in the wings, tail, and crest", "Willingboro", "NJ", '-74.884375', "40.029546", 3);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 3;
 
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (3, "Hummingbird", NOW(), "uploads/hummingbird.jpg", "Bright emerald or golden-green on the back and crown, with gray-white underparts.", "Somerdale", "NJ", '-75.026844', "39.842085", 3);
@@ -186,7 +186,7 @@ UPDATE user_profile SET entries = entries + 1 WHERE userID = 3;
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (5, "Blue Jay", NOW(), "uploads/blue_jay.jpeg", "Blue above and white below, with a prominent crest and a bold black necklace. The wings and tail are barred with black, and it has a bold white wingbar.", "Richmond", "VA", '-77.509292', "37.423967", 5);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 5;
 
-INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (5, "Cardinal", NOW(), "uploads/cardinal_thimb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "Edmond", "OK", '-97.481511', "35.65314", 5);
+INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (5, "Cardinal", NOW(), "uploads/cardinal_thumb.webp", "Brilliant red all over, with a reddish bill and black face immediately around the bill.", "Edmond", "OK", '-97.481511', "35.65314", 5);
 UPDATE user_profile SET entries = entries + 1 WHERE userID = 5;
 
 INSERT INTO user_birds (userID, bird, date, birdpic_url, notes, city_sighted, state_sighted, longitude, latitude, user_profileID) VALUES (5, "Hummingbird", NOW(), "uploads/hummingbird.jpg", "Bright emerald or golden-green on the back and crown, with gray-white underparts.", "Bedford", "OH", '-81.534817', "41.393876", 5);
