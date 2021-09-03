@@ -4,4 +4,4 @@ config.js
 package-lock.json
 .env*
 .DS_Store
-server/db/index*
+server/db/index.js
