@@ -8,6 +8,8 @@ const BirdNestItem = ({ bird }) => {
   const Auth = useContext(AuthContext);
   let history = useHistory();
 
+  console.log('oh lord', Auth.allBirds)
+
   const handleBird = (e) => {
     Auth.setIndividualBird(bird);
     history.push('/update-bird-form');
