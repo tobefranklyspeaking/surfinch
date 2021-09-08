@@ -18,7 +18,7 @@ Additionally, in this app, you are able to research essential bird data. Trackin
   ### Review Source Code
   [Surfinch Team Version](https://github.com/Kauri-2021/Surfinch)
 
-	[Surfinch User Version](https://github.com/tobefranklyspeaking/surfinch)
+  [Surfinch User Version](https://github.com/tobefranklyspeaking/surfinch)
 
 ## Creating Surfinch App from Source Code
 
