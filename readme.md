@@ -45,6 +45,9 @@ git clone https://github.com/tobefranklyspeaking/surfinch
 
 - [ ] Follow the directions in the following link to setup Firebase project:
 	- [ ] [Firebase Docs](https://firebase.google.com/docs/web/setup)
+
+- [ ] Modify client/components/Login/firebase.config.js to contain firebase credentials (may set as private, secret, or hidden file as necessary)
+
 ```
 mysql -u <username> -p < schema.sql
 ```
