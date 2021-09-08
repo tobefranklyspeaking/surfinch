@@ -17,13 +17,14 @@ Additionally, in this app, you are able to research essential bird data. Trackin
 
   ### Review Source Code
   [Surfinch](https://github.com/Kauri-2021/Surfinch)
+	[SurfinchLocal](https://github.com/tobefranklyspeaking/surfinch)
 
 ## Creating Surfinch App from Source Code
 
 - [ ] Obtain the code for this app using the above link or following step:
 	- [ ] Start by cloning:
 ```
-git clone https://github.com/tobefranklyspeaking/ohhhdecisions.git
+git clone https://github.com/tobefranklyspeaking/surfinch
 ```
 
 
@@ -42,6 +43,8 @@ git clone https://github.com/tobefranklyspeaking/ohhhdecisions.git
 - [ ] Download and install [MySQL](https://www.mysql.com/downloads/)
 	- [ ] Follow instructions to create login and then run the following:
 
+- [ ] Follow the directions in the following link to setup Firebase project:
+	- [ ] [Firebase Docs](https://firebase.google.com/docs/web/setup)
 ```
 mysql -u <username> -p < schema.sql
 ```
@@ -79,6 +82,7 @@ npm run build
 For major changes, please open an issue first to discuss what you would like to change.
 
 Contact Team-Kauri by navigating to https://github.com/Kauri-2021
+Contact tobefranklyspeaking by navigating to https://github.com/tobefranklyspeaking
 
 ---
 
