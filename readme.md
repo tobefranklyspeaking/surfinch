@@ -16,8 +16,9 @@ Have you ever found yourself unable to digitally track bird sightings? This app 
 Additionally, in this app, you are able to research essential bird data. Tracking is easy with the use of interactive forms and maps. Data will be stored to each user's profile and will be accessible during new sessions.
 
   ### Review Source Code
-  [Surfinch](https://github.com/Kauri-2021/Surfinch)
-	[SurfinchLocal](https://github.com/tobefranklyspeaking/surfinch)
+  [Surfinch Team Version](https://github.com/Kauri-2021/Surfinch)
+
+	[Surfinch User Version](https://github.com/tobefranklyspeaking/surfinch)
 
 ## Creating Surfinch App from Source Code
 
@@ -85,6 +86,7 @@ npm run build
 For major changes, please open an issue first to discuss what you would like to change.
 
 Contact Team-Kauri by navigating to https://github.com/Kauri-2021
+
 Contact tobefranklyspeaking by navigating to https://github.com/tobefranklyspeaking
 
 ---
