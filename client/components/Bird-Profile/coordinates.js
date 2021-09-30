@@ -9,9 +9,5 @@ exports.compileCoordinates = (data) => {
     loc.push(bird.lng);
     coordinates.push(loc);
   })
-
-  // console.log(coordinates);
   return coordinates;
-
-  //return compiled array of objects
 };

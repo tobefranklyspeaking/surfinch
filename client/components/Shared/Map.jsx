@@ -14,9 +14,6 @@ const DisplayMap = (props) => {
   const currentLocalBirdsData = props.props.localBirdsData;
   const currentHeatMap = props.props.heatmapLayer;
 
-
-  // console.log(currentLocalBirdsData);
-
   return (
     <GoogleMap
       defaultZoom={props.props.zoom}
