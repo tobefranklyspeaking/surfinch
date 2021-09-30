@@ -1,10 +1,10 @@
+-- Setup and insert data into MySQL database
 DROP DATABASE IF EXISTS surfinch;
 
 CREATE DATABASE surfinch;
 
 USE surfinch;
 
-/* Table for the user info */
 CREATE TABLE user_profile (
   userID INT NOT NULL AUTO_INCREMENT,
   username TEXT,

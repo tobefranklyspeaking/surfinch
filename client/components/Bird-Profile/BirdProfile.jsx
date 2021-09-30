@@ -27,18 +27,16 @@ const BirdProfile = (props) => {
   const scientific = props.birdRequest.scientific || "Branta canadensis";
   const pic = props.birdRequest.photos || 'https://t3.ftcdn.net/jpg/03/53/78/32/360_F_353783241_kJr5np3yVR0hgzMsgON96DmqRkcMIoRs.jpg';
   const note = props.birdRequest.notes || 'No notes for this bird watcher!';
-  // const user = props.userID || 1;
 
-  //pexel api call
+  //pixel api call
   const client = createClient(PIXEL_TOKEN);
   const query = commonName || scientific;
   client.photos.search({ query, per_page: 1 }).then(photos => {
-    console.log('pexel photos, ', photos.photos[0].src.large)
     setPics(photos.photos[0].src.large);
   });
 
 
-  // //get recent observation of bird
+  //get recent observation of bird
   useEffect(() => {
     axios.get(`https://api.ebird.org/v2/data/obs/US-${regionCode}/recent/${speciesCode}`, {
       headers: {
@@ -47,7 +45,6 @@ const BirdProfile = (props) => {
     })
       .then((result) => {
         var result2 = compileCoordinates(result.data);
-        // console.log('lats and longs', result2)
         setLocation(result2);
         setBird(result.data);
       })
@@ -98,7 +95,6 @@ const BirdProfile = (props) => {
   }
 
   if (pictures === undefined) {
-    // console.log('true pictures has no length!')
     setPics('https://t3.ftcdn.net/jpg/03/53/78/32/360_F_353783241_kJr5np3yVR0hgzMsgON96DmqRkcMIoRs.jpg')
   }
 
@@ -140,5 +136,3 @@ const BirdProfile = (props) => {
 }
 
 export default BirdProfile;
-
-

@@ -58,7 +58,7 @@ const ProfileBadges = ({ badges, currentUser, profile, social }) => {
       coopColor = 'bg-danger';
     }
 
-    // final check to see if this is for the profile section or social section
+    // final check to for appropriate section
     if (social) {
       return (
         <div>

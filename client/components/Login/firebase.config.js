@@ -1,3 +1,4 @@
+// Setup Firebase Project and set config variables per firebase.google.com
 module.exports = {
   firebaseConfig: {
     apiKey: "fill me in",

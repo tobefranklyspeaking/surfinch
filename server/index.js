@@ -14,19 +14,18 @@ const { getSiteRankings } = require('./models/getSiteRankings.js');
 const { incrementCount } = require('./models/incrementCount');
 
 const port = 3333;
+
 app.use(express.json());
-// app.use(express.urlencoded({ extended: true }));
 app.use(fileUpload({
   createParentPath: true
 }));
-
 app.use(express.static('public'));
-
-// insert a new user into the table
-app.post('/newUser', postNewUser);
 
 // get a particular user's profile info
 app.get('/user/:email', getUserInfo);
+
+// insert a new user into the table
+app.post('/newUser', postNewUser);
 
 // get stats from the site
 app.get('/stats/:username', getStats);
@@ -41,12 +40,10 @@ app.post('/bird', postUserBird);
 // increment the login and count for a user
 app.put('/incrementCount', incrementCount);
 
+// SQL database manipulation
 app.put('/updateBird', updateBird);
-
 app.post('/createBird', createBird);
 app.get('/entries/:userid', getEntries);
-
-
 
 
 app.listen(port, () => {

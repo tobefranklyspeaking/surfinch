@@ -19,15 +19,6 @@ const Homepage = ({ currentUser, location, allBirds }) => {
   const [loaded, setLoaded] = useState(false);
   const [ranks, setRanks] = useState([]);
 
-  //
-  // const propz = useSpring({
-  //   to: { opacity: 1, marginTop: 0 },
-  //   from: { opacity: 0, marginTop: 150 },
-  //   config: { duration: 2000 },
-  //   reset: true,
-  //   // delay: 1500,
-  // })
-
   useEffect(() => {
     axios.get(`https://api.ebird.org/v2/data/obs/geo/recent?lat=${parseFloat(location.lat)}&lng=${parseFloat(location.lng)}&sort=date`, {
       headers: {
@@ -37,7 +28,6 @@ const Homepage = ({ currentUser, location, allBirds }) => {
       .then((result) => {
         let top10 = result.data.slice(0, 10);
         setTop10Birds(top10);
-        console.log(top10);
         let temp = [];
         top10.map((bird) => {
           temp.push({
@@ -69,7 +59,6 @@ const Homepage = ({ currentUser, location, allBirds }) => {
   useEffect(() => {
     axios.get(`/entries/${currentUser.userID}`)
       .then((res) => {
-        console.log('wooo', res.data)
         let temp2 = [];
         res.data.map((entry) => {
           temp2.push({
@@ -91,7 +80,6 @@ const Homepage = ({ currentUser, location, allBirds }) => {
     axios.get(`/rankings`)
       .then((results) => {
         var rankings = results.data;
-        console.log('Ranks: ', rankings);
         setRanks(rankings);
       })
       .catch((error) => {

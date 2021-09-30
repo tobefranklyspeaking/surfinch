@@ -31,7 +31,6 @@ const NavBar = (props) => {
               <Switch className="nav-link active py-3 border-bottom bg-dark">
                 <Link to="/home"><GiBirdHouse size="40" /></Link>
               </Switch>
-              {/* <span className="homeNav">HOME</span> */}
             </li>
             <li className="nav-profile" data-toggle="tooltip" data-placement="Tooltip on right" title="PROFILE">
               <Switch className="nav-link active py-3 border-bottom bg-dark">
@@ -43,11 +42,6 @@ const NavBar = (props) => {
                 <Link to="/bird-entry"><img className="logo" src={addFinch} fill="white" height="30px" width="30px" color="white" /></Link>
               </Switch>
             </li>
-            {/* <li className="nav-bprofile">
-            <Switch className="nav-link active py-3 border-bottom bg-dark">
-              <Link to="/BirdProfile"><FaKiwiBird size="30"/></Link>
-            </Switch>
-          </li> */}
           </ul>
           <div className="dropdown border-top">
             <div className="nav-logout" data-toggle="tooltip" data-placement="Tooltip on right" title="LOG OUT">

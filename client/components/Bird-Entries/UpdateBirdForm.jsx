@@ -39,29 +39,6 @@ const UpdateBirdForm = ({ birdEntry }) => {
   var handleSubmit = (event) => {
     event.preventDefault();
 
-    // var form = document.getElementById('update-entry')
-    // var formData = new FormData(form);
-    // console.log(formData)
-    // axios.get(`https://us1.locationiq.com/v1/search.php?key=${LOC_TOKEN}&city=${city}&state=${st}&format=json`)
-    //   .then(results => {
-    //     var lat = results.data[0].lat;
-    //     var lon = results.data[0].lon;
-    //     formData.append('latitude', lat);
-    //     formData.append('longitude', lon);
-    //     formData.append('id', birdEntry.id);
-
-    //     if (fileUpload) {
-    //       formData.append(
-    //         "birdImage",
-    //         fileUpload,
-    //         fileUpload.name
-    //       );
-
-    //       formData.append('birdpic_url', `/uploads/${fileUpload.name}`);
-    //     }
-    //   })
-      // .then(() => {
-
         axios.put('/updateBird', {
           bird: species,
           date: date,
@@ -89,10 +66,7 @@ const UpdateBirdForm = ({ birdEntry }) => {
               <label className="control-label" htmlFor="">Species</label>
               <input className="form-control" type="text" name="bird" value={species} onChange={() => { handleInputChange(event, setSpecies) }} />
             </div>
-
             <div className="form-group col-6">
-            {/* <label className="control-label" htmlFor="">Date</label>
-            <input type="date" name="date" className="form-control" value={`${date.getFullYear()}-${date.getMonth().toString().length < 2 ? '0' + (parseInt(date.getMonth()) + 1).toString() : (parseInt(date.getMonth()) + 1).toString()}-${date.getDate().toString().length < 2 ? '0' + date.getDate() : date.getDate()}`} required onChange={() => { handleInputChange(event, setDate) }} /> */}
           </div>
           </div>
           <div className="form-group row align-items-end">
@@ -105,17 +79,14 @@ const UpdateBirdForm = ({ birdEntry }) => {
             </div>
           </div>
 
-
           <div className="form-group row">
             <div className="col-6">
               <label className="control-label" htmlFor="">City</label>
               <input className="form-control" type="text" name="city_sighted" onChange={() => { handleInputChange(event, setCity) }} value={city} />
-
             </div>
             <div className="col-6">
               <label className="control-label" htmlFor="">State</label>
               <input className="form-control" type="text" name="state_sighted" onChange={() => { handleInputChange(event, setSt) }} value={st} />
-
             </div>
           </div>
 
@@ -124,14 +95,12 @@ const UpdateBirdForm = ({ birdEntry }) => {
             <textarea className="form-control" name="notes" value={notes} onChange={() => { handleInputChange(event, setNotes) }}></textarea>
           </div>
 
-
           <div>
             <input className="btn form-control" type="submit" />
           </div>
         </form >
       </div>
     </div>
-
   )
 };
 

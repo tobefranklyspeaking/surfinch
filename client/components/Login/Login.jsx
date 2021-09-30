@@ -110,7 +110,6 @@ const Login = () => {
           </div>
         </div>
       <div className="headerLogin">
-        {/* <h2 className='text-white'>Surfinch</h2> */}
       </div>
       <div className='secondaryContainerLogin'>
         {error && <div className="alert" role="alert">

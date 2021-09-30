@@ -33,7 +33,6 @@ const SignUp = (props) => {
         .currentUser(name)
         .then(res => {
           history.push('/login');
-          //console.log('inside create', name)
           return res.user.updateProfile({
             displayName: name
           })
@@ -47,7 +46,6 @@ const SignUp = (props) => {
         .createUserWithEmailAndPassword(email, password)
         .then(res => {
           if (res.user) {
-            // WE NEED TO ADD THE AVATAR FUNCTIONALITY HERE
             let user = { 'email': email, 'name': name, pic: images[Math.floor(Math.random() * images.length)], color: colors[Math.floor(Math.random() * colors.length)] };
             axios.post('/newUser', user)
               .then((result) => {

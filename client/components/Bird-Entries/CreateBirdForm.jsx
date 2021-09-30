@@ -30,7 +30,6 @@ const CreateBirdForm = ({ currentUser, location }) => {
 
       axios.get(`https://us1.locationiq.com/v1/reverse.php?key=${LOC_TOKEN}&lat=${lat}&lon=${lon}&format=json`)
         .then(results => {
-          console.log('fsdfk', results.data)
           setStreet(results.data.address.house_number + " " + results.data.address.road);
           setCity(results.data.address.city);
           setSt(results.data.address.state);
@@ -42,7 +41,6 @@ const CreateBirdForm = ({ currentUser, location }) => {
   }, []);
 
   var handleSearchBarChange = (event) => {
-    console.log(event.target.value)
     var value = event.target.value;
     var pattern = new RegExp(`\^${value}`, 'i');
 
@@ -50,8 +48,6 @@ const CreateBirdForm = ({ currentUser, location }) => {
       return pattern.test(value.bird) || pattern.test(value.city_sighted) || pattern.test(value.state_sighted);
     })
     setFilteredSet(filteredResults);
-
-    // handleInputChange(event, setSpecies);
   }
 
   var handleSubmit = (event) => {
@@ -111,14 +107,12 @@ const CreateBirdForm = ({ currentUser, location }) => {
       <div>
         <SearchBar handleSearchBarChange={handleSearchBarChange} />
         <BirdEntryList birdEntries={filteredSet} handleCardClick={handleCardClick} />
-
         <form id="create-entry" onSubmit={handleSubmit}>
           <div className="form-group row align-items-end">
             <div className="form-group col-6">
               <label className="control-label" htmlFor="">Species</label>
               <input className="form-control" type="text" name="bird" value={species} onChange={() => {handleInputChange(event, setSpecies)}} />
             </div>
-
             <div className="form-group col-6">
               <label className="control-label" htmlFor="">Date</label>
               <input type="date" name="date" className="form-control" value={date} required onChange={() => { handleInputChange(event, setDate) }} />
@@ -133,26 +127,20 @@ const CreateBirdForm = ({ currentUser, location }) => {
               <input className="form-control" name="street_sighted" type="text" onChange={() => { handleInputChange(event, setStreet) }} value={street} />
             </div>
           </div>
-
-
           <div className="form-group row">
             <div className="col-6">
               <label className="control-label" htmlFor="">City</label>
               <input className="form-control" type="text" name="city_sighted" onChange={() => { handleInputChange(event, setCity) }} value={city} />
-
             </div>
             <div className="col-6">
               <label className="control-label" htmlFor="">State</label>
               <input className="form-control" type="text" name="state_sighted" onChange={() => { handleInputChange(event, setSt) }} value={st} />
-
             </div>
           </div>
-
           <div className="form-group">
             <label className="control-label" htmlFor="">Notes</label>
             <textarea className="form-control" name="notes" value={notes} onChange={() => { handleInputChange(event, setNotes) }}></textarea>
           </div>
-
           <div>
             <input className="btn form-control" type="submit" />
           </div>

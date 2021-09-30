@@ -7,9 +7,6 @@ const LocalBirds = ({top10Birds, location}) => {
 
   const Auth = useContext(AuthContext);
 
-  console.log('auth', Auth);
-
-
   return (
     <>
       <h5>Birds in your area</h5>

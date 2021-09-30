@@ -1,15 +1,10 @@
 exports.taxonomySplit = (data) => {
   var text = data.split('\n');
-
   var info = text[1].split(',');
-
-  console.log(info);
-
-
 };
 
 
-
+// Example of data
 // SCIENTIFIC_NAME,
 // COMMON_NAME,
 // SPECIES_CODE,

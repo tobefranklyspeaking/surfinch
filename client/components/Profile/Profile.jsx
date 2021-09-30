@@ -21,7 +21,6 @@ const Profile = ({ currentUser }) => {
     axios.get(`/stats/${currentUser.username}`)
       .then((results) => {
         var stats = results.data[0];
-        console.log('STATS: ', stats);
         setBadges(stats);
       })
       .catch((error) => {
@@ -29,21 +28,11 @@ const Profile = ({ currentUser }) => {
       });
     axios.get(`/userbirds/${currentUser.userID}`)
       .then((results) => {
-        console.log('Birds: ', results);
         setEntries(results.data);
       })
       .catch((error) => {
         console.log('Error fetching birds: ', error);
       });
-    // axios.get(`/rankings`)
-    //   .then((results) => {
-    //     var rankings = results.data;
-    //     console.log('Ranks: ', rankings);
-    //     setRanks(rankings);
-    //   })
-    //   .catch((error) => {
-    //     console.log('error fetching rankings: ', error);
-    //   });
   }, [])
 
   return (

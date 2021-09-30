@@ -34,11 +34,6 @@ const App = () => {
   const [individualBird, setIndividualBird] = useState({});
 
   const history = useHistory();
-  // const [currentUser, setCurrentUser] = useState({ 'userId': 1, 'email': 'email@admin.com', 'name': 'Admin', pic: '' })
-
-  console.log('location object', location)
-  console.log('bird request', birdRequest)
-  // console.log('ohhhh currentUser', currentUser)
 
   //LOCATION IQ API CALL for lats/longs and region codes
   useEffect(() => {
@@ -71,28 +66,22 @@ const App = () => {
       }
     })
       .then((result) => {
-        // console.log('all birds api call', result.data);
         setAllBirds(result.data)
       })
       .catch(error => { console.log('There was an error retrieving data from API, ', error); })
   }, [])
 
 
-  //login & redirect (routing things)
+  //login & redirect routing
   useEffect(() => {
+    //monitoring re-render for dev purposes
     console.log('state update rerender');
-  }, [isLoggedIn])
-
-  useEffect(() => {
-    console.log('state update rerender');
-  }, [currentUser])
+  }, [isLoggedIn, currentUser])
 
 
   const redirect = () => {
     history.push('/home')
   }
-
-
 
   return (
     <AuthContext.Provider value={{ isLoggedIn, setLoggedIn, currentUser, setCurrentUser, birdEntries, setBirdEntries, birdRequest, setBirdRequest, individualBird, setIndividualBird, allBirds }}>

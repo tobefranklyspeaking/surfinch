@@ -13,7 +13,6 @@ const BirdNestItem = ({ bird }) => {
   var scientific;
 
   const getBirdFormData = () => {
-    console.log('Searched');
     const isThere = (entry) => entry.comName.toLowerCase().includes(bird.bird.toLowerCase().replace(' ', ''));
     var index = Auth.allBirds.findIndex(isThere);
 
